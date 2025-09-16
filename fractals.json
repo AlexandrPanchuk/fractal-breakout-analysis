@@ -1,0 +1,50 @@
+[
+  {
+    "pair": "EURUSD",
+    "high": null,
+    "low": 1.1668883562088013,
+    "lastUpdated": "2025-09-16T15:52:34.273Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "high": null,
+    "low": 1.3495277166366577,
+    "lastUpdated": "2025-09-16T15:52:34.358Z"
+  },
+  {
+    "pair": "USDJPY",
+    "high": 148.052001953125,
+    "low": 146.32699584960938,
+    "lastUpdated": "2025-09-16T15:52:34.446Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "high": null,
+    "low": 0.6484701633453369,
+    "lastUpdated": "2025-09-16T15:52:34.487Z"
+  },
+  {
+    "pair": "USDCAD",
+    "high": 1.3889100551605225,
+    "low": 1.3727400302886963,
+    "lastUpdated": "2025-09-16T15:52:34.573Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "high": null,
+    "low": 0.5834305882453918,
+    "lastUpdated": "2025-09-16T15:52:34.618Z"
+  },
+  {
+    "pair": "XAUUSD",
+    "high": null,
+    "low": 3618.39990234375,
+    "lastUpdated": "2025-09-16T15:52:34.710Z"
+  },
+  {
+    "pair": "DX-Y.NYB",
+    "high": 98.08999633789062,
+    "low": null,
+    "lastUpdated": "2025-09-16T15:52:34.867Z"
+  }
+]

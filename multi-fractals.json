@@ -1,0 +1,925 @@
+[
+  {
+    "pair": "EURUSD",
+    "daily": {
+      "highs": [
+        {
+          "price": 1.1780366897583008,
+          "daysAgo": 5,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-16"
+        },
+        {
+          "price": 1.1735849380493164,
+          "daysAgo": 11,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-04"
+        },
+        {
+          "price": 1.1730343103408813,
+          "daysAgo": 17,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-31"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.1668883562088013,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.1609817743301392,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.157474398612976,
+          "daysAgo": 14,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 1.1830259561538696,
+          "daysAgo": 12,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-16"
+        },
+        {
+          "price": 1.1546543836593628,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2025-06-08"
+        },
+        {
+          "price": 1.0533745288848877,
+          "daysAgo": 34,
+          "status": "BROKEN",
+          "brokenAt": "2025-03-03"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.157474398612976,
+          "daysAgo": 4,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.1394582986831665,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.1075055599212646,
+          "daysAgo": 19,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 1.1830259561538696,
+          "daysAgo": 3,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-16"
+        },
+        {
+          "price": 1.1212396621704102,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-03-31"
+        },
+        {
+          "price": 1.113945484161377,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2024-07-31"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.0183818340301514,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.0604116916656494,
+          "daysAgo": 18,
+          "status": "BROKEN",
+          "brokenAt": "2024-11-01"
+        },
+        {
+          "price": 0.9191175699234009,
+          "daysAgo": 22,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:04.579Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "daily": {
+      "highs": [
+        {
+          "price": 1.3591573238372803,
+          "daysAgo": 5,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-14"
+        },
+        {
+          "price": 1.354958415031433,
+          "daysAgo": 11,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-04"
+        },
+        {
+          "price": 1.3543713092803955,
+          "daysAgo": 17,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-31"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.3495277166366577,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3336355686187744,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3418315649032593,
+          "daysAgo": 14,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-01"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 1.3594529628753662,
+          "daysAgo": 6,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-14"
+        },
+        {
+          "price": 1.3788729906082153,
+          "daysAgo": 12,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3442305326461792,
+          "daysAgo": 21,
+          "status": "BROKEN",
+          "brokenAt": "2025-05-18"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.3284993171691895,
+          "daysAgo": 4,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.314405918121338,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3373453617095947,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-07-13"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 1.3788729906082153,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3432915210723877,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-03-31"
+        },
+        {
+          "price": 1.2890584468841553,
+          "daysAgo": 19,
+          "status": "BROKEN",
+          "brokenAt": "2024-06-30"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.314405918121338,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.2101263999938965,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.2301182746887207,
+          "daysAgo": 18,
+          "status": "BROKEN",
+          "brokenAt": "2025-01-01"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:04.737Z"
+  },
+  {
+    "pair": "USDJPY",
+    "daily": {
+      "highs": [
+        {
+          "price": 148.052001953125,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 149.11599731445312,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 148.16600036621094,
+          "daysAgo": 14,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-01"
+        }
+      ],
+      "lows": [
+        {
+          "price": 146.32699584960938,
+          "daysAgo": 5,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 146.77000427246094,
+          "daysAgo": 12,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-08"
+        },
+        {
+          "price": 146.58799743652344,
+          "daysAgo": 17,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-08"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 149.11599731445312,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 150.9149932861328,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 148.0019989013672,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-07-13"
+        }
+      ],
+      "lows": [
+        {
+          "price": 146.32699584960938,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 146.2220001220703,
+          "daysAgo": 6,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 142.69500732421875,
+          "daysAgo": 12,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 150.9149932861328,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 158.85699462890625,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 161.94200134277344,
+          "daysAgo": 15,
+          "status": "ACTIVE"
+        }
+      ],
+      "lows": [
+        {
+          "price": 139.89199829101562,
+          "daysAgo": 6,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 139.5780029296875,
+          "daysAgo": 13,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 140.2899932861328,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2024-08-31"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:04.865Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "daily": {
+      "highs": [
+        {
+          "price": 0.6560999751091003,
+          "daysAgo": 11,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-04"
+        },
+        {
+          "price": 0.6507027745246887,
+          "daysAgo": 16,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-27"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.6484701633453369,
+          "daysAgo": 10,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6462900042533875,
+          "daysAgo": 14,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6415001749992371,
+          "daysAgo": 18,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 0.666100025177002,
+          "daysAgo": 9,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-07"
+        },
+        {
+          "price": 0.6510700583457947,
+          "daysAgo": 20,
+          "status": "BROKEN",
+          "brokenAt": "2025-05-25"
+        },
+        {
+          "price": 0.6391981840133667,
+          "daysAgo": 27,
+          "status": "BROKEN",
+          "brokenAt": "2025-04-20"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.6415001749992371,
+          "daysAgo": 5,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6419498920440674,
+          "daysAgo": 8,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-17"
+        },
+        {
+          "price": 0.6373498439788818,
+          "daysAgo": 13,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 0.6941099166870117,
+          "daysAgo": 13,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.7092298865318298,
+          "daysAgo": 22,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6946499347686768,
+          "daysAgo": 28,
+          "status": "BROKEN",
+          "brokenAt": "2023-12-01"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.5923082828521729,
+          "daysAgo": 6,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6365493535995483,
+          "daysAgo": 14,
+          "status": "BROKEN",
+          "brokenAt": "2024-12-01"
+        },
+        {
+          "price": 0.6365599632263184,
+          "daysAgo": 18,
+          "status": "BROKEN",
+          "brokenAt": "2024-07-31"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:05.025Z"
+  },
+  {
+    "pair": "USDCAD",
+    "daily": {
+      "highs": [
+        {
+          "price": 1.3889100551605225,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3844599723815918,
+          "daysAgo": 8,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-09"
+        },
+        {
+          "price": 1.3924299478530884,
+          "daysAgo": 17,
+          "status": "ACTIVE"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.3757100105285645,
+          "daysAgo": 7,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-16"
+        },
+        {
+          "price": 1.3727400302886963,
+          "daysAgo": 12,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3817100524902344,
+          "daysAgo": 16,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-27"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 1.3889100551605225,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3924299478530884,
+          "daysAgo": 5,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.387869954109192,
+          "daysAgo": 8,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-17"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.3727400302886963,
+          "daysAgo": 4,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3575199842453003,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3540600538253784,
+          "daysAgo": 14,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 1.3924299478530884,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.479099988937378,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3845499753952026,
+          "daysAgo": 18,
+          "status": "BROKEN",
+          "brokenAt": "2024-06-30"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1.3540600538253784,
+          "daysAgo": 4,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.090459942817688,
+          "daysAgo": 10,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 1.3174599409103394,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2024-11-01"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:05.165Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "daily": {
+      "highs": [
+        {
+          "price": 0.5915409326553345,
+          "daysAgo": 11,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-04"
+        },
+        {
+          "price": 0.5881384611129761,
+          "daysAgo": 16,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-27"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.5834305882453918,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.5819400548934937,
+          "daysAgo": 14,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.5801204442977905,
+          "daysAgo": 17,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 0.6060999035835266,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6121187210083008,
+          "daysAgo": 12,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6029799580574036,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2025-05-25"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.5801204442977905,
+          "daysAgo": 5,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.5857887268066406,
+          "daysAgo": 8,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-17"
+        },
+        {
+          "price": 0.5884602665901184,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-07-27"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 0.6121187210083008,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6609599590301514,
+          "daysAgo": 11,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.6654998064041138,
+          "daysAgo": 22,
+          "status": "ACTIVE"
+        }
+      ],
+      "lows": [
+        {
+          "price": 0.5801204442977905,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.549070417881012,
+          "daysAgo": 6,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 0.5857407450675964,
+          "daysAgo": 14,
+          "status": "BROKEN",
+          "brokenAt": "2024-11-01"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:05.264Z"
+  },
+  {
+    "pair": "XAUUSD",
+    "daily": {
+      "highs": [
+        {
+          "price": 3670.39990234375,
+          "daysAgo": 5,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-15"
+        }
+      ],
+      "lows": [
+        {
+          "price": 3618.39990234375,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 3310.10009765625,
+          "daysAgo": 18,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 3477,
+          "daysAgo": 7,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-01"
+        },
+        {
+          "price": 3444,
+          "daysAgo": 15,
+          "status": "BROKEN",
+          "brokenAt": "2025-08-04"
+        },
+        {
+          "price": 3485.60009765625,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-01"
+        }
+      ],
+      "lows": [
+        {
+          "price": 3310.10009765625,
+          "daysAgo": 5,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 3263.89990234375,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 3253.800048828125,
+          "daysAgo": 13,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 3485.60009765625,
+          "daysAgo": 5,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-01"
+        },
+        {
+          "price": 2130.199951171875,
+          "daysAgo": 19,
+          "status": "BROKEN",
+          "brokenAt": "2024-03-01"
+        },
+        {
+          "price": 2072,
+          "daysAgo": 25,
+          "status": "BROKEN",
+          "brokenAt": "2023-12-01"
+        }
+      ],
+      "lows": [
+        {
+          "price": 1846,
+          "daysAgo": 21,
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:05.377Z"
+  },
+  {
+    "pair": "DX-Y.NYB",
+    "daily": {
+      "highs": [
+        {
+          "price": 98.08999633789062,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 98.63999938964844,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 98.7300033569336,
+          "daysAgo": 13,
+          "status": "ACTIVE"
+        }
+      ],
+      "lows": [
+        {
+          "price": 97.25,
+          "daysAgo": 5,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-16"
+        },
+        {
+          "price": 97.62000274658203,
+          "daysAgo": 10,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-05"
+        },
+        {
+          "price": 97.55999755859375,
+          "daysAgo": 16,
+          "status": "BROKEN",
+          "brokenAt": "2025-09-05"
+        }
+      ]
+    },
+    "weekly": {
+      "highs": [
+        {
+          "price": 100.26000213623047,
+          "daysAgo": 8,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 99.41999816894531,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-07-28"
+        },
+        {
+          "price": 101.9800033569336,
+          "daysAgo": 19,
+          "status": "ACTIVE"
+        }
+      ],
+      "lows": [
+        {
+          "price": 96.37999725341797,
+          "daysAgo": 12,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 97.91999816894531,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2025-06-09"
+        },
+        {
+          "price": 105.41999816894531,
+          "daysAgo": 42,
+          "status": "BROKEN",
+          "brokenAt": "2025-03-03"
+        }
+      ]
+    },
+    "monthly": {
+      "highs": [
+        {
+          "price": 100.26000213623047,
+          "daysAgo": 2,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 110.18000030517578,
+          "daysAgo": 9,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 106.5199966430664,
+          "daysAgo": 18,
+          "status": "BROKEN",
+          "brokenAt": "2024-11-01"
+        }
+      ],
+      "lows": [
+        {
+          "price": 96.37999725341797,
+          "daysAgo": 3,
+          "status": "ACTIVE"
+        },
+        {
+          "price": 100.16000366210938,
+          "daysAgo": 13,
+          "status": "BROKEN",
+          "brokenAt": "2025-04-01"
+        },
+        {
+          "price": 100.62000274658203,
+          "daysAgo": 22,
+          "status": "BROKEN",
+          "brokenAt": "2024-08-01"
+        }
+      ]
+    },
+    "lastUpdated": "2025-09-16T16:26:05.506Z"
+  }
+]

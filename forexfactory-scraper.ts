@@ -1,0 +1,1356 @@
+import axios from 'axios';
+import * as fs from 'fs';
+
+interface ForexFactoryEvent {
+  id: string;
+  title: string;
+  country: string;
+  currency: string;
+  date: string;
+  time: string;
+  impact: 'LOW' | 'MEDIUM' | 'HIGH';
+  forecast: string;
+  previous: string;
+  actual?: string;
+}
+
+// Parse the ForexFactory data you provided
+function parseForexFactoryEvents(): ForexFactoryEvent[] {
+  const today = new Date().toISOString().split('T')[0];
+  
+  const events: ForexFactoryEvent[] = [
+    {
+      id: 'ff_2025-09-15_0',
+      title: 'BusinessNZ Services Index',
+      country: 'New Zealand',
+      currency: 'NZD',
+      date: today,
+      time: 'All Day',
+      impact: 'LOW',
+      forecast: '47.5',
+      previous: '48.9'
+    },
+    {
+      id: 'ff_2025-09-15_1',
+      title: 'Bank Holiday',
+      country: 'Japan',
+      currency: 'JPY',
+      date: today,
+      time: 'All Day',
+      impact: 'LOW',
+      forecast: '',
+      previous: ''
+    },
+    {
+      id: 'ff_2025-09-15_2',
+      title: 'Rightmove HPI m/m',
+      country: 'United Kingdom',
+      currency: 'GBP',
+      date: today,
+      time: '02:01',
+      impact: 'LOW',
+      forecast: '0.4%',
+      previous: '-1.3%'
+    },
+    {
+      id: 'ff_2025-09-15_3',
+      title: 'New Home Prices m/m',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '04:30',
+      impact: 'MEDIUM',
+      forecast: '-0.30%',
+      previous: '-0.31%'
+    },
+    {
+      id: 'ff_2025-09-15_4',
+      title: 'Industrial Production y/y',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '05:00',
+      impact: 'HIGH',
+      forecast: '5.2%',
+      previous: '5.7%',
+      actual: '5.7%'
+    },
+    {
+      id: 'ff_2025-09-15_5',
+      title: 'Retail Sales y/y',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '05:00',
+      impact: 'HIGH',
+      forecast: '3.4%',
+      previous: '3.8%',
+      actual: '3.7%'
+    },
+    {
+      id: 'ff_2025-09-15_6',
+      title: 'Fixed Asset Investment ytd/y',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '05:00',
+      impact: 'MEDIUM',
+      forecast: '0.5%',
+      previous: '1.5%',
+      actual: '1.6%'
+    },
+    {
+      id: 'ff_2025-09-15_7',
+      title: 'NBS Press Conference',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '05:00',
+      impact: 'MEDIUM',
+      forecast: '',
+      previous: ''
+    },
+    {
+      id: 'ff_2025-09-15_8',
+      title: 'Unemployment Rate',
+      country: 'China',
+      currency: 'CNY',
+      date: today,
+      time: '05:00',
+      impact: 'MEDIUM',
+      forecast: '5.3%',
+      previous: '5.2%',
+      actual: '5.2%'
+    },
+    {
+      id: 'ff_2025-09-15_9',
+      title: 'German WPI m/m',
+      country: 'Germany',
+      currency: 'EUR',
+      date: today,
+      time: '09:00',
+      impact: 'MEDIUM',
+      forecast: '-0.6%',
+      previous: '0.2%',
+      actual: '-0.1%'
+    },
+    {
+      id: 'ff_2025-09-15_10',
+      title: 'PPI m/m',
+      country: 'Switzerland',
+      currency: 'CHF',
+      date: today,
+      time: '09:30',
+      impact: 'MEDIUM',
+      forecast: '-0.6%',
+      previous: '0.1%',
+      actual: '-0.2%'
+    },
+    {
+      id: 'ff_2025-09-15_11',
+      title: 'Italian Trade Balance',
+      country: 'Italy',
+      currency: 'EUR',
+      date: today,
+      time: '11:00',
+      impact: 'LOW',
+      forecast: '7.91B',
+      previous: '5.50B',
+      actual: '5.38B'
+    },
+    {
+      id: 'ff_2025-09-15_12',
+      title: 'Trade Balance',
+      country: 'European Union',
+      currency: 'EUR',
+      date: today,
+      time: '12:00',
+      impact: 'MEDIUM',
+      forecast: '5.3B',
+      previous: '11.7B',
+      actual: '3.7B'
+    },
+    {
+      id: 'ff_2025-09-15_13',
+      title: 'Manufacturing Sales m/m',
+      country: 'Canada',
+      currency: 'CAD',
+      date: today,
+      time: '15:30',
+      impact: 'MEDIUM',
+      forecast: '2.5%',
+      previous: '1.7%',
+      actual: '0.3%'
+    },
+    {
+      id: 'ff_2025-09-15_14',
+      title: 'Wholesale Sales m/m',
+      country: 'Canada',
+      currency: 'CAD',
+      date: today,
+      time: '15:30',
+      impact: 'LOW',
+      forecast: '1.2%',
+      previous: '1.4%',
+      actual: '1.0%'
+    },
+    {
+      id: 'ff_2025-09-15_15',
+      title: 'Empire State Manufacturing Index',
+      country: 'United States',
+      currency: 'USD',
+      date: today,
+      time: '15:30',
+      impact: 'MEDIUM',
+      forecast: '-8.7',
+      previous: '4.3',
+      actual: '11.9'
+    },
+    {
+      id: 'ff_2025-09-15_16',
+      title: 'ECB President Lagarde Speaks',
+      country: 'European Union',
+      currency: 'EUR',
+      date: today,
+      time: '21:30',
+      impact: 'HIGH',
+      forecast: '',
+      previous: ''
+    },
+    {
+    id: 'nzd_2025-09-16_0',
+    title: 'FPI m/m',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-16',
+    time: '1:45am',
+    impact: 'LOW',
+    forecast: '',
+    previous: '0.7%'
+  },
+  {
+    id: 'aud_2025-09-16_0',
+    title: 'RBA Assist Gov Hunter Speaks',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-16',
+    time: '2:50am',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'jpy_2025-09-16_0',
+    title: 'Tertiary Industry Activity m/m',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-16',
+    time: '7:30am',
+    impact: 'LOW',
+    forecast: '0.1%',
+    previous: '0.5%'
+  },
+  {
+    id: 'gbp_2025-09-16_0',
+    title: 'Average Earnings Index 3m/y',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-16',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '4.7%',
+    previous: '4.6%'
+  },
+  {
+    id: 'gbp_2025-09-16_1',
+    title: 'Claimant Count Change',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-16',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '20.3K',
+    previous: '-6.2K'
+  },
+  {
+    id: 'gbp_2025-09-16_2',
+    title: 'Unemployment Rate',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-16',
+    time: '9:00am',
+    impact: 'HIGH',
+    forecast: '4.7%',
+    previous: '4.7%'
+  },
+  {
+    id: 'eur_2025-09-16_0',
+    title: 'German ZEW Economic Sentiment',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-16',
+    time: '12:00pm',
+    impact: 'MEDIUM',
+    forecast: '26.4',
+    previous: '34.7'
+  },
+  {
+    id: 'eur_2025-09-16_1',
+    title: 'Industrial Production m/m',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-16',
+    time: '12:00pm',
+    impact: 'MEDIUM',
+    forecast: '0.3%',
+    previous: '-1.3%'
+  },
+  {
+    id: 'eur_2025-09-16_2',
+    title: 'ZEW Economic Sentiment',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-16',
+    time: '12:00pm',
+    impact: 'MEDIUM',
+    forecast: '20.3',
+    previous: '25.1'
+  },
+  {
+    id: 'cad_2025-09-16_0',
+    title: 'Housing Starts',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:15pm',
+    impact: 'MEDIUM',
+    forecast: '278K',
+    previous: '294K'
+  },
+  {
+    id: 'cad_2025-09-16_1',
+    title: 'CPI m/m',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'HIGH',
+    forecast: '0.1%',
+    previous: '0.3%'
+  },
+  {
+    id: 'cad_2025-09-16_2',
+    title: 'Median CPI y/y',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '3.1%',
+    previous: '3.1%'
+  },
+  {
+    id: 'cad_2025-09-16_3',
+    title: 'Trimmed CPI y/y',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '3.0%',
+    previous: '3.0%'
+  },
+  {
+    id: 'cad_2025-09-16_4',
+    title: 'Common CPI y/y',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '2.6%',
+    previous: '2.6%'
+  },
+  {
+    id: 'cad_2025-09-16_5',
+    title: 'Core CPI m/m',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: '0.1%'
+  },
+  {
+    id: 'usd_2025-09-16_0',
+    title: 'Core Retail Sales m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '0.4%',
+    previous: '0.3%'
+  },
+  {
+    id: 'usd_2025-09-16_1',
+    title: 'Retail Sales m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'HIGH',
+    forecast: '0.2%',
+    previous: '0.5%'
+  },
+  {
+    id: 'usd_2025-09-16_2',
+    title: 'Import Prices m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '3:30pm',
+    impact: 'LOW',
+    forecast: '-0.2%',
+    previous: '0.4%'
+  },
+  {
+    id: 'usd_2025-09-16_3',
+    title: 'Capacity Utilization Rate',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '4:15pm',
+    impact: 'MEDIUM',
+    forecast: '77.4%',
+    previous: '77.5%'
+  },
+  {
+    id: 'usd_2025-09-16_4',
+    title: 'Industrial Production m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '4:15pm',
+    impact: 'MEDIUM',
+    forecast: '-0.1%',
+    previous: '-0.1%'
+  },
+  {
+    id: 'usd_2025-09-16_5',
+    title: 'Business Inventories m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '5:00pm',
+    impact: 'LOW',
+    forecast: '0.2%',
+    previous: '0.2%'
+  },
+  {
+    id: 'usd_2025-09-16_6',
+    title: 'NAHB Housing Market Index',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '5:00pm',
+    impact: 'MEDIUM',
+    forecast: '33',
+    previous: '32'
+  },
+  {
+    id: 'aud_2025-09-16_1',
+    title: 'CB Leading Index m/m',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-16',
+    time: '5:30pm',
+    impact: 'LOW',
+    forecast: '',
+    previous: '0.5%'
+  },
+  {
+    id: 'nzd_2025-09-16_1',
+    title: 'GDT Price Index',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-16',
+    time: 'Tentative',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: '-4.3%'
+  },
+  {
+    id: 'usd_2025-09-16_7',
+    title: 'API Weekly Statistical Bulletin',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-16',
+    time: '11:30pm',
+    impact: 'LOW',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'nzd_2025-09-17_0',
+    title: 'Westpac Consumer Sentiment',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-17',
+    time: '12:00am',
+    impact: 'LOW',
+    forecast: '',
+    previous: '91.2'
+  },
+  {
+    id: 'nzd_2025-09-17_1',
+    title: 'Current Account',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-17',
+    time: '1:45am',
+    impact: 'MEDIUM',
+    forecast: '-2.67B',
+    previous: '-2.32B'
+  },
+  {
+    id: 'jpy_2025-09-17_0',
+    title: 'Trade Balance',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-17',
+    time: '2:50am',
+    impact: 'MEDIUM',
+    forecast: '-0.36T',
+    previous: '-0.30T'
+  },
+  {
+    id: 'aud_2025-09-17_0',
+    title: 'MI Leading Index m/m',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-17',
+    time: '3:30am',
+    impact: 'LOW',
+    forecast: '',
+    previous: '0.1%'
+  },
+  {
+    id: 'aud_2025-09-17_1',
+    title: 'RBA Assist Gov Jones Speaks',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-17',
+    time: '4:30am',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'gbp_2025-09-17_0',
+    title: 'CPI y/y',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-17',
+    time: '9:00am',
+    impact: 'HIGH',
+    forecast: '3.8%',
+    previous: '3.8%'
+  },
+  {
+    id: 'gbp_2025-09-17_1',
+    title: 'Core CPI y/y',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-17',
+    time: '9:00am',
+    impact: 'HIGH',
+    forecast: '3.7%',
+    previous: '3.8%'
+  },
+  {
+    id: 'gbp_2025-09-17_2',
+    title: 'RPI y/y',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-17',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '4.7%',
+    previous: '4.8%'
+  },
+  {
+    id: 'chf_2025-09-17_0',
+    title: 'SECO Economic Forecasts',
+    country: 'Switzerland',
+    currency: 'CHF',
+    date: '2025-09-17',
+    time: '10:00am',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'eur_2025-09-17_0',
+    title: 'ECB President Lagarde Speaks',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-17',
+    time: '10:30am',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'gbp_2025-09-17_3',
+    title: 'HPI y/y',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-17',
+    time: '11:30am',
+    impact: 'MEDIUM',
+    forecast: '3.6%',
+    previous: '3.7%'
+  },
+  {
+    id: 'eur_2025-09-17_1',
+    title: 'Final Core CPI y/y',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-17',
+    time: '12:00pm',
+    impact: 'HIGH',
+    forecast: '2.3%',
+    previous: '2.3%'
+  },
+  {
+    id: 'eur_2025-09-17_2',
+    title: 'Final CPI y/y',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-17',
+    time: '12:00pm',
+    impact: 'HIGH',
+    forecast: '2.1%',
+    previous: '2.1%'
+  },
+  {
+    id: 'eur_2025-09-17_3',
+    title: 'German 30-y Bond Auction',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-17',
+    time: 'Tentative',
+    impact: 'MEDIUM',
+    forecast: '3.28|1.0',
+    previous: ''
+  },
+  {
+    id: 'cad_2025-09-17_0',
+    title: 'Foreign Securities Purchases',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-17',
+    time: '3:30pm',
+    impact: 'LOW',
+    forecast: '',
+    previous: '0.71B'
+  },
+  {
+    id: 'usd_2025-09-17_0',
+    title: 'Building Permits',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '1.37M',
+    previous: '1.35M'
+  },
+  {
+    id: 'usd_2025-09-17_1',
+    title: 'Housing Starts',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '1.36M',
+    previous: '1.43M'
+  },
+  {
+    id: 'cad_2025-09-17_1',
+    title: 'BOC Rate Statement',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-17',
+    time: '4:45pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'cad_2025-09-17_2',
+    title: 'Overnight Rate',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-17',
+    time: '4:45pm',
+    impact: 'HIGH',
+    forecast: '2.50%',
+    previous: '2.75%'
+  },
+  {
+    id: 'cad_2025-09-17_3',
+    title: 'BOC Press Conference',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-17',
+    time: '5:30pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'usd_2025-09-17_2',
+    title: 'Crude Oil Inventories',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '5:30pm',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: '3.9M'
+  },
+  {
+    id: 'eur_2025-09-17_4',
+    title: 'German Buba President Nagel Speaks',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-17',
+    time: '8:00pm',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'usd_2025-09-17_3',
+    title: 'Federal Funds Rate',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '9:00pm',
+    impact: 'HIGH',
+    forecast: '4.25%',
+    previous: '4.50%'
+  },
+  {
+    id: 'usd_2025-09-17_4',
+    title: 'FOMC Economic Projections',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '9:00pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'usd_2025-09-17_5',
+    title: 'FOMC Statement',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '9:00pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'usd_2025-09-17_6',
+    title: 'FOMC Press Conference',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-17',
+    time: '9:30pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+    {
+    id: 'nzd_2025-09-18_0',
+    title: 'GDP q/q',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-18',
+    time: '1:45am',
+    impact: 'HIGH',
+    forecast: '-0.3%',
+    previous: '0.8%'
+  },
+  {
+    id: 'jpy_2025-09-18_0',
+    title: 'Core Machinery Orders m/m',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-18',
+    time: '2:50am',
+    impact: 'MEDIUM',
+    forecast: '-1.7%',
+    previous: '3.0%'
+  },
+  {
+    id: 'aud_2025-09-18_0',
+    title: 'Employment Change',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-18',
+    time: '4:30am',
+    impact: 'HIGH',
+    forecast: '21.2K',
+    previous: '24.5K'
+  },
+  {
+    id: 'aud_2025-09-18_1',
+    title: 'Unemployment Rate',
+    country: 'Australia',
+    currency: 'AUD',
+    date: '2025-09-18',
+    time: '4:30am',
+    impact: 'HIGH',
+    forecast: '4.2%',
+    previous: '4.2%'
+  },
+  {
+    id: 'chf_2025-09-18_0',
+    title: 'Trade Balance',
+    country: 'Switzerland',
+    currency: 'CHF',
+    date: '2025-09-18',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '5.22B',
+    previous: '4.59B'
+  },
+  {
+    id: 'cny_2025-09-18_0',
+    title: 'Foreign Direct Investment ytd/y',
+    country: 'China',
+    currency: 'CNY',
+    date: '2025-09-18',
+    time: 'Tentative',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'eur_2025-09-18_0',
+    title: 'ECB President Lagarde Speaks',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-18',
+    time: '10:10am',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'eur_2025-09-18_1',
+    title: 'Current Account',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-18',
+    time: '11:00am',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: '35.8B'
+  },
+  {
+    id: 'eur_2025-09-18_2',
+    title: 'Spanish 10-y Bond Auction',
+    country: 'Spain',
+    currency: 'EUR',
+    date: '2025-09-18',
+    time: 'Tentative',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'eur_2025-09-18_3',
+    title: 'German Buba Monthly Report',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-18',
+    time: '1:00pm',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'gbp_2025-09-18_0',
+    title: 'Monetary Policy Summary',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-18',
+    time: '2:00pm',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'gbp_2025-09-18_1',
+    title: 'MPC Official Bank Rate Votes',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-18',
+    time: '2:00pm',
+    impact: 'HIGH',
+    forecast: '0-1-8',
+    previous: '0-5-4'
+  },
+  {
+    id: 'gbp_2025-09-18_2',
+    title: 'Official Bank Rate',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-18',
+    time: '2:00pm',
+    impact: 'HIGH',
+    forecast: '4.00%',
+    previous: '4.00%'
+  },
+  {
+    id: 'usd_2025-09-18_0',
+    title: 'Unemployment Claims',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-18',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '245K',
+    previous: '263K'
+  },
+  {
+    id: 'usd_2025-09-18_1',
+    title: 'Philly Fed Manufacturing Index',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-18',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '1.4',
+    previous: '-0.3'
+  },
+  {
+    id: 'eur_2025-09-18_4',
+    title: 'German Buba President Nagel Speaks',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-18',
+    time: '5:00pm',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'usd_2025-09-18_2',
+    title: 'CB Leading Index m/m',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-18',
+    time: '5:00pm',
+    impact: 'MEDIUM',
+    forecast: '-0.1%',
+    previous: '-0.1%'
+  },
+  {
+    id: 'usd_2025-09-18_3',
+    title: 'Natural Gas Storage',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-18',
+    time: '5:30pm',
+    impact: 'LOW',
+    forecast: '',
+    previous: '71B'
+  },
+  {
+    id: 'usd_2025-09-18_4',
+    title: 'TIC Long-Term Purchases',
+    country: 'United States',
+    currency: 'USD',
+    date: '2025-09-18',
+    time: '11:00pm',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: '150.8B'
+  },
+  {
+    id: 'nzd_2025-09-19_0',
+    title: 'Trade Balance',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-19',
+    time: '1:45am',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: '-578M'
+  },
+  {
+    id: 'gbp_2025-09-19_0',
+    title: 'GfK Consumer Confidence',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-19',
+    time: '2:01am',
+    impact: 'MEDIUM',
+    forecast: '-18',
+    previous: '-17'
+  },
+  {
+    id: 'jpy_2025-09-19_0',
+    title: 'National Core CPI y/y',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-19',
+    time: '2:30am',
+    impact: 'HIGH',
+    forecast: '2.7%',
+    previous: '3.1%'
+  },
+  {
+    id: 'jpy_2025-09-19_1',
+    title: 'BOJ Policy Rate',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-19',
+    time: 'Tentative',
+    impact: 'HIGH',
+    forecast: '<0.50%',
+    previous: '<0.50%'
+  },
+  {
+    id: 'jpy_2025-09-19_2',
+    title: 'Monetary Policy Statement',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-19',
+    time: 'Tentative',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'nzd_2025-09-19_1',
+    title: 'Credit Card Spending y/y',
+    country: 'New Zealand',
+    currency: 'NZD',
+    date: '2025-09-19',
+    time: '6:00am',
+    impact: 'LOW',
+    forecast: '',
+    previous: '1.4%'
+  },
+  {
+    id: 'jpy_2025-09-19_3',
+    title: 'BOJ Press Conference',
+    country: 'Japan',
+    currency: 'JPY',
+    date: '2025-09-19',
+    time: 'Tentative',
+    impact: 'HIGH',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'eur_2025-09-19_0',
+    title: 'German PPI m/m',
+    country: 'Germany',
+    currency: 'EUR',
+    date: '2025-09-19',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '-0.1%',
+    previous: '-0.1%'
+  },
+  {
+    id: 'gbp_2025-09-19_1',
+    title: 'Retail Sales m/m',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-19',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '0.4%',
+    previous: '0.6%'
+  },
+  {
+    id: 'gbp_2025-09-19_2',
+    title: 'Public Sector Net Borrowing',
+    country: 'United Kingdom',
+    currency: 'GBP',
+    date: '2025-09-19',
+    time: '9:00am',
+    impact: 'MEDIUM',
+    forecast: '12.5B',
+    previous: '1.1B'
+  },
+  {
+    id: 'eur_2025-09-19_1',
+    title: 'Eurogroup Meetings',
+    country: 'European Union',
+    currency: 'EUR',
+    date: '2025-09-19',
+    time: 'All Day',
+    impact: 'MEDIUM',
+    forecast: '',
+    previous: ''
+  },
+  {
+    id: 'cad_2025-09-19_0',
+    title: 'Core Retail Sales m/m',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-19',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '0.3%',
+    previous: '1.9%'
+  },
+  {
+    id: 'cad_2025-09-19_1',
+    title: 'Retail Sales m/m',
+    country: 'Canada',
+    currency: 'CAD',
+    date: '2025-09-19',
+    time: '3:30pm',
+    impact: 'MEDIUM',
+    forecast: '-0.6%',
+    previous: '1.5%'
+  }
+  ];
+
+  return events;
+}
+
+// Add upcoming week events
+function getUpcomingWeekEvents(): ForexFactoryEvent[] {
+  const events: ForexFactoryEvent[] = [];
+  const today = new Date();
+  
+  // Tuesday events
+  const tuesday = new Date(today);
+  tuesday.setDate(today.getDate() + 1);
+  const tuesdayStr = tuesday.toISOString().split('T')[0];
+  
+  events.push(
+    {
+      id: 'ff_tue_0',
+      title: 'RBA Interest Rate Decision',
+      country: 'Australia',
+      currency: 'AUD',
+      date: tuesdayStr,
+      time: '04:30',
+      impact: 'HIGH',
+      forecast: '4.35%',
+      previous: '4.35%'
+    },
+    {
+      id: 'ff_tue_1',
+      title: 'RBA Rate Statement',
+      country: 'Australia',
+      currency: 'AUD',
+      date: tuesdayStr,
+      time: '04:30',
+      impact: 'HIGH',
+      forecast: '',
+      previous: ''
+    },
+    {
+      id: 'ff_tue_2',
+      title: 'US Trade Balance',
+      country: 'United States',
+      currency: 'USD',
+      date: tuesdayStr,
+      time: '13:30',
+      impact: 'MEDIUM',
+      forecast: '-64.3B',
+      previous: '-64.3B'
+    }
+  );
+
+  // Wednesday events
+  const wednesday = new Date(today);
+  wednesday.setDate(today.getDate() + 2);
+  const wednesdayStr = wednesday.toISOString().split('T')[0];
+  
+  events.push(
+    {
+      id: 'ff_wed_0',
+      title: 'US Consumer Price Index m/m',
+      country: 'United States',
+      currency: 'USD',
+      date: wednesdayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '0.2%',
+      previous: '0.4%'
+    },
+    {
+      id: 'ff_wed_1',
+      title: 'US Core CPI m/m',
+      country: 'United States',
+      currency: 'USD',
+      date: wednesdayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '0.3%',
+      previous: '0.3%'
+    },
+    {
+      id: 'ff_wed_2',
+      title: 'US CPI y/y',
+      country: 'United States',
+      currency: 'USD',
+      date: wednesdayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '2.5%',
+      previous: '2.9%'
+    }
+  );
+
+  // Thursday events
+  const thursday = new Date(today);
+  thursday.setDate(today.getDate() + 3);
+  const thursdayStr = thursday.toISOString().split('T')[0];
+  
+  events.push(
+    {
+      id: 'ff_thu_0',
+      title: 'ECB Interest Rate Decision',
+      country: 'European Union',
+      currency: 'EUR',
+      date: thursdayStr,
+      time: '12:45',
+      impact: 'HIGH',
+      forecast: '4.50%',
+      previous: '4.50%'
+    },
+    {
+      id: 'ff_thu_1',
+      title: 'ECB Press Conference',
+      country: 'European Union',
+      currency: 'EUR',
+      date: thursdayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '',
+      previous: ''
+    },
+    {
+      id: 'ff_thu_2',
+      title: 'US Initial Jobless Claims',
+      country: 'United States',
+      currency: 'USD',
+      date: thursdayStr,
+      time: '13:30',
+      impact: 'MEDIUM',
+      forecast: '220K',
+      previous: '218K'
+    }
+  );
+
+  // Friday events
+  const friday = new Date(today);
+  friday.setDate(today.getDate() + 4);
+  const fridayStr = friday.toISOString().split('T')[0];
+  
+  events.push(
+    {
+      id: 'ff_fri_0',
+      title: 'US Non-Farm Payrolls',
+      country: 'United States',
+      currency: 'USD',
+      date: fridayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '185K',
+      previous: '209K'
+    },
+    {
+      id: 'ff_fri_1',
+      title: 'US Unemployment Rate',
+      country: 'United States',
+      currency: 'USD',
+      date: fridayStr,
+      time: '13:30',
+      impact: 'HIGH',
+      forecast: '3.8%',
+      previous: '3.7%'
+    },
+    {
+      id: 'ff_fri_2',
+      title: 'US Average Hourly Earnings m/m',
+      country: 'United States',
+      currency: 'USD',
+      date: fridayStr,
+      time: '13:30',
+      impact: 'MEDIUM',
+      forecast: '0.3%',
+      previous: '0.4%'
+    }
+  );
+
+  return events;
+}
+
+async function fetchForexFactoryCalendar() {
+  console.log('Loading ForexFactory calendar events...');
+  
+  // Get today's events (from your provided data)
+  const todaysEvents = parseForexFactoryEvents();
+  
+  // Get upcoming week events
+  const upcomingEvents = getUpcomingWeekEvents();
+  
+  // Combine all events
+  const allEvents = [...todaysEvents, ...upcomingEvents];
+  
+  // Save to file
+  fs.writeFileSync('forex-calendar.json', JSON.stringify(allEvents, null, 2));
+  
+  console.log(`✅ Loaded ${allEvents.length} ForexFactory events`);
+  
+  // Show today's events
+  const today = new Date().toISOString().split('T')[0];
+  const todaysCount = allEvents.filter(e => e.date === today).length;
+  
+  console.log(`\n📅 TODAY'S EVENTS (${todaysCount} events):`);
+  
+  const todaysEventsFiltered = allEvents.filter(e => e.date === today);
+  todaysEventsFiltered.forEach(event => {
+    const actualText = event.actual ? ` | Actual: ${event.actual}` : '';
+    console.log(`  ${event.time} - ${event.currency} ${event.title} (${event.impact})`);
+    console.log(`    Forecast: ${event.forecast || 'N/A'} | Previous: ${event.previous || 'N/A'}${actualText}`);
+  });
+  
+  // Show high impact upcoming events
+  const highImpactUpcoming = allEvents.filter(e => e.date > today && e.impact === 'HIGH');
+  if (highImpactUpcoming.length > 0) {
+    console.log(`\n🚨 HIGH IMPACT UPCOMING (${highImpactUpcoming.length} events):`);
+    highImpactUpcoming.forEach(event => {
+      console.log(`  ${event.date} ${event.time} - ${event.currency} ${event.title}`);
+    });
+  }
+  
+  return allEvents;
+}
+
+if (require.main === module) {
+  fetchForexFactoryCalendar();
+}
+
+export { fetchForexFactoryCalendar, ForexFactoryEvent };

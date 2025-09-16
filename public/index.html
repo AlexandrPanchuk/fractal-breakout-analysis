@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Breakout Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a1a; color: #fff; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; padding: 20px; background: #2a2a2a; border-radius: 8px; }
+        .filter-group { display: flex; flex-direction: column; }
+        .filter-group label { margin-bottom: 5px; font-weight: 500; }
+        .filter-group select, .filter-group input { padding: 8px; border: 1px solid #444; background: #333; color: #fff; border-radius: 4px; }
+        .btn { padding: 10px 20px; background: #007acc; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; }
+        .btn:hover { background: #005a9e; }
+        .results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .stats-panel { background: #2a2a2a; padding: 20px; border-radius: 8px; }
+        .stats-panel h3 { margin-bottom: 15px; color: #007acc; }
+        .stat-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 8px; background: #333; border-radius: 4px; }
+        .stat-value { font-weight: bold; color: #4CAF50; }
+        .reactions-list { background: #2a2a2a; padding: 20px; border-radius: 8px; max-height: 500px; overflow-y: auto; }
+        .reaction-item { background: #333; margin-bottom: 10px; padding: 15px; border-radius: 4px; border-left: 4px solid #007acc; }
+        .reaction-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .reaction-pair { font-weight: bold; color: #007acc; }
+        .reaction-type { padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+        .type-high { background: #4CAF50; }
+        .type-low { background: #f44336; }
+        .reaction-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 12px; }
+        .metric { text-align: center; }
+        .metric-label { color: #aaa; }
+        .metric-value { font-weight: bold; }
+        .similar-context { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .context-info { background: #333; padding: 15px; border-radius: 4px; margin-bottom: 15px; }
+        .current-fractals { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .fractal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .fractal-card { background: #333; padding: 15px; border-radius: 8px; border-left: 4px solid #007acc; position: relative; }
+        .fractal-pair { font-size: 18px; font-weight: bold; color: #007acc; margin-bottom: 10px; }
+        .fractal-price { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+        .fractal-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .fractal-level { background: #444; padding: 10px; border-radius: 4px; text-align: center; }
+        .fractal-high { border-left: 3px solid #4CAF50; }
+        .fractal-low { border-left: 3px solid #f44336; }
+        .distance { font-size: 12px; color: #aaa; }
+        .distance.close { color: #ff9800; font-weight: bold; }
+        .distance.very-close { color: #f44336; font-weight: bold; animation: pulse 2s infinite; }
+        .distance.broken { color: #666; text-decoration: line-through; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .breakout-alert { position: fixed; top: 20px; right: 20px; background: #f44336; color: white; padding: 15px; border-radius: 8px; z-index: 1000; animation: slideIn 0.5s ease-out; }
+        .proximity-alert { position: fixed; top: 80px; right: 20px; background: #ff9800; color: white; padding: 15px; border-radius: 8px; z-index: 1000; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        .alert-container { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+        .alert-item { background: #f44336; color: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; animation: slideIn 0.5s ease-out; }
+        .alert-proximity { background: #ff9800; }
+        .alert-breakout { background: #f44336; }
+        .price-change { transition: all 0.3s ease; }
+        .price-up { color: #4CAF50; }
+        .price-down { color: #f44336; }
+        .loading { color: #aaa; font-style: italic; }
+        .forex-calendar { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .todays-events, .upcoming-events { background: #333; padding: 15px; border-radius: 8px; }
+        .event-item { background: #444; margin-bottom: 10px; padding: 12px; border-radius: 4px; border-left: 4px solid #007acc; }
+        .event-high { border-left-color: #f44336; }
+        .event-medium { border-left-color: #ff9800; }
+        .event-low { border-left-color: #4CAF50; }
+        .event-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .event-title { font-weight: bold; color: #fff; }
+        .event-impact { padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .impact-high { background: #f44336; color: white; }
+        .impact-medium { background: #ff9800; color: white; }
+        .impact-low { background: #4CAF50; color: white; }
+        .event-details { font-size: 12px; color: #aaa; }
+        .event-time { color: #007acc; font-weight: bold; }
+        .event-currency { background: #555; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
+        .modal-content { background-color: #2a2a2a; margin: 2% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 1200px; max-height: 90%; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px; }
+        .modal-title { color: #007acc; font-size: 24px; font-weight: bold; }
+        .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-btn:hover { color: #fff; }
+        .modal-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid #444; }
+        .modal-tab { padding: 10px 20px; cursor: pointer; border-bottom: 2px solid transparent; }
+        .modal-tab.active { border-bottom-color: #007acc; color: #007acc; }
+        .modal-tab:hover { background: #333; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .pair-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .pair-stat-card { background: #333; padding: 15px; border-radius: 8px; text-align: center; }
+        .pair-stat-value { font-size: 24px; font-weight: bold; color: #4CAF50; }
+        .pair-stat-label { color: #aaa; font-size: 12px; }
+        .events-table { width: 100%; border-collapse: collapse; }
+        .events-table th, .events-table td { padding: 10px; text-align: left; border-bottom: 1px solid #444; }
+        .events-table th { background: #333; color: #007acc; }
+        .fractal-card { cursor: pointer; transition: transform 0.2s; }
+        .fractal-card:hover { transform: scale(1.02); }
+        .fractal-card.news-impact { border: 2px solid #ff9800; box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); animation: newsGlow 2s infinite; }
+        .fractal-card.high-impact { border: 2px solid #f44336; box-shadow: 0 0 20px rgba(244, 67, 54, 0.7); animation: highImpactGlow 1.5s infinite; }
+        @keyframes newsGlow { 0%, 100% { box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); } 50% { box-shadow: 0 0 25px rgba(255, 152, 0, 0.8); } }
+        @keyframes highImpactGlow { 0%, 100% { box-shadow: 0 0 20px rgba(244, 67, 54, 0.7); } 50% { box-shadow: 0 0 30px rgba(244, 67, 54, 1); } }
+        .news-indicator { position: absolute; top: 5px; right: 5px; background: #ff9800; color: white; padding: 2px 6px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+        .news-indicator.high { background: #f44336; }
+        .news-details { margin-top: 10px; padding: 8px; background: rgba(255, 152, 0, 0.1); border-radius: 4px; font-size: 11px; }
+        .news-details.high { background: rgba(244, 67, 54, 0.1); }
+        .timeframe-tabs { display: flex; margin-bottom: 15px; }
+        .timeframe-tab { padding: 8px 16px; background: #333; border: none; color: #aaa; cursor: pointer; margin-right: 5px; border-radius: 4px; }
+        .timeframe-tab.active { background: #007acc; color: white; }
+        .fractal-status { font-size: 10px; padding: 1px 4px; border-radius: 8px; margin-left: 4px; }
+        .fractal-status.active { background: #4CAF50; color: white; }
+        .fractal-status.broken { background: #666; color: #aaa; }
+        .multi-levels { margin-top: 8px; font-size: 11px; }
+        .multi-level { background: #555; padding: 4px 6px; margin: 2px 0; border-radius: 3px; }
+        .multi-level.broken { opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Fractal Breakout Analysis</h1>
+            <p>Analyze price reactions after fractal breakouts with historical context</p>
+        </div>
+
+        <div class="current-fractals">
+            <h3>🎯 Current Fractal Levels <span style="font-size: 14px; color: #007acc; font-weight: normal;">| Active Hours: 10:30 & 15:30</span></h3>
+            <div class="timeframe-tabs">
+                <button class="timeframe-tab active" onclick="switchTimeframe('daily')">Daily</button>
+                <button class="timeframe-tab" onclick="switchTimeframe('weekly')">Weekly</button>
+                <button class="timeframe-tab" onclick="switchTimeframe('monthly')">Monthly</button>
+            </div>
+            <div id="fractalGrid" class="fractal-grid">
+                <p class="loading">Loading current fractals...</p>
+            </div>
+        </div>
+
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Currency Pair</label>
+                <select id="pairFilter">
+                    <option value="">All Pairs</option>
+                    <option value="EURUSD">EURUSD</option>
+                    <option value="GBPUSD">GBPUSD</option>
+                    <option value="USDJPY">USDJPY</option>
+                    <option value="AUDUSD">AUDUSD</option>
+                    <option value="USDCAD">USDCAD</option>
+                    <option value="NZDUSD">NZDUSD</option>
+                    <option value="XAUUSD">XAUUSD</option>
+                    <option value="DX-Y.NYB">DXY</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Day of Week</label>
+                <select id="dayFilter">
+                    <option value="">All Days</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Session</label>
+                <select id="sessionFilter">
+                    <option value="">All Sessions</option>
+                    <option value="ASIA">Asia</option>
+                    <option value="LONDON">London</option>
+                    <option value="NY">New York</option>
+                    <option value="OVERLAP">Overlap</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Time Bucket</label>
+                <select id="timeBucketFilter">
+                    <option value="">All Times</option>
+                    <option value="0-4">0-4 UTC</option>
+                    <option value="4-8">4-8 UTC</option>
+                    <option value="8-12">8-12 UTC</option>
+                    <option value="12-16">12-16 UTC</option>
+                    <option value="16-20">16-20 UTC</option>
+                    <option value="20-24">20-24 UTC</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Start Date</label>
+                <input type="date" id="startDate">
+            </div>
+            <div class="filter-group">
+                <label>End Date</label>
+                <input type="date" id="endDate">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button class="btn" onclick="analyzeReactions()">Analyze Reactions</button>
+            <button class="btn" onclick="findSimilarContext()" style="margin-left: 10px;">Find Similar Context</button>
+        </div>
+
+        <br>
+
+        <div class="results">
+            <div class="stats-panel">
+                <h3>📊 Reaction Statistics</h3>
+                <div id="statsContent">
+                    <p style="color: #aaa;">Select filters and click "Analyze Reactions" to see statistics</p>
+                </div>
+            </div>
+            <div class="reactions-list">
+                <h3>📈 Recent Reactions</h3>
+                <div id="reactionsContent">
+                    <p style="color: #aaa;">No reactions to display</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="similar-context" id="similarContext" style="display: none;">
+            <h3>🎯 Similar Historical Context</h3>
+            <div id="contextContent"></div>
+        </div>
+
+
+        <br>
+
+        <div class="forex-calendar">
+            <h3>📅 Forex Calendar & Event Impact</h3>
+            <div class="calendar-grid">
+                <div class="todays-events">
+                    <h4>Today's Events</h4>
+                    <div id="todaysEvents">
+                        <p class="loading">Loading today's events...</p>
+                    </div>
+                </div>
+                <div class="upcoming-events">
+                    <h4>High Impact Events (Next 24h)</h4>
+                    <div id="upcomingEvents">
+                        <p class="loading">Loading upcoming events...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal for pair details -->
+    <div id="pairModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Currency Pair Analysis</h2>
+                <span class="close-btn" onclick="closePairModal()">&times;</span>
+            </div>
+            <div class="modal-tabs">
+                <div class="modal-tab active" onclick="switchTab('stats')">Statistics</div>
+                <div class="modal-tab" onclick="switchTab('calendar')">Calendar</div>
+                <div class="modal-tab" onclick="switchTab('reactions')">Reactions</div>
+            </div>
+            <div id="statsTab" class="tab-content active">
+                <div id="pairStatsContent"></div>
+            </div>
+            <div id="calendarTab" class="tab-content">
+                <div id="pairCalendarContent"></div>
+            </div>
+            <div id="reactionsTab" class="tab-content">
+                <div id="pairReactionsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function analyzeReactions() {
+            const params = new URLSearchParams();
+            
+            const pair = document.getElementById('pairFilter').value;
+            const day = document.getElementById('dayFilter').value;
+            const session = document.getElementById('sessionFilter').value;
+            const timeBucket = document.getElementById('timeBucketFilter').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            if (pair) params.append('pair', pair);
+            if (day) params.append('dayOfWeek', day);
+            if (session) params.append('session', session);
+            if (timeBucket) params.append('timeBucket', timeBucket);
+            if (startDate) params.append('startDate', startDate);
+            if (endDate) params.append('endDate', endDate);
+
+            try {
+                const response = await fetch(`/api/reactions?${params}`);
+                const data = await response.json();
+                
+                displayStats(data.stats);
+                displayReactions(data.reactions);
+            } catch (error) {
+                console.error('Error fetching reactions:', error);
+            }
+        }
+
+        async function findSimilarContext() {
+            const params = new URLSearchParams();
+            
+            const pair = document.getElementById('pairFilter').value;
+            const day = document.getElementById('dayFilter').value;
+            const session = document.getElementById('sessionFilter').value;
+            const timeBucket = document.getElementById('timeBucketFilter').value;
+            
+            if (pair) params.append('pair', pair);
+            if (day) params.append('dayOfWeek', day);
+            if (session) params.append('session', session);
+            if (timeBucket) params.append('timeBucket', timeBucket);
+
+            try {
+                const response = await fetch(`/api/similar-context?${params}`);
+                const data = await response.json();
+                
+                displaySimilarContext(data);
+            } catch (error) {
+                console.error('Error fetching similar context:', error);
+            }
+        }
+
+        function displayStats(stats) {
+            const statsContent = document.getElementById('statsContent');
+            
+            if (!stats) {
+                statsContent.innerHTML = '<p style="color: #aaa;">No data available for selected filters</p>';
+                return;
+            }
+
+            statsContent.innerHTML = `
+                <div class="stat-item">
+                    <span>Total Reactions:</span>
+                    <span class="stat-value">${stats.count}</span>
+                </div>
+                <div class="stat-item">
+                    <span>Follow-through Rate:</span>
+                    <span class="stat-value">${stats.followThroughRate}%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Avg 15m Impulse:</span>
+                    <span class="stat-value">${stats.avgImpulse15m}%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Avg 1h Impulse:</span>
+                    <span class="stat-value">${stats.avgImpulse1h}%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Avg 4h Impulse:</span>
+                    <span class="stat-value">${stats.avgImpulse4h}%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Avg Max Drawdown:</span>
+                    <span class="stat-value">${stats.avgMaxDrawdown}%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Avg Time to Reverse:</span>
+                    <span class="stat-value">${stats.avgTimeToReverse} min</span>
+                </div>
+            `;
+        }
+
+        function displayReactions(reactions) {
+            const reactionsContent = document.getElementById('reactionsContent');
+            
+            if (!reactions || reactions.length === 0) {
+                reactionsContent.innerHTML = '<p style="color: #aaa;">No reactions found for selected filters</p>';
+                return;
+            }
+
+            reactionsContent.innerHTML = reactions.slice(0, 10).map(reaction => `
+                <div class="reaction-item">
+                    <div class="reaction-header">
+                        <span class="reaction-pair">${reaction.pair}</span>
+                        <span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span>
+                    </div>
+                    <div style="font-size: 12px; color: #aaa; margin-bottom: 10px;">
+                        ${new Date(reaction.timestamp).toLocaleString()} | ${reaction.session} | ${reaction.timeBucket}
+                    </div>
+                    <div class="reaction-metrics">
+                        <div class="metric">
+                            <div class="metric-label">15m Impulse</div>
+                            <div class="metric-value">${reaction.impulse15m.toFixed(2)}%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">1h Impulse</div>
+                            <div class="metric-value">${reaction.impulse1h.toFixed(2)}%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Max DD</div>
+                            <div class="metric-value">${reaction.maxDrawdown.toFixed(2)}%</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function displaySimilarContext(data) {
+            const similarContext = document.getElementById('similarContext');
+            const contextContent = document.getElementById('contextContent');
+            
+            similarContext.style.display = 'block';
+            
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            
+            let contextHtml = '<div class="context-info">';
+            contextHtml += '<h4>Context: ' + (data.context.pair || 'All Pairs') + ' | ';
+            contextHtml += (data.context.dayOfWeek ? dayNames[data.context.dayOfWeek] : 'All Days') + ' | ';
+            contextHtml += (data.context.session || 'All Sessions') + ' | ';
+            contextHtml += (data.context.timeBucket || 'All Times') + '</h4>';
+            contextHtml += '<p>Historical reactions found: <strong>' + data.historicalReactions + '</strong></p>';
+            contextHtml += '</div>';
+            
+            if (data.stats) {
+                contextHtml += '<div class="stats-panel">';
+                contextHtml += '<h4>Historical Performance in Similar Context</h4>';
+                contextHtml += '<div class="stat-item"><span>Follow-through Rate:</span><span class="stat-value">' + data.stats.followThroughRate + '%</span></div>';
+                contextHtml += '<div class="stat-item"><span>Average 1h Impulse:</span><span class="stat-value">' + data.stats.avgImpulse1h + '%</span></div>';
+                contextHtml += '<div class="stat-item"><span>Average Max Drawdown:</span><span class="stat-value">' + data.stats.avgMaxDrawdown + '%</span></div>';
+                contextHtml += '</div>';
+            } else {
+                contextHtml += '<p style="color: #aaa;">No historical data available for this context</p>';
+            }
+            
+            contextContent.innerHTML = contextHtml;
+        }
+
+        let currentPrices = {};
+        let currentFractals = [];
+        let priceUpdateInterval;
+        let currentNews = [];
+        let multiFractals = [];
+        let activeTimeframe = 'daily';
+        let brokenFractalsToday = new Set();
+        let activeHoursInterval;
+        let warningAlerts = new Set();
+        let dailyMovements = {};
+        
+        async function loadCurrentFractals() {
+            try {
+                const response = await fetch('/api/current-fractals');
+                currentFractals = await response.json();
+                displayCurrentFractals();
+            } catch (error) {
+                console.error('Error loading fractals:', error);
+            }
+        }
+        
+        async function loadForexCalendar() {
+            try {
+                const [todaysResponse, upcomingResponse] = await Promise.all([
+                    fetch('/api/todays-events'),
+                    fetch('/api/upcoming-events')
+                ]);
+                
+                const todaysEvents = await todaysResponse.json();
+                const upcomingEvents = await upcomingResponse.json();
+                
+                currentNews = [...todaysEvents, ...upcomingEvents];
+                
+                displayTodaysEvents(todaysEvents);
+                displayUpcomingEvents(upcomingEvents);
+            } catch (error) {
+                console.error('Error loading calendar:', error);
+            }
+        }
+        
+        function displayTodaysEvents(events) {
+            const container = document.getElementById('todaysEvents');
+            
+            if (events.length === 0) {
+                container.innerHTML = '<p class="loading">No events today</p>';
+                return;
+            }
+            
+            container.innerHTML = events.map(event => `
+                <div class="event-item event-${event.impact.toLowerCase()}">
+                    <div class="event-header">
+                        <span class="event-title">${event.title}</span>
+                        <span class="event-impact impact-${event.impact.toLowerCase()}">${event.impact}</span>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-time">${event.time}</span>
+                        <span class="event-currency">${event.currency}</span>
+                        <span style="margin-left: 8px;">${event.country}</span>
+                    </div>
+                    <div class="event-details" style="margin-top: 5px;">
+                        Forecast: ${event.forecast} | Previous: ${event.previous}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function displayUpcomingEvents(events) {
+            const container = document.getElementById('upcomingEvents');
+            
+            if (events.length === 0) {
+                container.innerHTML = '<p class="loading">No high impact events in next 24h</p>';
+                return;
+            }
+            
+            container.innerHTML = events.map(event => {
+                const eventDate = new Date(`${event.date}T${event.time}`);
+                const timeUntil = Math.round((eventDate.getTime() - new Date().getTime()) / (1000 * 60 * 60));
+                
+                return `
+                    <div class="event-item event-${event.impact.toLowerCase()}">
+                        <div class="event-header">
+                            <span class="event-title">${event.title}</span>
+                            <span class="event-impact impact-${event.impact.toLowerCase()}">${event.impact}</span>
+                        </div>
+                        <div class="event-details">
+                            <span class="event-time">In ${timeUntil}h</span>
+                            <span class="event-currency">${event.currency}</span>
+                            <span style="margin-left: 8px;">${event.country}</span>
+                        </div>
+                        <div class="event-details" style="margin-top: 5px;">
+                            Forecast: ${event.forecast} | Previous: ${event.previous}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        async function updateCurrentPrices() {
+            try {
+                const response = await fetch('/api/current-prices');
+                const newPrices = await response.json();
+                
+                // Check for breakouts
+                checkForBreakouts(newPrices);
+                
+                currentPrices = newPrices;
+                displayCurrentFractals();
+            } catch (error) {
+                console.error('Error updating prices:', error);
+            }
+        }
+        
+        let alertedPairs = new Set();
+        
+        function checkForBreakouts(newPrices) {
+            for (const fractal of currentFractals) {
+                const currentPrice = newPrices[fractal.pair];
+                if (!currentPrice) continue;
+                
+                const highKey = `${fractal.pair}_HIGH_${fractal.high}`;
+                const lowKey = `${fractal.pair}_LOW_${fractal.low}`;
+                
+                // Check for breakouts (original fractals)
+                if (fractal.high && currentPrice > fractal.high && !brokenFractalsToday.has(highKey)) {
+                    showAlert(fractal.pair, 'HIGH BROKEN', currentPrice.toFixed(5) + ' &gt; ' + fractal.high.toFixed(5), 'breakout');
+                    brokenFractalsToday.add(highKey);
+                    markFractalAsBroken(fractal.pair, 'HIGH', fractal.high);
+                }
+                
+                if (fractal.low && currentPrice < fractal.low && !brokenFractalsToday.has(lowKey)) {
+                    showAlert(fractal.pair, 'LOW BROKEN', currentPrice.toFixed(5) + ' &lt; ' + fractal.low.toFixed(5), 'breakout');
+                    brokenFractalsToday.add(lowKey);
+                    markFractalAsBroken(fractal.pair, 'LOW', fractal.low);
+                }
+                
+                // Check for next level breakouts
+                if (fractal.nextHigh && currentPrice > fractal.nextHigh) {
+                    const nextHighKey = `${fractal.pair}_NEXTHIGH_${fractal.nextHigh}`;
+                    if (!brokenFractalsToday.has(nextHighKey)) {
+                        showAlert(fractal.pair, `${fractal.nextHighTimeframe.toUpperCase()} HIGH BROKEN`, currentPrice.toFixed(5) + ' &gt; ' + fractal.nextHigh.toFixed(5), 'breakout');
+                        brokenFractalsToday.add(nextHighKey);
+                    }
+                }
+                
+                if (fractal.nextLow && currentPrice < fractal.nextLow) {
+                    const nextLowKey = `${fractal.pair}_NEXTLOW_${fractal.nextLow}`;
+                    if (!brokenFractalsToday.has(nextLowKey)) {
+                        showAlert(fractal.pair, `${fractal.nextLowTimeframe.toUpperCase()} LOW BROKEN`, currentPrice.toFixed(5) + ' &lt; ' + fractal.nextLow.toFixed(5), 'breakout');
+                        brokenFractalsToday.add(nextLowKey);
+                    }
+                }
+                
+                // Check for proximity alerts (within 5 pips) - only for unbroken fractals
+                const alertKey = `${fractal.pair}_proximity`;
+                
+                if (fractal.high && !brokenFractalsToday.has(highKey)) {
+                    const pipsToHigh = Math.abs(calculatePips(fractal.pair, fractal.high, currentPrice));
+                    if (pipsToHigh <= 5 && !alertedPairs.has(alertKey + '_high')) {
+                        showAlert(fractal.pair, 'APPROACHING HIGH', pipsToHigh + ' pips away', 'proximity');
+                        alertedPairs.add(alertKey + '_high');
+                        setTimeout(function() { alertedPairs.delete(alertKey + '_high'); }, 300000);
+                    }
+                }
+                
+                if (fractal.low && !brokenFractalsToday.has(lowKey)) {
+                    const pipsToLow = Math.abs(calculatePips(fractal.pair, currentPrice, fractal.low));
+                    if (pipsToLow <= 5 && !alertedPairs.has(alertKey + '_low')) {
+                        showAlert(fractal.pair, 'APPROACHING LOW', pipsToLow + ' pips away', 'proximity');
+                        alertedPairs.add(alertKey + '_low');
+                        setTimeout(function() { alertedPairs.delete(alertKey + '_low'); }, 300000);
+                    }
+                }
+                
+                // Check proximity for next levels
+                if (fractal.nextHigh) {
+                    const pipsToNextHigh = Math.abs(calculatePips(fractal.pair, fractal.nextHigh, currentPrice));
+                    if (pipsToNextHigh <= 5 && !alertedPairs.has(alertKey + '_nexthigh')) {
+                        showAlert(fractal.pair, `APPROACHING ${fractal.nextHighTimeframe.toUpperCase()} HIGH`, pipsToNextHigh + ' pips away', 'proximity');
+                        alertedPairs.add(alertKey + '_nexthigh');
+                        setTimeout(function() { alertedPairs.delete(alertKey + '_nexthigh'); }, 300000);
+                    }
+                }
+                
+                if (fractal.nextLow) {
+                    const pipsToNextLow = Math.abs(calculatePips(fractal.pair, currentPrice, fractal.nextLow));
+                    if (pipsToNextLow <= 5 && !alertedPairs.has(alertKey + '_nextlow')) {
+                        showAlert(fractal.pair, `APPROACHING ${fractal.nextLowTimeframe.toUpperCase()} LOW`, pipsToNextLow + ' pips away', 'proximity');
+                        alertedPairs.add(alertKey + '_nextlow');
+                        setTimeout(function() { alertedPairs.delete(alertKey + '_nextlow'); }, 300000);
+                    }
+                }
+            }
+        }
+        
+        function markFractalAsBroken(pair, type, price) {
+            // Update the fractal display to show broken status
+            const fractalIndex = currentFractals.findIndex(f => f.pair === pair);
+            if (fractalIndex !== -1) {
+                if (type === 'HIGH') {
+                    currentFractals[fractalIndex].highBroken = true;
+                    currentFractals[fractalIndex].brokenHighPrice = price;
+                    // Find next higher fractal from weekly/monthly
+                    const nextFractal = findNextHigherFractal(pair, 'HIGH', price);
+                    if (nextFractal) {
+                        currentFractals[fractalIndex].nextHigh = nextFractal.price;
+                        currentFractals[fractalIndex].nextHighTimeframe = nextFractal.timeframe;
+                        console.log(`📈 ${pair}: Next HIGH target: ${nextFractal.price.toFixed(5)} (${nextFractal.timeframe})`);
+                    }
+                } else {
+                    currentFractals[fractalIndex].lowBroken = true;
+                    currentFractals[fractalIndex].brokenLowPrice = price;
+                    // Find next lower fractal from weekly/monthly
+                    const nextFractal = findNextLowerFractal(pair, 'LOW', price);
+                    if (nextFractal) {
+                        currentFractals[fractalIndex].nextLow = nextFractal.price;
+                        currentFractals[fractalIndex].nextLowTimeframe = nextFractal.timeframe;
+                        console.log(`📉 ${pair}: Next LOW target: ${nextFractal.price.toFixed(5)} (${nextFractal.timeframe})`);
+                    }
+                }
+                displayCurrentFractals();
+            }
+        }
+        
+        function findNextHigherFractal(pair, type, brokenPrice) {
+            const pairData = multiFractals.find(f => f.pair === pair);
+            if (!pairData) return null;
+            
+            // Check weekly fractals first
+            const weeklyHighs = pairData.weekly.highs.filter(f => f.status === 'ACTIVE' && f.price > brokenPrice);
+            if (weeklyHighs.length > 0) {
+                return { price: weeklyHighs[0].price, timeframe: 'weekly' };
+            }
+            
+            // Then check monthly fractals
+            const monthlyHighs = pairData.monthly.highs.filter(f => f.status === 'ACTIVE' && f.price > brokenPrice);
+            if (monthlyHighs.length > 0) {
+                return { price: monthlyHighs[0].price, timeframe: 'monthly' };
+            }
+            
+            return null;
+        }
+        
+        function findNextLowerFractal(pair, type, brokenPrice) {
+            const pairData = multiFractals.find(f => f.pair === pair);
+            if (!pairData) return null;
+            
+            // Check weekly fractals first
+            const weeklyLows = pairData.weekly.lows.filter(f => f.status === 'ACTIVE' && f.price < brokenPrice);
+            if (weeklyLows.length > 0) {
+                return { price: weeklyLows[0].price, timeframe: 'weekly' };
+            }
+            
+            // Then check monthly fractals
+            const monthlyLows = pairData.monthly.lows.filter(f => f.status === 'ACTIVE' && f.price < brokenPrice);
+            if (monthlyLows.length > 0) {
+                return { price: monthlyLows[0].price, timeframe: 'monthly' };
+            }
+            
+            return null;
+        }
+        
+        function showAlert(pair, message, details, type) {
+            // Create alert container if it doesn't exist
+            let container = document.getElementById('alertContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'alertContainer';
+                container.className = 'alert-container';
+                document.body.appendChild(container);
+            }
+            
+            const alert = document.createElement('div');
+            alert.className = `alert-item alert-${type}`;
+            
+            const icon = type === 'breakout' ? '🚨' : '⚠️';
+            alert.innerHTML = '<strong>' + icon + ' ' + pair + ' ' + message + '</strong><br>' + details;
+            
+            container.appendChild(alert);
+            
+            // Auto-remove after 5 seconds for breakouts, 10 seconds for proximity
+            const duration = type === 'breakout' ? 5000 : 10000;
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.remove();
+                }
+            }, duration);
+            
+            // Play sound notification (optional)
+            if (type === 'breakout') {
+                playNotificationSound();
+            }
+        }
+        
+        function playNotificationSound() {
+            // Create a simple beep sound
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+        
+        function playActiveHourWarning() {
+            // Create a different sound for active hour warnings
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Create a two-tone chime
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const gain1 = audioContext.createGain();
+            const gain2 = audioContext.createGain();
+            
+            osc1.connect(gain1);
+            osc2.connect(gain2);
+            gain1.connect(audioContext.destination);
+            gain2.connect(audioContext.destination);
+            
+            // First tone
+            osc1.frequency.value = 1000;
+            osc1.type = 'sine';
+            gain1.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gain1.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            // Second tone (higher)
+            osc2.frequency.value = 1200;
+            osc2.type = 'sine';
+            gain2.gain.setValueAtTime(0, audioContext.currentTime);
+            gain2.gain.setValueAtTime(0.2, audioContext.currentTime + 0.3);
+            gain2.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.6);
+            
+            osc1.start(audioContext.currentTime);
+            osc1.stop(audioContext.currentTime + 0.3);
+            osc2.start(audioContext.currentTime + 0.3);
+            osc2.stop(audioContext.currentTime + 0.6);
+        }
+        
+        function displayCurrentFractals() {
+            const fractalGrid = document.getElementById('fractalGrid');
+            
+            if (activeTimeframe === 'daily' && currentFractals.length === 0) {
+                fractalGrid.innerHTML = '<p class="loading">No fractal data available</p>';
+                return;
+            }
+            
+            if (activeTimeframe !== 'daily') {
+                displayMultiTimeframeFractals();
+                return;
+            }
+            
+            fractalGrid.innerHTML = currentFractals.map(fractal => {
+                const currentPrice = currentPrices[fractal.pair];
+                const pairData = multiFractals.find(f => f.pair === fractal.pair);
+                
+                // Get next targets from higher timeframes
+                let nextHigh = null, nextLow = null;
+                if (pairData && currentPrice) {
+                    // Find next higher fractal high above current price
+                    const allHighs = [...pairData.daily.highs, ...pairData.weekly.highs, ...pairData.monthly.highs]
+                        .filter(f => f.status === 'ACTIVE' && f.price > currentPrice)
+                        .sort((a, b) => a.price - b.price);
+                    nextHigh = allHighs[0];
+                    
+                    // Find next lower fractal low below current price
+                    const allLows = [...pairData.daily.lows, ...pairData.weekly.lows, ...pairData.monthly.lows]
+                        .filter(f => f.status === 'ACTIVE' && f.price < currentPrice)
+                        .sort((a, b) => b.price - a.price);
+                    nextLow = allLows[0];
+                }
+                
+                let highDistance = '';
+                let lowDistance = '';
+                let highClass = '';
+                let lowClass = '';
+                
+                if (currentPrice && fractal.high) {
+                    const pips = calculatePips(fractal.pair, fractal.high, currentPrice);
+                    highDistance = `${pips > 0 ? '+' : ''}${pips} pips`;
+                    if (fractal.highBroken) {
+                        highClass = 'broken';
+                        highDistance += ' (BROKEN)';
+                    } else {
+                        if (Math.abs(pips) <= 5) highClass = 'very-close';
+                        else if (Math.abs(pips) <= 20) highClass = 'close';
+                    }
+                }
+                
+                if (currentPrice && fractal.low) {
+                    const pips = calculatePips(fractal.pair, currentPrice, fractal.low);
+                    lowDistance = `${pips > 0 ? '+' : '-'}${Math.abs(pips)} pips`;
+                    if (fractal.lowBroken) {
+                        lowClass = 'broken';
+                        lowDistance += ' (BROKEN)';
+                    } else {
+                        if (Math.abs(pips) <= 5) lowClass = 'very-close';
+                        else if (Math.abs(pips) <= 20) lowClass = 'close';
+                    }
+                }
+                
+                // Check for news impact
+                const newsImpact = getNewsImpact(fractal.pair);
+                const cardClass = newsImpact.hasHighImpact ? 'fractal-card high-impact' : 
+                                 newsImpact.hasMediumImpact ? 'fractal-card news-impact' : 'fractal-card';
+                
+                return `
+                    <div class="${cardClass}" onclick="openPairModal('${fractal.pair}')">
+                        ${newsImpact.indicator}
+                        <div class="fractal-pair">${fractal.pair}</div>
+                        <div class="fractal-price price-change">
+                            ${currentPrice ? currentPrice.toFixed(5) : 'Loading...'}
+                            ${dailyMovements[fractal.pair] ? `<span style="font-size: 12px; margin-left: 8px; color: ${dailyMovements[fractal.pair].direction === 'UP' ? '#4CAF50' : dailyMovements[fractal.pair].direction === 'DOWN' ? '#f44336' : '#aaa'}">${dailyMovements[fractal.pair].direction === 'UP' ? '↗' : dailyMovements[fractal.pair].direction === 'DOWN' ? '↘' : '→'} ${dailyMovements[fractal.pair].changePercent.toFixed(2)}%</span>` : ''}
+                        </div>
+                        <div class="fractal-levels">
+                            <div class="fractal-level fractal-high">
+                                <div>Daily High</div>
+                                <div>${pairData && pairData.daily.highs[0] ? pairData.daily.highs[0].price.toFixed(5) : 'None'}</div>
+                                <div class="distance ${highClass}">${pairData && pairData.daily.highs[0] && currentPrice ? calculatePips(fractal.pair, pairData.daily.highs[0].price, currentPrice) + ' pips' + (pairData.daily.highs[0].status === 'BROKEN' ? ' (BROKEN)' : '') : ''}</div>
+                                ${nextHigh ? `<div style="font-size: 10px; color: #4CAF50; margin-top: 4px;">Next Target: ${nextHigh.price.toFixed(5)} (${nextHigh.daysAgo}d ago)</div>` : ''}
+                            </div>
+                            <div class="fractal-level fractal-low">
+                                <div>Daily Low</div>
+                                <div>${pairData && pairData.daily.lows[0] ? pairData.daily.lows[0].price.toFixed(5) : 'None'}</div>
+                                <div class="distance ${lowClass}">${pairData && pairData.daily.lows[0] && currentPrice ? calculatePips(fractal.pair, currentPrice, pairData.daily.lows[0].price) + ' pips' + (pairData.daily.lows[0].status === 'BROKEN' ? ' (BROKEN)' : '') : ''}</div>
+                                ${nextLow ? `<div style="font-size: 10px; color: #f44336; margin-top: 4px;">Next Target: ${nextLow.price.toFixed(5)} (${nextLow.daysAgo}d ago)</div>` : ''}
+                            </div>
+                        </div>
+                        ${newsImpact.details}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function displayMultiTimeframeFractals() {
+            const fractalGrid = document.getElementById('fractalGrid');
+            
+            if (!multiFractals || multiFractals.length === 0) {
+                fractalGrid.innerHTML = '<p class="loading">No multi-fractal data available</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            multiFractals.forEach(pairData => {
+                const fractals = pairData[activeTimeframe];
+                const currentPrice = currentPrices[pairData.pair];
+                
+                // Get next active fractals (prioritize ACTIVE, fallback to first available)
+                const nextHigh = fractals.highs.find(f => f.status === 'ACTIVE') || fractals.highs[0];
+                const nextLow = fractals.lows.find(f => f.status === 'ACTIVE') || fractals.lows[0];
+                
+                let highDistance = '';
+                let lowDistance = '';
+                let highClass = '';
+                let lowClass = '';
+                
+                if (currentPrice && nextHigh) {
+                    const pips = calculatePips(pairData.pair, nextHigh.price, currentPrice);
+                    highDistance = `${pips > 0 ? '+' : ''}${pips} pips`;
+                    if (nextHigh.status === 'BROKEN') {
+                        highClass = 'broken';
+                        highDistance += ' (BROKEN)';
+                    } else {
+                        if (Math.abs(pips) <= 5) highClass = 'very-close';
+                        else if (Math.abs(pips) <= 20) highClass = 'close';
+                    }
+                }
+                
+                if (currentPrice && nextLow) {
+                    const pips = calculatePips(pairData.pair, currentPrice, nextLow.price);
+                    lowDistance = `${pips > 0 ? '+' : '-'}${Math.abs(pips)} pips`;
+                    if (nextLow.status === 'BROKEN') {
+                        lowClass = 'broken';
+                        lowDistance += ' (BROKEN)';
+                    } else {
+                        if (Math.abs(pips) <= 5) lowClass = 'very-close';
+                        else if (Math.abs(pips) <= 20) lowClass = 'close';
+                    }
+                }
+                
+                // Check for news impact
+                const newsImpact = getNewsImpact(pairData.pair);
+                const cardClass = newsImpact.hasHighImpact ? 'fractal-card high-impact' : 
+                                 newsImpact.hasMediumImpact ? 'fractal-card news-impact' : 'fractal-card';
+                
+                html += `
+                    <div class="${cardClass}" onclick="openPairModal('${pairData.pair}')">
+                        ${newsImpact.indicator}
+                        <div class="fractal-pair">${pairData.pair}</div>
+                        <div class="fractal-price price-change">
+                            ${currentPrice ? currentPrice.toFixed(5) : 'Loading...'}
+                        </div>
+                        <div class="fractal-levels">
+                            <div class="fractal-level fractal-high">
+                                <div>Next ${activeTimeframe} High</div>
+                                <div>${nextHigh ? nextHigh.price.toFixed(5) : 'None'}</div>
+                                <div class="distance ${highClass}">${highDistance}</div>
+                            </div>
+                            <div class="fractal-level fractal-low">
+                                <div>Next ${activeTimeframe} Low</div>
+                                <div>${nextLow ? nextLow.price.toFixed(5) : 'None'}</div>
+                                <div class="distance ${lowClass}">${lowDistance}</div>
+                            </div>
+                        </div>
+                        <div class="multi-levels">`;
+                        
+                // Show additional levels
+                const additionalHighs = fractals.highs.slice(1, 3);
+                const additionalLows = fractals.lows.slice(1, 3);
+                
+                if (additionalHighs.length > 0) {
+                    html += '<div style="font-size: 10px; color: #aaa; margin-bottom: 2px;">Other Highs:</div>';
+                    additionalHighs.forEach(f => {
+                        const distance = currentPrice ? Math.abs(calculatePips(pairData.pair, f.price, currentPrice)) : 0;
+                        html += `<div class="multi-level ${f.status.toLowerCase()}">${f.price.toFixed(5)} <span class="fractal-status ${f.status.toLowerCase()}">${f.status}</span> (${distance}p)</div>`;
+                    });
+                }
+                
+                if (additionalLows.length > 0) {
+                    html += '<div style="font-size: 10px; color: #aaa; margin-bottom: 2px; margin-top: 4px;">Other Lows:</div>';
+                    additionalLows.forEach(f => {
+                        const distance = currentPrice ? Math.abs(calculatePips(pairData.pair, currentPrice, f.price)) : 0;
+                        html += `<div class="multi-level ${f.status.toLowerCase()}">${f.price.toFixed(5)} <span class="fractal-status ${f.status.toLowerCase()}">${f.status}</span> (${distance}p)</div>`;
+                    });
+                }
+                
+                html += `</div>
+                        ${newsImpact.details}
+                    </div>`;
+            });
+            
+            fractalGrid.innerHTML = html;
+        }
+        
+        function getNewsImpact(pair) {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            
+            // Get currency from pair (first 3 chars for base, last 3 for quote)
+            const baseCurrency = pair.substring(0, 3);
+            const quoteCurrency = pair.substring(3, 6);
+            
+            let highImpactEvents = [];
+            let mediumImpactEvents = [];
+            
+            currentNews.forEach(event => {
+                if (event.currency === baseCurrency || event.currency === quoteCurrency) {
+                    const eventTime = parseEventTime(event.time, event.date);
+                    const timeDiff = Math.abs(currentTime - eventTime);
+                    
+                    // Check if event is happening now (within 30 minutes)
+                    if (timeDiff <= 30) {
+                        if (event.impact === 'HIGH') {
+                            highImpactEvents.push(event);
+                        } else if (event.impact === 'MEDIUM') {
+                            mediumImpactEvents.push(event);
+                        }
+                    }
+                }
+            });
+            
+            let indicator = '';
+            let details = '';
+            
+            if (highImpactEvents.length > 0) {
+                indicator = '<div class="news-indicator high">HIGH</div>';
+                const event = highImpactEvents[0];
+                details = `<div class="news-details high">📢 ${event.title} (${event.currency}) - ${event.time}</div>`;
+                return { hasHighImpact: true, hasMediumImpact: false, indicator, details };
+            }
+            
+            if (mediumImpactEvents.length > 0) {
+                indicator = '<div class="news-indicator">NEWS</div>';
+                const event = mediumImpactEvents[0];
+                details = `<div class="news-details">📰 ${event.title} (${event.currency}) - ${event.time}</div>`;
+                return { hasHighImpact: false, hasMediumImpact: true, indicator, details };
+            }
+            
+            return { hasHighImpact: false, hasMediumImpact: false, indicator: '', details: '' };
+        }
+        
+        function parseEventTime(timeStr, dateStr) {
+            if (timeStr === 'All Day') return 720; // 12:00 as default
+            
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + (minutes || 0);
+        }
+        
+        function calculatePips(pair, price1, price2) {
+            let pipMultiplier;
+            if (pair === 'USDJPY') pipMultiplier = 100;
+            else if (pair === 'XAUUSD') pipMultiplier = 10;
+            else if (pair === 'DX-Y.NYB') pipMultiplier = 100;
+            else pipMultiplier = 10000;
+            return Math.round((price1 - price2) * pipMultiplier);
+        }
+        
+        function startPriceUpdates() {
+            updateCurrentPrices();
+            priceUpdateInterval = setInterval(updateCurrentPrices, 30000); // Update every 30 seconds
+        }
+        
+        function stopPriceUpdates() {
+            if (priceUpdateInterval) {
+                clearInterval(priceUpdateInterval);
+            }
+        }
+        
+        async function loadMultiFractals() {
+            try {
+                const response = await fetch('/api/multi-fractals');
+                multiFractals = await response.json();
+                displayMultiFractals(activeTimeframe);
+            } catch (error) {
+                console.error('Error loading multi-fractals:', error);
+            }
+        }
+        
+        async function loadDailyMovements() {
+            try {
+                const pairs = ['EURUSD', 'GBPUSD', 'USDJPY', 'AUDUSD', 'USDCAD', 'NZDUSD', 'XAUUSD', 'DX-Y.NYB'];
+                for (const pair of pairs) {
+                    const response = await fetch(`/api/today-movement/${pair}`);
+                    const movement = await response.json();
+                    if (movement) {
+                        dailyMovements[pair] = movement;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading daily movements:', error);
+            }
+        }
+        
+        function switchTimeframe(timeframe) {
+            activeTimeframe = timeframe;
+            document.querySelectorAll('.timeframe-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            displayCurrentFractals();
+        }
+        
+
+        
+        // Reset broken fractals at midnight
+        function resetBrokenFractalsAtMidnight() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(now.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const msUntilMidnight = tomorrow.getTime() - now.getTime();
+            
+            setTimeout(function() {
+                brokenFractalsToday.clear();
+                console.log('Reset broken fractals for new day');
+                // Reset daily at midnight
+                setInterval(function() {
+                    brokenFractalsToday.clear();
+                }, 24 * 60 * 60 * 1000);
+            }, msUntilMidnight);
+        }
+        
+        function updateActiveHours() {
+            const now = new Date();
+            const activeHours = [10.5, 15.5]; // 10:30 and 15:30
+            
+            activeHours.forEach((targetHour) => {
+                const hourInt = Math.floor(targetHour);
+                const minuteInt = (targetHour % 1) * 60;
+                
+                // Calculate time until target
+                let targetTime = new Date();
+                targetTime.setHours(hourInt, minuteInt, 0, 0);
+                
+                // If target time has passed today, set for tomorrow
+                if (targetTime <= now) {
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+                
+                const timeDiff = targetTime.getTime() - now.getTime();
+                const totalSecondsLeft = Math.floor(timeDiff / 1000);
+                
+                if (totalSecondsLeft <= 120 && totalSecondsLeft > 0) {
+                    // Play warning sound (only once per session)
+                    const warningKey = `${targetHour}_${Math.floor(totalSecondsLeft / 60)}`;
+                    if (!warningAlerts.has(warningKey)) {
+                        playActiveHourWarning();
+                        warningAlerts.add(warningKey);
+                        showAlert('ACTIVE HOUR', `${targetHour === 10.5 ? '10:30' : '15:30'} in ${Math.ceil(totalSecondsLeft / 60)} minutes`, 'Get ready for active trading!', 'proximity');
+                    }
+                }
+            });
+        }
+        
+        function startActiveHoursTracking() {
+            updateActiveHours();
+            activeHoursInterval = setInterval(updateActiveHours, 1000); // Update every second
+        }
+        
+        function stopActiveHoursTracking() {
+            if (activeHoursInterval) {
+                clearInterval(activeHoursInterval);
+            }
+        }
+        
+        function displayPairCalendar(pair, movements) {
+            const calendarContent = document.getElementById('pairCalendarContent');
+            if (!movements || movements.length === 0) {
+                calendarContent.innerHTML = '<p style="color: #aaa;">No movement data available</p>';
+                return;
+            }
+            
+            const recent = movements.slice(-30); // Last 30 days
+            let calendarHtml = `<h3>Daily Price Movements - ${pair}</h3><div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 15px;">`;
+            
+            recent.forEach(movement => {
+                const date = new Date(movement.date);
+                const dayName = date.toLocaleDateString('en', { weekday: 'short' });
+                const dayNum = date.getDate();
+                const color = movement.direction === 'UP' ? '#4CAF50' : movement.direction === 'DOWN' ? '#f44336' : '#666';
+                const arrow = movement.direction === 'UP' ? '↗' : movement.direction === 'DOWN' ? '↘' : '→';
+                
+                calendarHtml += `
+                    <div style="background: #333; padding: 8px; border-radius: 4px; text-align: center; border-left: 3px solid ${color};">
+                        <div style="font-size: 10px; color: #aaa;">${dayName}</div>
+                        <div style="font-weight: bold;">${dayNum}</div>
+                        <div style="color: ${color}; font-size: 12px;">${arrow} ${movement.changePercent.toFixed(1)}%</div>
+                    </div>
+                `;
+            });
+            
+            calendarHtml += '</div>';
+            calendarContent.innerHTML = calendarHtml;
+        }
+        
+        // Load initial data
+        window.onload = function() {
+            loadForexCalendar();
+            loadCurrentFractals();
+            loadMultiFractals();
+            loadDailyMovements();
+            startPriceUpdates();
+            startActiveHoursTracking();
+            analyzeReactions();
+            resetBrokenFractalsAtMidnight();
+        };
+        
+        // Modal functions
+        async function openPairModal(pair) {
+            document.getElementById('modalTitle').textContent = pair + ' Analysis';
+            document.getElementById('pairModal').style.display = 'block';
+            await loadPairData(pair);
+        }
+        
+        function closePairModal() {
+            document.getElementById('pairModal').style.display = 'none';
+        }
+        
+        function switchTab(tabName) {
+            document.querySelectorAll('.modal-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+        
+        async function loadPairData(pair) {
+            try {
+                const [reactionsResponse, eventsResponse, movementsResponse] = await Promise.all([
+                    fetch('/api/reactions?pair=' + pair),
+                    fetch('/api/trading-stats'),
+                    fetch('/api/daily-movements?pair=' + pair)
+                ]);
+                
+                const reactionsData = await reactionsResponse.json();
+                const allStats = await eventsResponse.json();
+                const pairStats = allStats.find(s => s.pair === pair);
+                const movements = await movementsResponse.json();
+                
+                displayPairStats(pair, reactionsData.stats, pairStats);
+                displayPairCalendar(pair, movements);
+                displayPairReactions(reactionsData.reactions);
+            } catch (error) {
+                console.error('Error loading pair data:', error);
+            }
+        }
+        
+        function displayPairStats(pair, reactionStats, tradingStats) {
+            const statsContent = document.getElementById('pairStatsContent');
+            let statsHtml = '<div class="pair-stats-grid">';
+            
+            if (reactionStats) {
+                statsHtml += `
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${reactionStats.count}</div>
+                        <div class="pair-stat-label">Total Reactions</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${reactionStats.followThroughRate}%</div>
+                        <div class="pair-stat-label">Follow-through Rate</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${reactionStats.avgImpulse15m}%</div>
+                        <div class="pair-stat-label">Avg 15m Impulse</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${reactionStats.avgImpulse1h}%</div>
+                        <div class="pair-stat-label">Avg 1h Impulse</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${reactionStats.avgMaxDrawdown}%</div>
+                        <div class="pair-stat-label">Avg Max Drawdown</div>
+                    </div>
+                `;
+            }
+            
+            if (tradingStats) {
+                statsHtml += `
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${tradingStats.totalBreakouts}</div>
+                        <div class="pair-stat-label">Total Breakouts</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${tradingStats.longProbability.toFixed(1)}%</div>
+                        <div class="pair-stat-label">Long Probability</div>
+                    </div>
+                    <div class="pair-stat-card">
+                        <div class="pair-stat-value">${tradingStats.shortProbability.toFixed(1)}%</div>
+                        <div class="pair-stat-label">Short Probability</div>
+                    </div>
+                `;
+            }
+            
+            statsHtml += '</div>';
+            if (!reactionStats && !tradingStats) {
+                statsHtml = '<p style="color: #aaa;">No statistics available for ' + pair + '</p>';
+            }
+            statsContent.innerHTML = statsHtml;
+        }
+        
+        function displayPairEvents(pair, tradingStats) {
+            // const eventsContent = document.getElementById('pairEventsContent');
+            // if (!tradingStats) {
+            //     eventsContent.innerHTML = '<p style="color: #aaa;">No events data available for ' + pair + '</p>';
+            //     return;
+            // }
+            // eventsContent.innerHTML = `
+            //     <h3>Trading Statistics for ${pair}</h3>
+            //     <table class="events-table">
+            //         <tr><th>Metric</th><th>Value</th></tr>
+            //         <tr><td>Total Breakouts</td><td>${tradingStats.totalBreakouts}</td></tr>
+            //         <tr><td>High Breakouts</td><td>${tradingStats.highBreakouts}</td></tr>
+            //         <tr><td>Low Breakouts</td><td>${tradingStats.lowBreakouts}</td></tr>
+            //         <tr><td>Bullish Outcomes</td><td>${tradingStats.bullishOutcomes}</td></tr>
+            //         <tr><td>Bearish Outcomes</td><td>${tradingStats.bearishOutcomes}</td></tr>
+            //         <tr><td>Long Probability</td><td>${tradingStats.longProbability.toFixed(1)}%</td></tr>
+            //         <tr><td>Short Probability</td><td>${tradingStats.shortProbability.toFixed(1)}%</td></tr>
+            //     </table>
+            // `;
+        }
+        
+        function displayPairReactions(reactions) {
+            const reactionsContent = document.getElementById('pairReactionsContent');
+            if (!reactions || reactions.length === 0) {
+                reactionsContent.innerHTML = '<p style="color: #aaa;">No reaction data available</p>';
+                return;
+            }
+            let tableHtml = `
+                <h3>Breakout Reactions (${reactions.length} events)</h3>
+                <table class="events-table">
+                    <tr><th>Date</th><th>Type</th><th>Fractal Price</th><th>Break Price</th><th>Session</th><th>15m Impulse</th><th>1h Impulse</th><th>Max DD</th><th>Follow Through</th></tr>
+            `;
+            reactions.forEach(reaction => {
+                const date = new Date(reaction.timestamp).toLocaleDateString();
+                tableHtml += `
+                    <tr>
+                        <td>${date}</td>
+                        <td><span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span></td>
+                        <td>${reaction.fractalPrice.toFixed(5)}</td>
+                        <td>${reaction.breakPrice.toFixed(5)}</td>
+                        <td>${reaction.session}</td>
+                        <td>${reaction.impulse15m.toFixed(2)}%</td>
+                        <td>${reaction.impulse1h.toFixed(2)}%</td>
+                        <td>${reaction.maxDrawdown.toFixed(2)}%</td>
+                        <td>${reaction.followThrough ? '✅' : '❌'}</td>
+                    </tr>
+                `;
+            });
+            tableHtml += '</table>';
+            reactionsContent.innerHTML = tableHtml;
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('pairModal');
+            if (event.target === modal) {
+                closePairModal();
+            }
+        }
+        
+        // Stop updates when page is hidden
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopPriceUpdates();
+                stopActiveHoursTracking();
+            } else {
+                startPriceUpdates();
+                startActiveHoursTracking();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -9,9 +9,10 @@ let webServerProcess: any = null;
 
 function startWebServer() {
   console.log('🌐 Starting web server...');
-  webServerProcess = spawn('npm', ['run', 'web'], {
+  webServerProcess = spawn('npx', ['ts-node', 'web-server.ts'], {
     stdio: 'inherit',
-    shell: true
+    shell: true,
+    env: { ...process.env, PORT: process.env.PORT || '3000' }
   });
   
   webServerProcess.on('error', (error: any) => {
@@ -37,6 +38,24 @@ async function runDailyMovements() {
   }
 }
 
+async function checkBreakouts() {
+  try {
+    const { checkBreakouts } = require('./breakout-monitor');
+    await checkBreakouts();
+  } catch (error) {
+    console.error('Breakout monitoring error:', error);
+  }
+}
+
+async function monitorAsianSession() {
+  try {
+    const { monitorAsianSession } = require('./asian-session-monitor');
+    await monitorAsianSession();
+  } catch (error) {
+    console.error('Asian session monitoring error:', error);
+  }
+}
+
 async function startScheduler() {
   console.log('🚀 Starting Fractal Analysis Scheduler\n');
   
@@ -54,10 +73,19 @@ async function startScheduler() {
   // Schedule daily movements: every 5 minutes
   cron.schedule('*/5 * * * *', runDailyMovements);
   
+  // Schedule breakout monitoring: every 30 seconds
+  cron.schedule('*/30 * * * * *', checkBreakouts);
+  
+  // Schedule Asian session monitoring: every 5 minutes
+  cron.schedule('*/5 * * * *', monitorAsianSession);
+  
+  const webUrl = process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : `http://localhost:${process.env.PORT || 3000}`;
   console.log('\n⏰ Scheduler started with the following schedule:');
   console.log('   • Multi-timeframe fractals: Daily at 00:01 + every 4 hours');
   console.log('   • Daily movements: Every 5 minutes');
-  console.log('   • Web server: Running continuously on http://localhost:3000\n');
+  console.log('   • Breakout monitoring: Every 30 seconds');
+  console.log('   • Asian session alerts: Every 5 minutes (03:00-08:00 Kyiv)');
+  console.log(`   • Web server: Running continuously on ${webUrl}\n`);
   
   // Keep process alive
   process.on('SIGINT', () => {

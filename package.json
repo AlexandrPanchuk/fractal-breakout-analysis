@@ -2,23 +2,17 @@
   "name": "fractal-detector",
   "version": "1.0.0",
   "description": "Daily fractal detection for forex pairs",
-  "main": "fractal-detector.ts",
+  "main": "scheduler.ts",
   "scripts": {
-    "start": "ts-node fractal-detector.ts",
-    "monitor": "ts-node fractal-monitor.ts",
-    "stats": "ts-node -e \"import('./trading-stats').then(m => m.generateTradingContext())\"",
-    "web": "ts-node web-server.ts",
-    "scrape-forexfactory": "ts-node forexfactory-scraper.ts",
-    "detect-fractals": "ts-node improved-fractal-detector.ts",
-    "cleanup-duplicates": "ts-node cleanup-duplicates.ts",
-    "cleanup-reactions": "ts-node cleanup-reactions.ts",
-    "force-cleanup": "ts-node force-cleanup.ts",
-    "multi-fractals": "ts-node multi-timeframe-fractals.ts",
-    "monitor-multi": "ts-node multi-timeframe-fractals.ts monitor",
-    "scheduler": "ts-node scheduler.ts"
+    "start": "ts-node scheduler.ts",
+    "scheduler": "ts-node scheduler.ts",
+    "web": "ts-node web-server.ts"
   },
   "dependencies": {
     "@types/node-cron": "^3.0.11",
+    "@types/cors": "^2.8.0",
+    "@types/express": "^4.17.0",
+    "@types/node": "^20.0.0",
     "axios": "^1.6.0",
     "cheerio": "^1.1.2",
     "cors": "^2.8.5",
@@ -26,10 +20,5 @@
     "node-cron": "^3.0.3",
     "ts-node": "^10.9.0",
     "typescript": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.0",
-    "@types/express": "^4.17.0",
-    "@types/node": "^20.0.0"
   }
 }

@@ -6,133 +6,718 @@
     <title>Fractal Breakout Analysis</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a1a; color: #fff; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; padding: 20px; background: #2a2a2a; border-radius: 8px; }
-        .filter-group { display: flex; flex-direction: column; }
-        .filter-group label { margin-bottom: 5px; font-weight: 500; }
-        .filter-group select, .filter-group input { padding: 8px; border: 1px solid #444; background: #333; color: #fff; border-radius: 4px; }
-        .btn { padding: 10px 20px; background: #007acc; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; }
-        .btn:hover { background: #005a9e; }
-        .results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .stats-panel { background: #2a2a2a; padding: 20px; border-radius: 8px; }
-        .stats-panel h3 { margin-bottom: 15px; color: #007acc; }
-        .stat-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 8px; background: #333; border-radius: 4px; }
-        .stat-value { font-weight: bold; color: #4CAF50; }
-        .reactions-list { background: #2a2a2a; padding: 20px; border-radius: 8px; max-height: 500px; overflow-y: auto; }
-        .reaction-item { background: #333; margin-bottom: 10px; padding: 15px; border-radius: 4px; border-left: 4px solid #007acc; }
-        .reaction-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .reaction-pair { font-weight: bold; color: #007acc; }
-        .reaction-type { padding: 2px 8px; border-radius: 12px; font-size: 12px; }
-        .type-high { background: #4CAF50; }
-        .type-low { background: #f44336; }
-        .reaction-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 12px; }
-        .metric { text-align: center; }
-        .metric-label { color: #aaa; }
-        .metric-value { font-weight: bold; }
-        .similar-context { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-top: 20px; }
-        .context-info { background: #333; padding: 15px; border-radius: 4px; margin-bottom: 15px; }
-        .current-fractals { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .fractal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .fractal-card { background: #333; padding: 15px; border-radius: 8px; border-left: 4px solid #007acc; position: relative; }
-        .fractal-pair { font-size: 18px; font-weight: bold; color: #007acc; margin-bottom: 10px; }
-        .fractal-price { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-        .fractal-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .fractal-level { background: #444; padding: 10px; border-radius: 4px; text-align: center; }
-        .fractal-high { border-left: 3px solid #4CAF50; }
-        .fractal-low { border-left: 3px solid #f44336; }
-        .distance { font-size: 12px; color: #aaa; }
-        .distance.close { color: #ff9800; font-weight: bold; }
-        .distance.very-close { color: #f44336; font-weight: bold; animation: pulse 2s infinite; }
-        .distance.broken { color: #666; text-decoration: line-through; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .breakout-alert { position: fixed; top: 20px; right: 20px; background: #f44336; color: white; padding: 15px; border-radius: 8px; z-index: 1000; animation: slideIn 0.5s ease-out; }
-        .proximity-alert { position: fixed; top: 80px; right: 20px; background: #ff9800; color: white; padding: 15px; border-radius: 8px; z-index: 1000; animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-        .alert-container { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .alert-item { background: #f44336; color: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; animation: slideIn 0.5s ease-out; }
-        .alert-proximity { background: #ff9800; }
-        .alert-breakout { background: #f44336; }
-        .price-change { transition: all 0.3s ease; }
-        .price-up { color: #4CAF50; }
-        .price-down { color: #f44336; }
-        .loading { color: #aaa; font-style: italic; }
-        .forex-calendar { background: #2a2a2a; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .todays-events, .upcoming-events { background: #333; padding: 15px; border-radius: 8px; }
-        .event-item { background: #444; margin-bottom: 10px; padding: 12px; border-radius: 4px; border-left: 4px solid #007acc; }
-        .event-high { border-left-color: #f44336; }
-        .event-medium { border-left-color: #ff9800; }
-        .event-low { border-left-color: #4CAF50; }
-        .event-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .event-title { font-weight: bold; color: #fff; }
-        .event-impact { padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
-        .impact-high { background: #f44336; color: white; }
-        .impact-medium { background: #ff9800; color: white; }
-        .impact-low { background: #4CAF50; color: white; }
-        .event-details { font-size: 12px; color: #aaa; }
-        .event-time { color: #007acc; font-weight: bold; }
-        .event-currency { background: #555; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
-        .modal-content { background-color: #2a2a2a; margin: 2% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 1200px; max-height: 90%; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px; }
-        .modal-title { color: #007acc; font-size: 24px; font-weight: bold; }
-        .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close-btn:hover { color: #fff; }
-        .modal-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid #444; }
-        .modal-tab { padding: 10px 20px; cursor: pointer; border-bottom: 2px solid transparent; }
-        .modal-tab.active { border-bottom-color: #007acc; color: #007acc; }
-        .modal-tab:hover { background: #333; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .pair-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .pair-stat-card { background: #333; padding: 15px; border-radius: 8px; text-align: center; }
-        .pair-stat-value { font-size: 24px; font-weight: bold; color: #4CAF50; }
-        .pair-stat-label { color: #aaa; font-size: 12px; }
-        .events-table { width: 100%; border-collapse: collapse; }
-        .events-table th, .events-table td { padding: 10px; text-align: left; border-bottom: 1px solid #444; }
-        .events-table th { background: #333; color: #007acc; }
-        .fractal-card { cursor: pointer; transition: transform 0.2s; }
-        .fractal-card:hover { transform: scale(1.02); }
-        .fractal-card.news-impact { border: 2px solid #ff9800; box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); animation: newsGlow 2s infinite; }
-        .fractal-card.high-impact { border: 2px solid #f44336; box-shadow: 0 0 20px rgba(244, 67, 54, 0.7); animation: highImpactGlow 1.5s infinite; }
-        @keyframes newsGlow { 0%, 100% { box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); } 50% { box-shadow: 0 0 25px rgba(255, 152, 0, 0.8); } }
-        @keyframes highImpactGlow { 0%, 100% { box-shadow: 0 0 20px rgba(244, 67, 54, 0.7); } 50% { box-shadow: 0 0 30px rgba(244, 67, 54, 1); } }
-        .news-indicator { position: absolute; top: 5px; right: 5px; background: #ff9800; color: white; padding: 2px 6px; border-radius: 10px; font-size: 10px; font-weight: bold; }
-        .news-indicator.high { background: #f44336; }
-        .news-details { margin-top: 10px; padding: 8px; background: rgba(255, 152, 0, 0.1); border-radius: 4px; font-size: 11px; }
-        .news-details.high { background: rgba(244, 67, 54, 0.1); }
-        .timeframe-tabs { display: flex; margin-bottom: 15px; }
-        .timeframe-tab { padding: 8px 16px; background: #333; border: none; color: #aaa; cursor: pointer; margin-right: 5px; border-radius: 4px; }
-        .timeframe-tab.active { background: #007acc; color: white; }
-        .fractal-status { font-size: 10px; padding: 1px 4px; border-radius: 8px; margin-left: 4px; }
-        .fractal-status.active { background: #4CAF50; color: white; }
-        .fractal-status.broken { background: #666; color: #aaa; }
-        .multi-levels { margin-top: 8px; font-size: 11px; }
-        .multi-level { background: #555; padding: 4px 6px; margin: 2px 0; border-radius: 3px; }
-        .multi-level.broken { opacity: 0.6; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+        
+        .container { 
+            max-width: 1600px; 
+            margin: 0 auto; 
+            padding: 24px;
+        }
+        
+        .header { 
+            text-align: center; 
+            margin-bottom: 40px;
+            padding: 32px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: #a1a1aa;
+        }
+        
+        .current-fractals {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .current-fractals h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: #f4f4f5;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .timeframe-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .timeframe-tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a1a1aa;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .timeframe-tab.active {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border-color: #3b82f6;
+        }
+        
+        .timeframe-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .fractal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        
+        .fractal-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fractal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .fractal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .fractal-card:hover::before {
+            opacity: 1;
+        }
+        
+        .fractal-pair {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+        
+        .fractal-price {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #f4f4f5;
+        }
+        
+        .fractal-levels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .fractal-level {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid transparent;
+        }
+        
+        .fractal-high {
+            border-left-color: #10b981;
+        }
+        
+        .fractal-low {
+            border-left-color: #ef4444;
+        }
+        
+        .distance {
+            font-size: 0.875rem;
+            color: #a1a1aa;
+            margin-top: 4px;
+        }
+        
+        .distance.close {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+        
+        .distance.very-close {
+            color: #ef4444;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+        
+        .distance.broken {
+            color: #6b7280;
+            text-decoration: line-through;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #f4f4f5;
+            font-size: 0.875rem;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #f4f4f5;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .stats-panel,
+        .reactions-list {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+        }
+        
+        .stats-panel h3,
+        .reactions-list h3 {
+            margin-bottom: 20px;
+            color: #3b82f6;
+            font-size: 1.125rem;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .reaction-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .alert-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            max-width: 400px;
+        }
+        
+        .alert-item {
+            background: rgba(239, 68, 68, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            animation: slideIn 0.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .alert-proximity {
+            background: rgba(245, 158, 11, 0.95);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            margin: 2% auto;
+            padding: 32px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90%;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-title {
+            color: #3b82f6;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .close-btn {
+            color: #a1a1aa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            color: #f4f4f5;
+        }
+        
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #a1a1aa;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .modal-tab.active {
+            border-bottom-color: #3b82f6;
+            color: #3b82f6;
+        }
+        
+        .modal-tab:hover:not(.active) {
+            color: #f4f4f5;
+        }
+        
+        .loading {
+            color: #a1a1aa;
+            font-style: italic;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .news-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #f59e0b;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .news-indicator.high {
+            background: #ef4444;
+        }
+        
+        .fractal-status {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 12px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+        
+        .fractal-status.active {
+            background: #10b981;
+            color: white;
+        }
+        
+        .fractal-status.broken {
+            background: #6b7280;
+            color: #d1d5db;
+        }
+        
+        .forex-calendar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .todays-events,
+        .upcoming-events {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .event-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .event-high { border-left-color: #ef4444; }
+        .event-medium { border-left-color: #f59e0b; }
+        .event-low { border-left-color: #10b981; }
+        
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .event-title {
+            font-weight: 600;
+            color: #f4f4f5;
+        }
+        
+        .event-impact {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .impact-high { background: #ef4444; color: white; }
+        .impact-medium { background: #f59e0b; color: white; }
+        .impact-low { background: #10b981; color: white; }
+        
+        .event-details {
+            font-size: 0.875rem;
+            color: #a1a1aa;
+        }
+        
+        .event-time {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .event-currency {
+            background: #6b7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+        
+        .similar-context {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 32px;
+        }
+        
+        .context-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .reaction-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .reaction-pair {
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .reaction-type {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .type-high { background: #10b981; }
+        .type-low { background: #ef4444; }
+        
+        .reaction-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            font-size: 0.875rem;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-label {
+            color: #a1a1aa;
+            font-size: 0.75rem;
+        }
+        
+        .metric-value {
+            font-weight: 700;
+        }
+        
+        .pair-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .pair-stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .pair-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .pair-stat-label {
+            color: #a1a1aa;
+            font-size: 0.875rem;
+        }
+        
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .events-table th,
+        .events-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .events-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #3b82f6;
+        }
+        
+        .news-details {
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .news-details.high {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .multi-levels {
+            margin-top: 12px;
+            font-size: 0.75rem;
+        }
+        
+        .multi-level {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+        }
+        
+        .multi-level.broken {
+            opacity: 0.6;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes newsGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+        }
+        
+        @keyframes highImpactGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.7); }
+            50% { box-shadow: 0 0 30px rgba(239, 68, 68, 1); }
+        }
+        
+        .fractal-card.news-impact {
+            border: 2px solid #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+            animation: newsGlow 2s infinite;
+        }
+        
+        .fractal-card.high-impact {
+            border: 2px solid #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.7);
+            animation: highImpactGlow 1.5s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .fractal-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🔍 Fractal Breakout Analysis</h1>
-            <p>Analyze price reactions after fractal breakouts with historical context</p>
+            <p>Real-time fractal monitoring with multi-timeframe analysis</p>
         </div>
 
         <div class="current-fractals">
-            <h3>🎯 Current Fractal Levels <span style="font-size: 14px; color: #007acc; font-weight: normal;">| Active Hours: 10:30 & 15:30</span></h3>
+            
             <div class="timeframe-tabs">
                 <button class="timeframe-tab active" onclick="switchTimeframe('daily')">Daily</button>
                 <button class="timeframe-tab" onclick="switchTimeframe('weekly')">Weekly</button>
                 <button class="timeframe-tab" onclick="switchTimeframe('monthly')">Monthly</button>
+                <span id="momentumIndicator" style="font-size: 0.875rem; color: #f59e0b; margin-left: auto;">Loading...</span>
             </div>
             <div id="fractalGrid" class="fractal-grid">
                 <p class="loading">Loading current fractals...</p>
             </div>
         </div>
-
 
         <div class="filters">
             <div class="filter-group">
@@ -192,24 +777,22 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
             <button class="btn" onclick="analyzeReactions()">Analyze Reactions</button>
-            <button class="btn" onclick="findSimilarContext()" style="margin-left: 10px;">Find Similar Context</button>
+            <button class="btn" onclick="findSimilarContext()" style="margin-left: 12px;">Find Similar Context</button>
         </div>
-
-        <br>
 
         <div class="results">
             <div class="stats-panel">
                 <h3>📊 Reaction Statistics</h3>
                 <div id="statsContent">
-                    <p style="color: #aaa;">Select filters and click "Analyze Reactions" to see statistics</p>
+                    <p style="color: #a1a1aa;">Select filters and click "Analyze Reactions" to see statistics</p>
                 </div>
             </div>
             <div class="reactions-list">
                 <h3>📈 Recent Reactions</h3>
                 <div id="reactionsContent">
-                    <p style="color: #aaa;">No reactions to display</p>
+                    <p style="color: #a1a1aa;">No reactions to display</p>
                 </div>
             </div>
         </div>
@@ -218,9 +801,6 @@
             <h3>🎯 Similar Historical Context</h3>
             <div id="contextContent"></div>
         </div>
-
-
-        <br>
 
         <div class="forex-calendar">
             <h3>📅 Forex Calendar & Event Impact</h3>
@@ -239,10 +819,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
 
     <!-- Modal for pair details -->
     <div id="pairModal" class="modal">
@@ -324,7 +901,7 @@
             const statsContent = document.getElementById('statsContent');
             
             if (!stats) {
-                statsContent.innerHTML = '<p style="color: #aaa;">No data available for selected filters</p>';
+                statsContent.innerHTML = '<p style="color: #a1a1aa;">No data available for selected filters</p>';
                 return;
             }
 
@@ -364,7 +941,7 @@
             const reactionsContent = document.getElementById('reactionsContent');
             
             if (!reactions || reactions.length === 0) {
-                reactionsContent.innerHTML = '<p style="color: #aaa;">No reactions found for selected filters</p>';
+                reactionsContent.innerHTML = '<p style="color: #a1a1aa;">No reactions found for selected filters</p>';
                 return;
             }
 
@@ -374,21 +951,23 @@
                         <span class="reaction-pair">${reaction.pair}</span>
                         <span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span>
                     </div>
-                    <div style="font-size: 12px; color: #aaa; margin-bottom: 10px;">
-                        ${new Date(reaction.timestamp).toLocaleString()} | ${reaction.session} | ${reaction.timeBucket}
+                    <div style="font-size: 12px; color: #a1a1aa; margin-bottom: 10px;">
+                        ${new Date(reaction.timestamp).toLocaleString()} | 
+                        ${reaction.timeframe || 'Intraday'} | 
+                        ID: ${reaction.id}
                     </div>
                     <div class="reaction-metrics">
                         <div class="metric">
-                            <div class="metric-label">15m Impulse</div>
-                            <div class="metric-value">${reaction.impulse15m.toFixed(2)}%</div>
+                            <div class="metric-label">Fractal Price</div>
+                            <div class="metric-value">${reaction.fractalPrice.toFixed(5)}</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-label">1h Impulse</div>
-                            <div class="metric-value">${reaction.impulse1h.toFixed(2)}%</div>
+                            <div class="metric-label">Break Price</div>
+                            <div class="metric-value">${reaction.breakPrice.toFixed(5)}</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-label">Max DD</div>
-                            <div class="metric-value">${reaction.maxDrawdown.toFixed(2)}%</div>
+                            <div class="metric-label">Price Diff</div>
+                            <div class="metric-value">${Math.abs(reaction.fractalPrice - reaction.breakPrice).toFixed(5)}</div>
                         </div>
                     </div>
                 </div>
@@ -419,7 +998,7 @@
                 contextHtml += '<div class="stat-item"><span>Average Max Drawdown:</span><span class="stat-value">' + data.stats.avgMaxDrawdown + '%</span></div>';
                 contextHtml += '</div>';
             } else {
-                contextHtml += '<p style="color: #aaa;">No historical data available for this context</p>';
+                contextHtml += '<p style="color: #a1a1aa;">No historical data available for this context</p>';
             }
             
             contextContent.innerHTML = contextHtml;
@@ -549,32 +1128,27 @@
                 
                 // Check for breakouts (original fractals)
                 if (fractal.high && currentPrice > fractal.high && !brokenFractalsToday.has(highKey)) {
-                    showAlert(fractal.pair, 'HIGH BROKEN', currentPrice.toFixed(5) + ' &gt; ' + fractal.high.toFixed(5), 'breakout');
+                    showAlert(fractal.pair, 'HIGH BROKEN', currentPrice.toFixed(5) + ' > ' + fractal.high.toFixed(5), 'breakout');
                     brokenFractalsToday.add(highKey);
                     markFractalAsBroken(fractal.pair, 'HIGH', fractal.high);
+                    // Record breakout event
+                    fetch('/api/record-breakout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ pair: fractal.pair, type: 'HIGH', fractalPrice: fractal.high, breakPrice: currentPrice })
+                    });
                 }
                 
                 if (fractal.low && currentPrice < fractal.low && !brokenFractalsToday.has(lowKey)) {
-                    showAlert(fractal.pair, 'LOW BROKEN', currentPrice.toFixed(5) + ' &lt; ' + fractal.low.toFixed(5), 'breakout');
+                    showAlert(fractal.pair, 'LOW BROKEN', currentPrice.toFixed(5) + ' < ' + fractal.low.toFixed(5), 'breakout');
                     brokenFractalsToday.add(lowKey);
                     markFractalAsBroken(fractal.pair, 'LOW', fractal.low);
-                }
-                
-                // Check for next level breakouts
-                if (fractal.nextHigh && currentPrice > fractal.nextHigh) {
-                    const nextHighKey = `${fractal.pair}_NEXTHIGH_${fractal.nextHigh}`;
-                    if (!brokenFractalsToday.has(nextHighKey)) {
-                        showAlert(fractal.pair, `${fractal.nextHighTimeframe.toUpperCase()} HIGH BROKEN`, currentPrice.toFixed(5) + ' &gt; ' + fractal.nextHigh.toFixed(5), 'breakout');
-                        brokenFractalsToday.add(nextHighKey);
-                    }
-                }
-                
-                if (fractal.nextLow && currentPrice < fractal.nextLow) {
-                    const nextLowKey = `${fractal.pair}_NEXTLOW_${fractal.nextLow}`;
-                    if (!brokenFractalsToday.has(nextLowKey)) {
-                        showAlert(fractal.pair, `${fractal.nextLowTimeframe.toUpperCase()} LOW BROKEN`, currentPrice.toFixed(5) + ' &lt; ' + fractal.nextLow.toFixed(5), 'breakout');
-                        brokenFractalsToday.add(nextLowKey);
-                    }
+                    // Record breakout event
+                    fetch('/api/record-breakout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ pair: fractal.pair, type: 'LOW', fractalPrice: fractal.low, breakPrice: currentPrice })
+                    });
                 }
                 
                 // Check for proximity alerts (within 5 pips) - only for unbroken fractals
@@ -595,25 +1169,6 @@
                         showAlert(fractal.pair, 'APPROACHING LOW', pipsToLow + ' pips away', 'proximity');
                         alertedPairs.add(alertKey + '_low');
                         setTimeout(function() { alertedPairs.delete(alertKey + '_low'); }, 300000);
-                    }
-                }
-                
-                // Check proximity for next levels
-                if (fractal.nextHigh) {
-                    const pipsToNextHigh = Math.abs(calculatePips(fractal.pair, fractal.nextHigh, currentPrice));
-                    if (pipsToNextHigh <= 5 && !alertedPairs.has(alertKey + '_nexthigh')) {
-                        showAlert(fractal.pair, `APPROACHING ${fractal.nextHighTimeframe.toUpperCase()} HIGH`, pipsToNextHigh + ' pips away', 'proximity');
-                        alertedPairs.add(alertKey + '_nexthigh');
-                        setTimeout(function() { alertedPairs.delete(alertKey + '_nexthigh'); }, 300000);
-                    }
-                }
-                
-                if (fractal.nextLow) {
-                    const pipsToNextLow = Math.abs(calculatePips(fractal.pair, currentPrice, fractal.nextLow));
-                    if (pipsToNextLow <= 5 && !alertedPairs.has(alertKey + '_nextlow')) {
-                        showAlert(fractal.pair, `APPROACHING ${fractal.nextLowTimeframe.toUpperCase()} LOW`, pipsToNextLow + ' pips away', 'proximity');
-                        alertedPairs.add(alertKey + '_nextlow');
-                        setTimeout(function() { alertedPairs.delete(alertKey + '_nextlow'); }, 300000);
                     }
                 }
             }
@@ -737,40 +1292,6 @@
             oscillator.stop(audioContext.currentTime + 0.5);
         }
         
-        function playActiveHourWarning() {
-            // Create a different sound for active hour warnings
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            
-            // Create a two-tone chime
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const gain1 = audioContext.createGain();
-            const gain2 = audioContext.createGain();
-            
-            osc1.connect(gain1);
-            osc2.connect(gain2);
-            gain1.connect(audioContext.destination);
-            gain2.connect(audioContext.destination);
-            
-            // First tone
-            osc1.frequency.value = 1000;
-            osc1.type = 'sine';
-            gain1.gain.setValueAtTime(0.2, audioContext.currentTime);
-            gain1.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-            
-            // Second tone (higher)
-            osc2.frequency.value = 1200;
-            osc2.type = 'sine';
-            gain2.gain.setValueAtTime(0, audioContext.currentTime);
-            gain2.gain.setValueAtTime(0.2, audioContext.currentTime + 0.3);
-            gain2.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.6);
-            
-            osc1.start(audioContext.currentTime);
-            osc1.stop(audioContext.currentTime + 0.3);
-            osc2.start(audioContext.currentTime + 0.3);
-            osc2.stop(audioContext.currentTime + 0.6);
-        }
-        
         function displayCurrentFractals() {
             const fractalGrid = document.getElementById('fractalGrid');
             
@@ -844,20 +1365,20 @@
                         <div class="fractal-pair">${fractal.pair}</div>
                         <div class="fractal-price price-change">
                             ${currentPrice ? currentPrice.toFixed(5) : 'Loading...'}
-                            ${dailyMovements[fractal.pair] ? `<span style="font-size: 12px; margin-left: 8px; color: ${dailyMovements[fractal.pair].direction === 'UP' ? '#4CAF50' : dailyMovements[fractal.pair].direction === 'DOWN' ? '#f44336' : '#aaa'}">${dailyMovements[fractal.pair].direction === 'UP' ? '↗' : dailyMovements[fractal.pair].direction === 'DOWN' ? '↘' : '→'} ${dailyMovements[fractal.pair].changePercent.toFixed(2)}%</span>` : ''}
+                            ${dailyMovements[fractal.pair] ? `<span style="font-size: 12px; margin-left: 8px; color: ${dailyMovements[fractal.pair].direction === 'UP' ? '#10b981' : dailyMovements[fractal.pair].direction === 'DOWN' ? '#ef4444' : '#a1a1aa'}">${dailyMovements[fractal.pair].direction === 'UP' ? '↗' : dailyMovements[fractal.pair].direction === 'DOWN' ? '↘' : '→'} ${dailyMovements[fractal.pair].changePercent.toFixed(2)}%</span>` : ''}
                         </div>
                         <div class="fractal-levels">
                             <div class="fractal-level fractal-high">
                                 <div>Daily High</div>
                                 <div>${pairData && pairData.daily.highs[0] ? pairData.daily.highs[0].price.toFixed(5) : 'None'}</div>
                                 <div class="distance ${highClass}">${pairData && pairData.daily.highs[0] && currentPrice ? calculatePips(fractal.pair, pairData.daily.highs[0].price, currentPrice) + ' pips' + (pairData.daily.highs[0].status === 'BROKEN' ? ' (BROKEN)' : '') : ''}</div>
-                                ${nextHigh ? `<div style="font-size: 10px; color: #4CAF50; margin-top: 4px;">Next Target: ${nextHigh.price.toFixed(5)} (${nextHigh.daysAgo}d ago)</div>` : ''}
+                                ${nextHigh ? `<div style="font-size: 10px; color: #10b981; margin-top: 4px;">Next Target: ${nextHigh.price.toFixed(5)} (${nextHigh.daysAgo}d ago)</div>` : ''}
                             </div>
                             <div class="fractal-level fractal-low">
                                 <div>Daily Low</div>
                                 <div>${pairData && pairData.daily.lows[0] ? pairData.daily.lows[0].price.toFixed(5) : 'None'}</div>
                                 <div class="distance ${lowClass}">${pairData && pairData.daily.lows[0] && currentPrice ? calculatePips(fractal.pair, currentPrice, pairData.daily.lows[0].price) + ' pips' + (pairData.daily.lows[0].status === 'BROKEN' ? ' (BROKEN)' : '') : ''}</div>
-                                ${nextLow ? `<div style="font-size: 10px; color: #f44336; margin-top: 4px;">Next Target: ${nextLow.price.toFixed(5)} (${nextLow.daysAgo}d ago)</div>` : ''}
+                                ${nextLow ? `<div style="font-size: 10px; color: #ef4444; margin-top: 4px;">Next Target: ${nextLow.price.toFixed(5)} (${nextLow.daysAgo}d ago)</div>` : ''}
                             </div>
                         </div>
                         ${newsImpact.details}
@@ -944,7 +1465,7 @@
                 const additionalLows = fractals.lows.slice(1, 3);
                 
                 if (additionalHighs.length > 0) {
-                    html += '<div style="font-size: 10px; color: #aaa; margin-bottom: 2px;">Other Highs:</div>';
+                    html += '<div style="font-size: 10px; color: #a1a1aa; margin-bottom: 2px;">Other Highs:</div>';
                     additionalHighs.forEach(f => {
                         const distance = currentPrice ? Math.abs(calculatePips(pairData.pair, f.price, currentPrice)) : 0;
                         html += `<div class="multi-level ${f.status.toLowerCase()}">${f.price.toFixed(5)} <span class="fractal-status ${f.status.toLowerCase()}">${f.status}</span> (${distance}p)</div>`;
@@ -952,7 +1473,7 @@
                 }
                 
                 if (additionalLows.length > 0) {
-                    html += '<div style="font-size: 10px; color: #aaa; margin-bottom: 2px; margin-top: 4px;">Other Lows:</div>';
+                    html += '<div style="font-size: 10px; color: #a1a1aa; margin-bottom: 2px; margin-top: 4px;">Other Lows:</div>';
                     additionalLows.forEach(f => {
                         const distance = currentPrice ? Math.abs(calculatePips(pairData.pair, currentPrice, f.price)) : 0;
                         html += `<div class="multi-level ${f.status.toLowerCase()}">${f.price.toFixed(5)} <span class="fractal-status ${f.status.toLowerCase()}">${f.status}</span> (${distance}p)</div>`;
@@ -1045,7 +1566,6 @@
             try {
                 const response = await fetch('/api/multi-fractals');
                 multiFractals = await response.json();
-                displayMultiFractals(activeTimeframe);
             } catch (error) {
                 console.error('Error loading multi-fractals:', error);
             }
@@ -1073,8 +1593,6 @@
             displayCurrentFractals();
         }
         
-
-        
         // Reset broken fractals at midnight
         function resetBrokenFractalsAtMidnight() {
             const now = new Date();
@@ -1094,90 +1612,29 @@
             }, msUntilMidnight);
         }
         
-        function updateActiveHours() {
-            const now = new Date();
-            const activeHours = [10.5, 15.5]; // 10:30 and 15:30
-            
-            activeHours.forEach((targetHour) => {
-                const hourInt = Math.floor(targetHour);
-                const minuteInt = (targetHour % 1) * 60;
-                
-                // Calculate time until target
-                let targetTime = new Date();
-                targetTime.setHours(hourInt, minuteInt, 0, 0);
-                
-                // If target time has passed today, set for tomorrow
-                if (targetTime <= now) {
-                    targetTime.setDate(targetTime.getDate() + 1);
-                }
-                
-                const timeDiff = targetTime.getTime() - now.getTime();
-                const totalSecondsLeft = Math.floor(timeDiff / 1000);
-                
-                if (totalSecondsLeft <= 120 && totalSecondsLeft > 0) {
-                    // Play warning sound (only once per session)
-                    const warningKey = `${targetHour}_${Math.floor(totalSecondsLeft / 60)}`;
-                    if (!warningAlerts.has(warningKey)) {
-                        playActiveHourWarning();
-                        warningAlerts.add(warningKey);
-                        showAlert('ACTIVE HOUR', `${targetHour === 10.5 ? '10:30' : '15:30'} in ${Math.ceil(totalSecondsLeft / 60)} minutes`, 'Get ready for active trading!', 'proximity');
-                    }
-                }
-            });
-        }
-        
-        function startActiveHoursTracking() {
-            updateActiveHours();
-            activeHoursInterval = setInterval(updateActiveHours, 1000); // Update every second
-        }
-        
-        function stopActiveHoursTracking() {
-            if (activeHoursInterval) {
-                clearInterval(activeHoursInterval);
+        async function loadMomentumSessions() {
+            try {
+                const response = await fetch('/api/momentum-sessions');
+                const data = await response.json();
+                updateMomentumIndicator(data.status);
+            } catch (error) {
+                console.error('Error loading momentum sessions:', error);
             }
         }
         
-        function displayPairCalendar(pair, movements) {
-            const calendarContent = document.getElementById('pairCalendarContent');
-            if (!movements || movements.length === 0) {
-                calendarContent.innerHTML = '<p style="color: #aaa;">No movement data available</p>';
-                return;
+        function updateMomentumIndicator(status) {
+            const indicator = document.getElementById('momentumIndicator');
+            if (indicator) {
+                indicator.textContent = status;
+                if (status.includes('Active') || status.includes('high volatility')) {
+                    indicator.style.color = '#10b981';
+                    indicator.style.fontWeight = '700';
+                } else {
+                    indicator.style.color = '#f59e0b';
+                    indicator.style.fontWeight = '500';
+                }
             }
-            
-            const recent = movements.slice(-30); // Last 30 days
-            let calendarHtml = `<h3>Daily Price Movements - ${pair}</h3><div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 15px;">`;
-            
-            recent.forEach(movement => {
-                const date = new Date(movement.date);
-                const dayName = date.toLocaleDateString('en', { weekday: 'short' });
-                const dayNum = date.getDate();
-                const color = movement.direction === 'UP' ? '#4CAF50' : movement.direction === 'DOWN' ? '#f44336' : '#666';
-                const arrow = movement.direction === 'UP' ? '↗' : movement.direction === 'DOWN' ? '↘' : '→';
-                
-                calendarHtml += `
-                    <div style="background: #333; padding: 8px; border-radius: 4px; text-align: center; border-left: 3px solid ${color};">
-                        <div style="font-size: 10px; color: #aaa;">${dayName}</div>
-                        <div style="font-weight: bold;">${dayNum}</div>
-                        <div style="color: ${color}; font-size: 12px;">${arrow} ${movement.changePercent.toFixed(1)}%</div>
-                    </div>
-                `;
-            });
-            
-            calendarHtml += '</div>';
-            calendarContent.innerHTML = calendarHtml;
         }
-        
-        // Load initial data
-        window.onload = function() {
-            loadForexCalendar();
-            loadCurrentFractals();
-            loadMultiFractals();
-            loadDailyMovements();
-            startPriceUpdates();
-            startActiveHoursTracking();
-            analyzeReactions();
-            resetBrokenFractalsAtMidnight();
-        };
         
         // Modal functions
         async function openPairModal(pair) {
@@ -1266,62 +1723,109 @@
             
             statsHtml += '</div>';
             if (!reactionStats && !tradingStats) {
-                statsHtml = '<p style="color: #aaa;">No statistics available for ' + pair + '</p>';
+                statsHtml = '<p style="color: #a1a1aa;">No statistics available for ' + pair + '</p>';
             }
             statsContent.innerHTML = statsHtml;
         }
         
-        function displayPairEvents(pair, tradingStats) {
-            // const eventsContent = document.getElementById('pairEventsContent');
-            // if (!tradingStats) {
-            //     eventsContent.innerHTML = '<p style="color: #aaa;">No events data available for ' + pair + '</p>';
-            //     return;
-            // }
-            // eventsContent.innerHTML = `
-            //     <h3>Trading Statistics for ${pair}</h3>
-            //     <table class="events-table">
-            //         <tr><th>Metric</th><th>Value</th></tr>
-            //         <tr><td>Total Breakouts</td><td>${tradingStats.totalBreakouts}</td></tr>
-            //         <tr><td>High Breakouts</td><td>${tradingStats.highBreakouts}</td></tr>
-            //         <tr><td>Low Breakouts</td><td>${tradingStats.lowBreakouts}</td></tr>
-            //         <tr><td>Bullish Outcomes</td><td>${tradingStats.bullishOutcomes}</td></tr>
-            //         <tr><td>Bearish Outcomes</td><td>${tradingStats.bearishOutcomes}</td></tr>
-            //         <tr><td>Long Probability</td><td>${tradingStats.longProbability.toFixed(1)}%</td></tr>
-            //         <tr><td>Short Probability</td><td>${tradingStats.shortProbability.toFixed(1)}%</td></tr>
-            //     </table>
-            // `;
+        function displayPairCalendar(pair, movements) {
+            const calendarContent = document.getElementById('pairCalendarContent');
+            if (!movements || movements.length === 0) {
+                calendarContent.innerHTML = '<p style="color: #a1a1aa;">No movement data available</p>';
+                return;
+            }
+            
+            const recent = movements.slice(-30); // Last 30 days
+            let calendarHtml = `<h3>Daily Price Movements - ${pair}</h3><div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 15px;">`;
+            
+            recent.forEach(movement => {
+                const date = new Date(movement.date);
+                const dayName = date.toLocaleDateString('en', { weekday: 'short' });
+                const dayNum = date.getDate();
+                const color = movement.direction === 'UP' ? '#10b981' : movement.direction === 'DOWN' ? '#ef4444' : '#6b7280';
+                const arrow = movement.direction === 'UP' ? '↗' : movement.direction === 'DOWN' ? '↘' : '→';
+                
+                calendarHtml += `
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 4px; text-align: center; border-left: 3px solid ${color};">
+                        <div style="font-size: 10px; color: #a1a1aa;">${dayName}</div>
+                        <div style="font-weight: bold;">${dayNum}</div>
+                        <div style="color: ${color}; font-size: 12px;">${arrow} ${movement.changePercent.toFixed(1)}%</div>
+                    </div>
+                `;
+            });
+            
+            calendarHtml += '</div>';
+            calendarContent.innerHTML = calendarHtml;
         }
         
         function displayPairReactions(reactions) {
             const reactionsContent = document.getElementById('pairReactionsContent');
+
             if (!reactions || reactions.length === 0) {
-                reactionsContent.innerHTML = '<p style="color: #aaa;">No reaction data available</p>';
+                reactionsContent.innerHTML = '<p style="color: #a1a1aa;">No reaction data available</p>';
                 return;
             }
+
+            // Calculate price difference for each reaction
+            const calculatePriceDiff = (reaction) => {
+                const diff = Math.abs(reaction.fractalPrice - reaction.breakPrice);
+                const percentage = ((diff / reaction.fractalPrice) * 100);
+                return percentage;
+            };
+
             let tableHtml = `
                 <h3>Breakout Reactions (${reactions.length} events)</h3>
                 <table class="events-table">
-                    <tr><th>Date</th><th>Type</th><th>Fractal Price</th><th>Break Price</th><th>Session</th><th>15m Impulse</th><th>1h Impulse</th><th>Max DD</th><th>Follow Through</th></tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Fractal Price</th>
+                        <th>Break Price</th>
+                        <th>Price Diff</th>
+                        <th>Timeframe</th>
+                        <th>ID</th>
+                    </tr>
             `;
+
             reactions.forEach(reaction => {
-                const date = new Date(reaction.timestamp).toLocaleDateString();
+                const dateTime = new Date(reaction.timestamp);
+                const date = dateTime.toLocaleDateString();
+                const time = dateTime.toLocaleTimeString();
+                const priceDiff = calculatePriceDiff(reaction);
+                
                 tableHtml += `
                     <tr>
                         <td>${date}</td>
+                        <td>${time}</td>
                         <td><span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span></td>
                         <td>${reaction.fractalPrice.toFixed(5)}</td>
                         <td>${reaction.breakPrice.toFixed(5)}</td>
-                        <td>${reaction.session}</td>
-                        <td>${reaction.impulse15m.toFixed(2)}%</td>
-                        <td>${reaction.impulse1h.toFixed(2)}%</td>
-                        <td>${reaction.maxDrawdown.toFixed(2)}%</td>
-                        <td>${reaction.followThrough ? '✅' : '❌'}</td>
+                        <td>${priceDiff.toFixed(3)}%</td>
+                        <td>${reaction.timeframe || 'Intraday'}</td>
+                        <td style="font-size: 11px;">${reaction.id}</td>
                     </tr>
                 `;
             });
+
             tableHtml += '</table>';
             reactionsContent.innerHTML = tableHtml;
         }
+        
+        // Load initial data
+        window.onload = function() {
+            loadForexCalendar();
+            loadCurrentFractals();
+            loadMultiFractals();
+            loadDailyMovements();
+            loadMomentumSessions();
+            startPriceUpdates();
+            analyzeReactions();
+            resetBrokenFractalsAtMidnight();
+            
+            // Update momentum sessions every minute
+            setInterval(loadMomentumSessions, 60000);
+        };
         
         window.onclick = function(event) {
             const modal = document.getElementById('pairModal');
@@ -1334,10 +1838,8 @@
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 stopPriceUpdates();
-                stopActiveHoursTracking();
             } else {
                 startPriceUpdates();
-                startActiveHoursTracking();
             }
         });
     </script>

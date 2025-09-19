@@ -65,10 +65,10 @@ function recordBreakoutReaction(
 ): void {
   const reactions = loadReactions();
   
-  // Check for duplicate - same pair and fractal price
-  const fractalKey = `${pair}_${fractalPrice.toFixed(10)}`;
+  // Check for duplicate - same pair and fractal price (regardless of type)
   const existingReaction = reactions.find(reaction => 
-    `${reaction.pair}_${reaction.fractalPrice.toFixed(10)}` === fractalKey
+    reaction.pair === pair && 
+    Math.abs(reaction.fractalPrice - fractalPrice) < 0.00001
   );
   
   if (existingReaction) {

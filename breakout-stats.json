@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "pair": "AUDUSD",
+    "totalBreakouts": 37,
+    "highBreakouts": 37,
+    "lowBreakouts": 0,
+    "bullishOutcomes": 0,
+    "bearishOutcomes": 37,
+    "longProbability": 0,
+    "shortProbability": 100,
+    "lastUpdated": "2025-09-17T16:02:24.924Z"
+  },
+  {
+    "pair": "USDCAD",
+    "totalBreakouts": 55,
+    "highBreakouts": 0,
+    "lowBreakouts": 55,
+    "bullishOutcomes": 55,
+    "bearishOutcomes": 0,
+    "longProbability": 100,
+    "shortProbability": 0,
+    "lastUpdated": "2025-09-17T16:02:24.925Z"
+  },
+  {
+    "pair": "EURUSD",
+    "totalBreakouts": 202,
+    "highBreakouts": 202,
+    "lowBreakouts": 0,
+    "bullishOutcomes": 54,
+    "bearishOutcomes": 0,
+    "longProbability": 26.732673267326735,
+    "shortProbability": 0,
+    "lastUpdated": "2025-09-17T16:02:24.925Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "totalBreakouts": 134,
+    "highBreakouts": 134,
+    "lowBreakouts": 0,
+    "bullishOutcomes": 0,
+    "bearishOutcomes": 0,
+    "longProbability": 0,
+    "shortProbability": 0,
+    "lastUpdated": "2025-09-17T16:02:24.925Z"
+  }
+]

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "USDJPY_LOW_daily_146.32700",
+    "pair": "USDJPY",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 146.32699584960938,
+    "breakPrice": 146.3090057373047,
+    "timestamp": "2025-09-17T17:31:01.935Z"
+  },
+  {
+    "id": "USDCAD_LOW_daily_1.37603",
+    "pair": "USDCAD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.3760299682617188,
+    "breakPrice": 1.3759000301361084,
+    "timestamp": "2025-09-17T17:32:32.024Z"
+  },
+  {
+    "id": "USDJPY_LOW_daily_146.22200",
+    "pair": "USDJPY",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 146.2220001220703,
+    "breakPrice": 145.98300170898438,
+    "timestamp": "2025-09-17T18:00:31.788Z"
+  },
+  {
+    "id": "USDJPY_LOW_weekly_146.20200",
+    "pair": "USDJPY",
+    "type": "LOW",
+    "timeframe": "weekly",
+    "fractalPrice": 146.20199584960938,
+    "breakPrice": 145.98300170898438,
+    "timestamp": "2025-09-17T18:00:31.790Z"
+  },
+  {
+    "id": "USDJPY_LOW_daily_145.85600",
+    "pair": "USDJPY",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 145.8560028076172,
+    "breakPrice": 145.8470001220703,
+    "timestamp": "2025-09-17T18:02:02.506Z"
+  },
+  {
+    "id": "AUDUSD_HIGH_weekly_0.66806",
+    "pair": "AUDUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 0.6680598258972168,
+    "breakPrice": 0.6685385704040527,
+    "timestamp": "2025-09-17T18:02:02.549Z"
+  },
+  {
+    "id": "NZDUSD_HIGH_daily_0.59990",
+    "pair": "NZDUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 0.5999001860618591,
+    "breakPrice": 0.5999159812927246,
+    "timestamp": "2025-09-17T18:04:02.518Z"
+  },
+  {
+    "id": "USDCAD_LOW_daily_1.37274",
+    "pair": "USDCAD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.3727400302886963,
+    "breakPrice": 1.3726600408554077,
+    "timestamp": "2025-09-17T18:09:33.538Z"
+  },
+  {
+    "id": "DX-Y.NYB_LOW_daily_96.38000",
+    "pair": "DX-Y.NYB",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 96.37999725341797,
+    "breakPrice": 96.34300231933594,
+    "timestamp": "2025-09-17T18:17:40.657Z"
+  },
+  {
+    "id": "DX-Y.NYB_LOW_weekly_96.38000",
+    "pair": "DX-Y.NYB",
+    "type": "LOW",
+    "timeframe": "weekly",
+    "fractalPrice": 96.37999725341797,
+    "breakPrice": 96.34300231933594,
+    "timestamp": "2025-09-17T18:17:40.658Z"
+  },
+  {
+    "id": "USDCAD_HIGH_daily_1.37727",
+    "pair": "USDCAD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.377269983291626,
+    "breakPrice": 1.3776400089263916,
+    "timestamp": "2025-09-17T18:46:33.827Z"
+  },
+  {
+    "id": "DX-Y.NYB_HIGH_weekly_96.94000",
+    "pair": "DX-Y.NYB",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 96.94000244140625,
+    "breakPrice": 96.9469985961914,
+    "timestamp": "2025-09-17T20:00:02.332Z"
+  },
+  {
+    "id": "GBPUSD_HIGH_daily_1.36325",
+    "pair": "GBPUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.3632521629333496,
+    "breakPrice": 1.364089012145996,
+    "timestamp": "2025-09-17T21:01:01.536Z"
+  },
+  {
+    "id": "EURUSD_HIGH_daily_1.18303",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.1830259561538696,
+    "breakPrice": 1.1831519603729248,
+    "timestamp": "2025-09-17T23:39:00.923Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.18303",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.1830259561538696,
+    "breakPrice": 1.1831519603729248,
+    "timestamp": "2025-09-17T23:39:00.924Z"
+  },
+  {
+    "id": "USDCAD_HIGH_weekly_1.37898",
+    "pair": "USDCAD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.378980040550232,
+    "breakPrice": 1.3789900541305542,
+    "timestamp": "2025-09-18T05:19:31.408Z"
+  },
+  {
+    "id": "USDCAD_HIGH_monthly_1.37918",
+    "pair": "USDCAD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 1.3791799545288086,
+    "breakPrice": 1.3792200088500977,
+    "timestamp": "2025-09-18T05:43:01.474Z"
+  },
+  {
+    "id": "NZDUSD_LOW_daily_0.59080",
+    "pair": "NZDUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 0.5908000469207764,
+    "breakPrice": 0.5907721519470215,
+    "timestamp": "2025-09-18T05:56:01.160Z"
+  },
+  {
+    "id": "USDCAD_HIGH_daily_1.37975",
+    "pair": "USDCAD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.3797500133514404,
+    "breakPrice": 1.3798799514770508,
+    "timestamp": "2025-09-18T06:13:31.134Z"
+  },
+  {
+    "id": "DX-Y.NYB_LOW_daily_97.11000",
+    "pair": "DX-Y.NYB",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 97.11000061035156,
+    "breakPrice": 97.1050033569336,
+    "timestamp": "2025-09-18T07:20:32.070Z"
+  },
+  {
+    "id": "NZDUSD_LOW_daily_0.58958",
+    "pair": "NZDUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 0.5895808935165405,
+    "breakPrice": 0.5895183682441711,
+    "timestamp": "2025-09-18T08:58:02.060Z"
+  },
+  {
+    "id": "AUDUSD_HIGH_weekly_0.66474",
+    "pair": "AUDUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 0.6647397875785828,
+    "breakPrice": 0.664893627166748,
+    "timestamp": "2025-09-18T09:24:02.167Z"
+  },
+  {
+    "id": "AUDUSD_HIGH_weekly_0.66610",
+    "pair": "AUDUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 0.666100025177002,
+    "breakPrice": 0.6661337614059448,
+    "timestamp": "2025-09-18T10:30:02.207Z"
+  },
+  {
+    "id": "USDJPY_HIGH_daily_148.00200",
+    "pair": "USDJPY",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 148.0019989013672,
+    "breakPrice": 148.0050048828125,
+    "timestamp": "2025-09-18T13:33:33.231Z"
+  },
+  {
+    "id": "GBPUSD_LOW_weekly_1.35737",
+    "pair": "GBPUSD",
+    "type": "LOW",
+    "timeframe": "weekly",
+    "fractalPrice": 1.357367753982544,
+    "breakPrice": 1.3572388887405396,
+    "timestamp": "2025-09-18T13:34:02.800Z"
+  },
+  {
+    "id": "NZDUSD_LOW_daily_0.58846",
+    "pair": "NZDUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 0.5884602665901184,
+    "breakPrice": 0.5881314873695374,
+    "timestamp": "2025-09-18T13:40:01.760Z"
+  },
+  {
+    "id": "GBPUSD_LOW_daily_1.34953",
+    "pair": "GBPUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.3495277166366577,
+    "breakPrice": 1.3493820428848267,
+    "timestamp": "2025-09-19T07:05:01.544Z"
+  }
+]

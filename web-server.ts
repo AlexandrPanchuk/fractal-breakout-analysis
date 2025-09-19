@@ -3,9 +3,10 @@ import cors from 'cors';
 import { filterReactions, getStatistics, FilterCriteria } from './breakout-engine';
 import path from 'path';
 import * as fs from 'fs';
+import { recordBreakoutEvent } from './breakout-events';
 
 const app = express();
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || '3000');
 
 app.use(cors());
 app.use(express.json());
@@ -48,8 +49,8 @@ app.get('/api/similar-context', (req: Request, res: Response) => {
   
   res.json({ 
     context: { pair, dayOfWeek, session, timeBucket },
-    historicalReactions: reactions.length,
-    stats 
+    historicalReactions: 0,
+    stats: null
   });
 });
 
@@ -179,8 +180,102 @@ app.get('/api/today-movement/:pair', (req: Request, res: Response) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🌐 Fractal Analysis Web UI running at http://localhost:${PORT}`);
+app.post('/api/record-breakout', (req: Request, res: Response) => {
+  // const { recordBreakoutEvent } = require('./breakout-events');
+  const { pair, type, fractalPrice, breakPrice } = req.body;
+  
+
+  // console.log(pair, type);
+
+  try {
+    const recorded = recordBreakoutEvent(pair, type, fractalPrice, breakPrice);
+    res.json(JSON.stringify(recorded));
+    res.json({ success: recorded, message: recorded ? 'Event recorded' : 'Event already exists' });
+  } catch (error) {
+    
+    res.status(500).json({ success: false, message: 'Error recording event' });
+  }
+});
+
+app.get('/api/breakout-events', (req: Request, res: Response) => {
+  try {
+    const events = JSON.parse(fs.readFileSync('breakout-events.json', 'utf8'));
+    res.json(events);
+  } catch (error) {
+    res.json([]);
+  }
+});
+
+app.get('/api/breakout-reactions', (req: Request, res: Response) => {
+  try {
+    const reactions = JSON.parse(fs.readFileSync('breakout-reactions.json', 'utf8'));
+    res.json(reactions);
+  } catch (error) {
+    res.json([]);
+  }
+});
+
+app.get('/api/momentum-sessions', (req: Request, res: Response) => {
+  try {
+    const { getMomentumSessions, getCurrentMomentumStatus } = require('./momentum-sessions');
+    res.json({
+      sessions: getMomentumSessions(),
+      status: getCurrentMomentumStatus()
+    });
+  } catch (error) {
+    res.json({ sessions: [], status: 'Error loading sessions' });
+  }
+});
+
+app.post('/api/record-reaction', (req: Request, res: Response) => {
+  const { pair, type, timeframe, fractalPrice, breakPrice } = req.body;
+  
+  try {
+    let reactionId = `${pair}_${type}_${timeframe}`;
+    const reactions = JSON.parse(fs.readFileSync('breakout-reactions.json', 'utf8'));
+    if (fractalPrice) {
+      const reactionId = `${pair}_${type}_${timeframe}_${fractalPrice.toFixed(5)}`;
+    } else {
+      return res.json([]);
+    }
+    
+    if (reactions.find((r: any) => r.id === reactionId)) {
+      return res.json({ success: false, message: 'Reaction already exists' });
+    }
+
+
+    const newReaction = {
+      id: reactionId,
+      pair,
+      type,
+      timeframe,
+      fractalPrice,
+      breakPrice,
+      timestamp: new Date().toISOString()
+    };
+    
+    reactions.push(newReaction);
+    fs.writeFileSync('breakout-reactions.json', JSON.stringify(reactions, null, 2));
+    res.json({ success: true });
+  } catch {
+    const newReaction = {
+      id: `${pair}_${type}_${timeframe}_${fractalPrice.toFixed(5)}`,
+      pair,
+      type,
+      timeframe,
+      fractalPrice,
+      breakPrice,
+      timestamp: new Date().toISOString()
+    };
+    fs.writeFileSync('breakout-reactions.json', JSON.stringify([newReaction], null, 2));
+    res.json({ success: true });
+  }
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🌐 Fractal Analysis Web UI running on port ${PORT}`);
+  console.log('📊 Breakout reactions will be recorded automatically');
+  console.log('🔥 Momentum sessions: London 12:30 & New York 15:30');
 });
 
 const axios = require('axios');

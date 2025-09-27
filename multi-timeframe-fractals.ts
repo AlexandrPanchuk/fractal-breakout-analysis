@@ -42,6 +42,142 @@ async function fetchMultiTimeframeData(pair: string): Promise<{
   weekly: OHLCData[];
   monthly: OHLCData[];
 }> {
+
+
+  try {
+    return await fetchPoligonData(pair);
+  } catch (error: any) {
+    return await fetchYahooData(pair);
+  }
+
+  // return await fetchPoligonData(pair);
+  // return await fetchYahooData(pair);
+
+  // try {
+  //   if (pair === 'EURUSD') {
+      
+  //   } else {
+  //     return await fetchYahooData(pair);
+  //   }
+  // } catch (error: any) {
+  //   console.error(`Failed to fetch Polygon data for ${pair}:`, error.message);
+  //   console.log(`Falling back to Yahoo Finance for ${pair}`);
+  //   return await fetchYahooData(pair);
+  // }
+}
+
+// async function getYesterdayEURUSDMinimumPolygon(apiKey: string): Promise<number | null> {
+//   try {
+//     const yesterday = new Date();
+//     yesterday.setDate(yesterday.getDate() - 1);
+//     const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+//     const response = await fetch(
+//       `https://api.polygon.io/v1/open-close/C:EURUSD/${yesterdayStr}?adjusted=true&apikey=${apiKey}`
+//     );
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+
+//     const data = await response.json() as any;
+    
+//     if (!data.low) {
+//       console.warn(`Дані за ${yesterdayStr} недоступні`);
+//       return null;
+//     }
+
+//     return data.low;
+//   } catch (error) {
+//     console.error('Помилка при отриманні курсу Polygon:', error);
+//     return null;
+//   }
+// }
+
+async function fetchPoligonData(pair: string): Promise<{
+  daily: OHLCData[];
+  weekly: OHLCData[];
+  monthly: OHLCData[];
+}> {
+  const apiKey = '0ypYL85Hl0xGTqaWhRrpkIkPV3jihMrT';
+
+  const parsePolygonData = (data: any, timeframe: string) => {
+    console.log(`${pair} ${timeframe} response:`, data.status, data.resultsCount || 0);
+
+    if (!data && !data.results) {
+      throw new Error(`Polygon API error: ${data.error || 'No results'}`);
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    
+    return data.results.map((bar: any) => ({
+      date: new Date(bar.t).toISOString().split('T')[0],
+      open: bar.o,
+      high: bar.h,
+      low: bar.l,
+      close: bar.c
+    })).filter((d: OHLCData) => d.high && d.low && d.date <= today); // Filter out future dates
+  };
+
+  try {
+    // Map pairs to Polygon format
+    const pairMapping: {[key: string]: string} = {
+      'EURUSD': 'C:EURUSD',
+      'GBPUSD': 'C:GBPUSD', 
+      'USDJPY': 'C:USDJPY',
+      'AUDUSD': 'C:AUDUSD',
+      'USDCAD': 'C:USDCAD',
+      'NZDUSD': 'C:NZDUSD'
+    };
+    
+    if (!pairMapping[pair]) {
+      console.log(`${pair} not supported by Polygon, using Yahoo Finance fallback`);
+      return await fetchYahooData(pair);
+    }
+    
+    const symbol = pairMapping[pair];
+    
+    const endDate = new Date().toISOString().split('T')[0];
+    const startDate = new Date(Date.now() - 4 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const dailyResponse = await fetch(`https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${startDate}/${endDate}?adjusted=true&sort=asc&apikey=${apiKey}`);
+
+    const dailyData = await dailyResponse.json() as any;    
+    const daily = parsePolygonData(dailyData, 'daily')
+
+    if (dailyData && dailyData.status === 'DELAYED') {
+      await new Promise(resolve => setTimeout(resolve, 15000));
+    }
+
+    const weeklyResponse = await fetch(`https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/week/${startDate}/${endDate}?adjusted=true&sort=asc&apikey=${apiKey}`);
+    const weeklyData = await weeklyResponse.json();
+    const weekly = parsePolygonData(weeklyData, 'weekly')
+    if (weekly && weekly.status === 'DELAYED') {
+      await new Promise(resolve => setTimeout(resolve, 15000));
+    }
+
+    const monthlyResponse = await fetch(`https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/month/${startDate}/${endDate}?adjusted=true&sort=asc&apikey=${apiKey}`);
+    const monthlyData = await monthlyResponse.json();
+    const monthly = parsePolygonData(monthlyData, 'monthly')
+    if (weekly && weekly.status === 'DELAYED') {
+      await new Promise(resolve => setTimeout(resolve, 15000));
+    }
+     return {
+      daily: daily,
+      weekly: weekly,
+      monthly: monthly
+    };
+  } catch (error: any) {
+    console.error(`Failed to fetch Yahoo Finance data for ${pair}:`, error.message);
+    throw new Error(`Polygon API error: ${error || 'No results'}`);
+  }
+}
+
+
+async function fetchYahooData(pair: string): Promise<{
+  daily: OHLCData[];
+  weekly: OHLCData[];
+  monthly: OHLCData[];
+}> {
   try {
     const symbol = pair === 'DX-Y.NYB' ? 'DX-Y.NYB' : pair === 'XAUUSD' ? 'GC=F' : `${pair}=X`;
     const [dailyResponse, weeklyResponse, monthlyResponse] = await Promise.all([
@@ -76,10 +212,13 @@ async function fetchMultiTimeframeData(pair: string): Promise<{
       monthly: parseData(monthlyResponse)
     };
   } catch (error: any) {
-    console.error(`Failed to fetch multi-timeframe data for ${pair}:`, error.message);
+    console.error(`Failed to fetch Yahoo Finance data for ${pair}:`, error.message);
     return { daily: [], weekly: [], monthly: [] };
   }
 }
+
+
+
 
 function loadMultiFractals(): MultiTimeframeFractals[] {
   try {
@@ -201,6 +340,7 @@ async function updateMultiTimeframeFractals() {
     console.log(`Processing ${pair}...`);
     
     const data = await fetchMultiTimeframeData(pair);
+    // await new Promise(resolve => setTimeout(resolve, 25000)); // 15 second delay
     
     if (data.daily.length === 0) {
       console.log(`  No data available for ${pair}\n`);
@@ -211,9 +351,9 @@ async function updateMultiTimeframeFractals() {
     // console.log(getFractals(data.daily));
 
 
-    // const top3Highest = [...data.daily]
-    //   .sort((a, b) => b.high - a.high)
-    //   .slice(0, 3);
+    const top3Highest = [...data.daily]
+      .sort((a, b) => b.high - a.high)
+      .slice(0, 3);
 
     // console.log(top3Highest);
 
@@ -231,10 +371,20 @@ async function updateMultiTimeframeFractals() {
     // const weeklyFractals = findMultiFractals(data.weekly, 5);
     // const monthlyFractals = findMultiFractals(data.monthly, 5);
 
+    // console.log(data.daily);
 
     const dailyFractals = getFractals(data.daily);
     const weeklyFractals = getFractals(data.weekly);
     const monthlyFractals = getFractals(data.monthly);
+    
+    // Debug: Show current price and highest fractal
+    const currentPrice = data.daily[data.daily.length - 1]?.close;
+    const highestHigh = Math.max(...data.daily.map(d => d.high));
+    const activeHighs = dailyFractals.highs.filter(h => h.status === 'ACTIVE');
+    console.log(`  Current: ${currentPrice?.toFixed(5)}, Highest in data: ${highestHigh.toFixed(5)}, Active highs: ${activeHighs.length}`);
+    if (activeHighs.length === 0) {
+      console.log(`  No ACTIVE highs found - market is above all recent fractal resistance levels`);
+    }
 
 
     const multiFractal: MultiTimeframeFractals = {
@@ -276,16 +426,61 @@ async function updateMultiTimeframeFractals() {
 //   brokenAt: string | null;
 // };
 
+function daysBetweens(date1: string, date2: string): number {
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+  const diffTime = Math.abs(d2.getTime() - d1.getTime());
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}
+
 
 export function getFractals(data: Candle[]): { highs: MultiFractal[]; lows: MultiFractal[] } {
   if (!data || data.length < 5) return { highs: [], lows: [] };
 
+
+  // const date = new Date();
+  // const top5InRequestedFormat = data
+  //   .sort((a, b) => b.high - a.high)
+  //   .slice(0, 5)
+  //   .map(item => ({
+  //     price: item.high,
+  //     daysAgo: daysBetweens(item.date, date.toDateString()),
+  //     status: 'ACTIVE',
+  //     brokenAt: ''
+  //   })) as MultiFractal[];
+
+
   const highsAll: MultiFractal[] = [];
   const lowsAll: MultiFractal[] = [];
 
+
+  // for (let i = 2; i <= top5InRequestedFormat.length - 3; i++) {
+  //     highsAll.push(top5InRequestedFormat[i]);
+  // }
+
+
+
+  // highsAll.push(top5InRequestedFormat);
+
   const lastDate = new Date(data[data.length - 1].date);
+
   const daysBetween = (a: string, b: Date) =>
     Math.floor((b.getTime() - new Date(a).getTime()) / (1000 * 60 * 60 * 24));
+
+  const highestHigh = Math.max(...data.map(d => d.high));
+
+  // console.log(data);
+
+  const currentPrice = data[data.length - 1].close;
+  const recordsAboveCurrentPrice = data
+      .filter(record => record.high > currentPrice)
+      .map(record => ({
+        ...record,
+        distanceFromCurrent: record.high - currentPrice
+      }))
+      .sort((a, b) => a.distanceFromCurrent - b.distanceFromCurrent)
+      .slice(0, 3);
+
 
   for (let i = 2; i <= data.length - 3; i++) {
     const h0 = data[i].high;
@@ -305,35 +500,141 @@ export function getFractals(data: Candle[]): { highs: MultiFractal[]; lows: Mult
       highsAll.push({
         price: h0,
         daysAgo: daysBetween(data[i].date, lastDate),
-        status: brokenAt ? `BROKEN` : 'ACTIVE',
+        status: brokenAt ? 'BROKEN' : 'ACTIVE',
         brokenAt,
       });
     }
+
+
+    // console.log(highsAll);
+
 
     // lower fractal
     if (l0 < lL1 && l0 < lL2 && l0 < lR1 && l0 < lR2) {
       let brokenAt: string | undefined = undefined;
       for (let j = i + 1; j < data.length; j++) if (data[j].low <= l0) { brokenAt = data[j].date; break; }
+      
+      // Also check if current price is below this low
+      const currentPrice = data[data.length - 1].close;
+      const isCurrentlyBroken = currentPrice < l0;
+      
       lowsAll.push({
         price: l0,
         daysAgo: daysBetween(data[i].date, lastDate),
-        status: brokenAt ?`BROKEN` : 'ACTIVE',
+        status: (brokenAt || isCurrentlyBroken) ? 'BROKEN' : 'ACTIVE',
+        brokenAt,
+      });
+
+
+
+
+    }
+  }
+
+  // Check if we have any ACTIVE highs, if not, add some from records above current price
+  const activeLevels = highsAll.filter(level => level.status === 'ACTIVE');
+  
+  if (activeLevels.length === 0) {
+    for (let i = 0; i < Math.min(recordsAboveCurrentPrice.length, 3); i++) {
+      const record = recordsAboveCurrentPrice[i];
+      let brokenAt: string | undefined = undefined;
+      highsAll.push({
+        price: record.high,
+        daysAgo: daysBetween(record.date, lastDate),
+        status: 'ACTIVE',
         brokenAt,
       });
     }
   }
 
-  // беремо лише active
-  const highsActive = highsAll.filter(f => f.status === "ACTIVE");
-  const lowsActive  = lowsAll.filter(f => f.status === "ACTIVE");
+  // console.log(highsAll);
 
-  // highs: також зручно мати найсвіжіші першими (менший daysAgo -> перший)
-  const highs = highsActive.sort((a,b) => a.daysAgo - b.daysAgo).slice(0, 3);
+  // Sort highs: ACTIVE first, then BROKEN, both sorted by daysAgo ascending (most recent first)
+  const highs = highsAll.sort((a, b) => {
+    if (a.status === 'ACTIVE' && b.status === 'BROKEN') return -1;
+    if (a.status === 'BROKEN' && b.status === 'ACTIVE') return 1;
+    return a.daysAgo - b.daysAgo;
+  }).slice(0, 5);
 
-  // lows: **найближчий до сьогодні перший** (мінімальний daysAgo)
-  const lows  = lowsActive.sort((a,b) => a.daysAgo - b.daysAgo).slice(0, 3);
+  // Sort lows: ACTIVE first, then BROKEN, both sorted by daysAgo ascending (most recent first)
+  const lows = lowsAll.sort((a, b) => {
+    if (a.status === 'ACTIVE' && b.status === 'BROKEN') return -1;
+    if (a.status === 'BROKEN' && b.status === 'ACTIVE') return 1;
+    return a.daysAgo - b.daysAgo;
+  }).slice(0, 5);
 
   return { highs, lows };
+}
+
+
+interface LevelData {
+  price: number;
+  daysAgo: number;
+  status: 'ACTIVE' | 'BROKEN';
+  brokenAt: string | null;
+}
+
+interface PriceData {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}
+
+function checkAndUpdateLevels(
+  levels: LevelData[], 
+  priceData: PriceData[], 
+  currentPrice: number,
+  currentDate: string = '2025-09-19'
+): LevelData[] {
+  
+  // Перевіряємо чи є активні рівні
+  const activeLevels = levels.filter(level => level.status === 'ACTIVE');
+  
+  console.log(`Знайдено активних рівнів: ${activeLevels.length}`);
+  
+  // Якщо є активні рівні, повертаємо оригінальний масив
+  if (activeLevels.length > 0) {
+    console.log('Активні рівні знайдені:', activeLevels);
+    return levels;
+  }
+  
+  // Якщо немає активних рівнів, знаходимо 3 найближчі до поточної ціни записи
+  const recordsAboveCurrentPrice = priceData
+    .filter(record => record.high > currentPrice)
+    .map(record => ({
+      ...record,
+      distanceFromCurrent: record.high - currentPrice
+    }))
+    .sort((a, b) => a.distanceFromCurrent - b.distanceFromCurrent)
+    .slice(0, 3);
+  
+  console.log(`Записи вище поточної ціни (${currentPrice}):`, recordsAboveCurrentPrice);
+  
+  // Створюємо активні рівні з найближчих записів
+  const levelsAboveCurrentPrice = recordsAboveCurrentPrice
+    .map(record => ({
+      price: record.high,
+      daysAgo: daysBetween(record.date, currentDate),
+      status: 'ACTIVE' as const,
+      brokenAt: null
+    }));
+  
+  console.log(`Рівні вище поточної ціни (${currentPrice}):`, levelsAboveCurrentPrice);
+  
+  // Додаємо нові активні рівні до існуючих
+  const updatedLevels = [...levels, ...levelsAboveCurrentPrice];
+  
+  return updatedLevels;
+}
+
+
+function daysBetween(date1: string, date2: string): number {
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+  const diffTime = Math.abs(d2.getTime() - d1.getTime());
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
 

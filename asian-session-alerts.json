@@ -22,5 +22,2629 @@
     "distance": 9.2,
     "type": "LOW",
     "timestamp": "2025-09-19T02:35:03.350Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512418270111084,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:05:00.920Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512418270111084,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:10:00.534Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512418270111084,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:15:01.160Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75100708007812,
+    "distance": 1.4,
+    "type": "LOW",
+    "timestamp": "2025-09-23T00:15:01.237Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6599352955818176,
+    "distance": 0.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:15:01.309Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5864758491516113,
+    "distance": 1.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:15:01.466Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75100708007812,
+    "distance": 1.4,
+    "type": "LOW",
+    "timestamp": "2025-09-23T00:20:00.862Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5865790843963623,
+    "distance": 0.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:20:01.082Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512418270111084,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:25:00.532Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6599352955818176,
+    "distance": 0.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:25:00.688Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5866134762763977,
+    "distance": 0.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:25:00.856Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6598482728004456,
+    "distance": 1.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:35:00.765Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6597176194190979,
+    "distance": 2.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:40:01.375Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595436334609985,
+    "distance": 4.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:45:00.873Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595870852470398,
+    "distance": 4.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:50:01.248Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6598047018051147,
+    "distance": 2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:55:00.726Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5866134762763977,
+    "distance": 0.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T00:55:00.885Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6598047018051147,
+    "distance": 2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:00:01.146Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5865446329116821,
+    "distance": 0.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:00:01.305Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6597176194190979,
+    "distance": 2.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:05:00.605Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5864758491516113,
+    "distance": 1.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:05:00.838Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6594566106796265,
+    "distance": 5.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:10:01.083Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5861321091651917,
+    "distance": 5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:10:01.239Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595436334609985,
+    "distance": 4.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:15:00.534Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5862008333206177,
+    "distance": 4.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:15:00.686Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6596305966377258,
+    "distance": 3.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:20:00.946Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5862695574760437,
+    "distance": 3.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:20:01.095Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595001220703125,
+    "distance": 5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:25:01.405Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.586097776889801,
+    "distance": 5.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:25:01.617Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6594130992889404,
+    "distance": 5.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:30:00.818Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5859947204589844,
+    "distance": 6.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:30:00.974Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6593261361122131,
+    "distance": 6.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:35:01.292Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5859947204589844,
+    "distance": 6.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:35:01.450Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6594566106796265,
+    "distance": 5.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:40:00.675Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5861321091651917,
+    "distance": 5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:40:00.824Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6596741080284119,
+    "distance": 3.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:45:01.270Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5864758491516113,
+    "distance": 1.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:45:01.689Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6597176194190979,
+    "distance": 2.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:50:00.900Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5866134762763977,
+    "distance": 0.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:50:01.100Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6596305966377258,
+    "distance": 3.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:55:00.527Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5863726735115051,
+    "distance": 2.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T01:55:00.733Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595870852470398,
+    "distance": 4.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:00:01.041Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5863383412361145,
+    "distance": 2.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:00:01.194Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595870852470398,
+    "distance": 4.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:05:00.645Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5863383412361145,
+    "distance": 2.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:05:00.799Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6595436334609985,
+    "distance": 4.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:10:01.356Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.586166501045227,
+    "distance": 4.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:10:01.514Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5859260559082031,
+    "distance": 7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:15:01.047Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590654253959656,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:20:00.440Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5859603881835938,
+    "distance": 6.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:20:00.593Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5858917236328125,
+    "distance": 7.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:25:01.332Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3510591983795166,
+    "distance": 2.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:30:03.830Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3507671356201172,
+    "distance": 5.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:35:01.156Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75,
+    "distance": 1.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:35:01.235Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6575698256492615,
+    "currentPrice": 0.6584145426750183,
+    "distance": 8.4,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:35:01.308Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5852060317993164,
+    "distance": 8.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:35:01.466Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3510775566101074,
+    "distance": 2.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:40:00.790Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512418270111084,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:45:00.304Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5856515169143677,
+    "distance": 9.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:45:00.620Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3511505126953125,
+    "distance": 2,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:50:00.740Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7469940185547,
+    "distance": 1,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:50:00.814Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5856858491897583,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:50:01.069Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3510591983795166,
+    "distance": 2.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:55:01.185Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7729949951172,
+    "distance": 3.6,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:55:01.266Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5857544541358948,
+    "distance": 8.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T02:55:01.484Z"
+  },
+  {
+    "pair": "DX-Y.NYB",
+    "yesterdayLow": 97.30999755859375,
+    "currentPrice": 97.31099700927734,
+    "distance": 10,
+    "type": "LOW",
+    "timestamp": "2025-09-23T02:55:01.731Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509680032730103,
+    "distance": 3.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:00:00.700Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.78799438476562,
+    "distance": 5.1,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:00:00.780Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5857201814651489,
+    "distance": 9.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:00:01.025Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509862422943115,
+    "distance": 3.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:05:01.112Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.802001953125,
+    "distance": 6.5,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:05:01.196Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5857201814651489,
+    "distance": 9.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:05:01.433Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3504753112792969,
+    "distance": 8.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:10:00.565Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3504389524459839,
+    "distance": 9.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:15:01.024Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.83399963378906,
+    "distance": 9.7,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:15:01.105Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6575698256492615,
+    "currentPrice": 0.6585446000099182,
+    "distance": 9.7,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:15:01.215Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3506031036376953,
+    "distance": 7.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:20:00.470Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.82000732421875,
+    "distance": 8.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:20:00.558Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509496450424194,
+    "distance": 4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:25:00.931Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7779998779297,
+    "distance": 4.1,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:25:01.012Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5858230590820312,
+    "distance": 8.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:25:01.291Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.351186990737915,
+    "distance": 1.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:30:00.341Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7790069580078,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:30:00.421Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590219736099243,
+    "distance": 9.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:30:00.546Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5857201814651489,
+    "distance": 9.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:30:00.697Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3510775566101074,
+    "distance": 2.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:35:00.786Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.80299377441406,
+    "distance": 6.6,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:35:00.933Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512965440750122,
+    "distance": 0.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:45:00.874Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.781005859375,
+    "distance": 4.4,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:45:00.954Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590654253959656,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:45:01.029Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5858230590820312,
+    "distance": 8.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:45:01.191Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75999450683594,
+    "distance": 2.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:50:00.525Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590654253959656,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:50:00.650Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5858230590820312,
+    "distance": 8.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:50:00.809Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.76499938964844,
+    "distance": 2.8,
+    "type": "LOW",
+    "timestamp": "2025-09-23T03:55:01.142Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590219736099243,
+    "distance": 9.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:55:01.262Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5857201814651489,
+    "distance": 9.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T03:55:01.431Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75900268554688,
+    "distance": 2.2,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:00:00.707Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayHigh": 0.586630642414093,
+    "currentPrice": 0.5856858491897583,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:00:00.983Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.77200317382812,
+    "distance": 3.5,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:05:01.267Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3510591983795166,
+    "distance": 2.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:10:00.897Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7790069580078,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:10:01.008Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3512052297592163,
+    "distance": 1.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:15:00.594Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7740020751953,
+    "distance": 3.7,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:15:00.676Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayHigh": 0.6599997878074646,
+    "currentPrice": 0.6590654253959656,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:15:00.806Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.350785493850708,
+    "distance": 5.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:20:01.066Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7790069580078,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:20:01.149Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5853772759437561,
+    "distance": 10,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:20:01.401Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.350712537765503,
+    "distance": 6.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:25:00.630Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.781005859375,
+    "distance": 4.4,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:25:00.705Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5853087306022644,
+    "distance": 9.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:25:00.983Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3506578207015991,
+    "distance": 6.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:30:01.268Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.78199768066406,
+    "distance": 4.5,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:30:01.351Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5852744579315186,
+    "distance": 9,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:30:01.653Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3508949279785156,
+    "distance": 4.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:35:00.852Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75599670410156,
+    "distance": 1.9,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:35:00.925Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5853430032730103,
+    "distance": 9.6,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:35:01.162Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509862422943115,
+    "distance": 3.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:40:00.498Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.75399780273438,
+    "distance": 1.7,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:40:00.581Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5853772759437561,
+    "distance": 10,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:40:00.819Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509862422943115,
+    "distance": 3.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:45:01.096Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7550048828125,
+    "distance": 1.8,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:45:01.207Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5852060317993164,
+    "distance": 8.3,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:45:01.456Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3509132862091064,
+    "distance": 4.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:50:00.737Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.7760009765625,
+    "distance": 3.9,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:50:00.823Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5851717591285706,
+    "distance": 7.9,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:50:01.100Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayHigh": 1.3513513803482056,
+    "currentPrice": 1.3508766889572144,
+    "distance": 4.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-23T04:55:01.196Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.73699951171875,
+    "currentPrice": 147.79299926757812,
+    "distance": 5.6,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:55:01.291Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5843783617019653,
+    "currentPrice": 0.5850347876548767,
+    "distance": 6.6,
+    "type": "LOW",
+    "timestamp": "2025-09-23T04:55:01.534Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayHigh": 1.1820051670074463,
+    "currentPrice": 1.1818934679031372,
+    "distance": 1.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-24T00:00:01.172Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.50999450683594,
+    "currentPrice": 147.60000610351562,
+    "distance": 9,
+    "type": "LOW",
+    "timestamp": "2025-09-24T00:00:01.332Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3844200372695923,
+    "currentPrice": 1.3838399648666382,
+    "distance": 5.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-24T00:00:01.501Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayHigh": 1.1820051670074463,
+    "currentPrice": 1.1814744472503662,
+    "distance": 5.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-24T00:05:00.554Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayLow": 147.50999450683594,
+    "currentPrice": 147.5679931640625,
+    "distance": 5.8,
+    "type": "LOW",
+    "timestamp": "2025-09-24T00:05:00.711Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3844200372695923,
+    "currentPrice": 1.3838000297546387,
+    "distance": 6.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-24T00:05:00.855Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7100067138672,
+    "distance": 5.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:15:00.571Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6588049530982971,
+    "distance": 3.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:15:00.648Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.38919997215271,
+    "distance": 4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:15:00.725Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5818350911140442,
+    "distance": 7.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:15:00.801Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6587615013122559,
+    "distance": 2.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:20:01.207Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894399404525757,
+    "distance": 1.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:20:01.283Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5817335844039917,
+    "distance": 6.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:20:01.362Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6588049530982971,
+    "distance": 3.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:25:00.779Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.389299988746643,
+    "distance": 3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:25:00.856Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5818012952804565,
+    "distance": 7.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:25:00.931Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6589785814285278,
+    "distance": 5.1,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:30:00.453Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894599676132202,
+    "distance": 1.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:30:00.528Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5817335844039917,
+    "distance": 6.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:30:00.605Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591088771820068,
+    "distance": 6.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:35:01.052Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3890999555587769,
+    "distance": 5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:35:01.127Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5817674398422241,
+    "distance": 7.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:35:01.206Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6592392921447754,
+    "distance": 7.7,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:40:00.808Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894200325012207,
+    "distance": 1.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:40:00.883Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5817674398422241,
+    "distance": 7.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:40:00.958Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6592826843261719,
+    "distance": 8.1,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:45:01.332Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.389430046081543,
+    "distance": 1.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:45:01.408Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5817335844039917,
+    "distance": 6.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:45:01.487Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6594130992889404,
+    "distance": 9.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:50:00.958Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894100189208984,
+    "distance": 1.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:50:01.028Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5816658735275269,
+    "distance": 6.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:50:01.107Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6739959716797,
+    "distance": 9.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:55:00.492Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591088771820068,
+    "distance": 6.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:55:00.579Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3893400430679321,
+    "distance": 2.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T00:55:00.663Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5814629793167114,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T00:55:00.748Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3891899585723877,
+    "distance": 4.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:00:01.354Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5816997289657593,
+    "distance": 6.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:00:01.427Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3891700506210327,
+    "distance": 4.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:05:00.983Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5818350911140442,
+    "distance": 7.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:05:01.056Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6594566106796265,
+    "distance": 9.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:10:00.473Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3890000581741333,
+    "distance": 6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:10:00.547Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5816997289657593,
+    "distance": 6.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:10:00.624Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6594130992889404,
+    "distance": 9.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:15:01.023Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3892500400543213,
+    "distance": 3.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:15:01.098Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5816658735275269,
+    "distance": 6.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:15:01.171Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6750030517578,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:20:00.653Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591088771820068,
+    "distance": 6.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:20:00.755Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894000053405762,
+    "distance": 2,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:20:00.863Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.581429123878479,
+    "distance": 3.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:20:00.959Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.68099975585938,
+    "distance": 8.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:25:01.152Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591523289680481,
+    "distance": 6.8,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:25:01.227Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3891799449920654,
+    "distance": 4.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:25:01.307Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5814629793167114,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:25:01.378Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7310028076172,
+    "distance": 3.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:30:00.744Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6590654253959656,
+    "distance": 6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:30:00.823Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3892799615859985,
+    "distance": 3.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:30:00.898Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5813953280448914,
+    "distance": 3.5,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:30:00.974Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7209930419922,
+    "distance": 4.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:35:00.340Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6592392921447754,
+    "distance": 7.7,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:35:00.416Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3891600370407104,
+    "distance": 4.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:35:00.494Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5814629793167114,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:35:00.594Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6590654253959656,
+    "distance": 6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:40:01.096Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894399404525757,
+    "distance": 1.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:40:01.174Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5811926126480103,
+    "distance": 1.5,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:40:01.263Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6588049530982971,
+    "distance": 3.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:45:00.767Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3894699811935425,
+    "distance": 1.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:45:00.845Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6587615013122559,
+    "distance": 2.9,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:50:01.299Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3893500566482544,
+    "distance": 2.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:50:01.383Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5810575485229492,
+    "distance": 0.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:50:01.454Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.75900268554688,
+    "distance": 1,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:55:00.778Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6590219736099243,
+    "distance": 5.5,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:55:00.857Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.388800024986267,
+    "distance": 8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T01:55:00.932Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5814629793167114,
+    "distance": 4.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T01:55:01.004Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7519989013672,
+    "distance": 1.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:00:00.426Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6589785814285278,
+    "distance": 5.1,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:00:00.506Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3891199827194214,
+    "distance": 4.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:00:00.636Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5815644264221191,
+    "distance": 5.2,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:00:00.719Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.70399475097656,
+    "distance": 6.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:05:00.994Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591957807540894,
+    "distance": 7.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:05:01.070Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3890299797058105,
+    "distance": 5.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:05:01.149Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5815982222557068,
+    "distance": 5.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:05:01.228Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6840057373047,
+    "distance": 8.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:10:00.638Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6591957807540894,
+    "distance": 7.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:10:00.712Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3889299631118774,
+    "distance": 6.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:10:00.791Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5815982222557068,
+    "distance": 5.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:10:00.865Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6594130992889404,
+    "distance": 9.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:15:01.287Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3888599872589111,
+    "distance": 7.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:15:01.368Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.5818689465522766,
+    "distance": 8.3,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:15:01.448Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6584700345993042,
+    "currentPrice": 0.6594130992889404,
+    "distance": 9.4,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:20:00.942Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3889600038528442,
+    "distance": 6.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:20:01.033Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.581040620803833,
+    "currentPrice": 0.581902801990509,
+    "distance": 8.6,
+    "type": "LOW",
+    "timestamp": "2025-09-25T02:20:01.107Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6739959716797,
+    "distance": 9.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:45:00.750Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6750030517578,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:50:00.403Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3886699676513672,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:50:00.554Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.718994140625,
+    "distance": 5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:55:00.973Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3889000415802002,
+    "distance": 7,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T02:55:01.162Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.74400329589844,
+    "distance": 2.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:00:00.573Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3885999917984009,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:00:00.738Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.73300170898438,
+    "distance": 3.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:05:01.235Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.388700008392334,
+    "distance": 9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:05:01.397Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7209930419922,
+    "distance": 4.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:10:00.829Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.388700008392334,
+    "distance": 9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:10:00.979Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.7209930419922,
+    "distance": 4.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:15:00.446Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3886699676513672,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:15:00.612Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.69700622558594,
+    "distance": 7.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:20:01.048Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3885999917984009,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:20:01.224Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6739959716797,
+    "distance": 9.5,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:25:00.638Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3885999917984009,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:25:00.786Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.67100524902344,
+    "distance": 9.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:30:01.309Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6750030517578,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:35:00.916Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3886100053787231,
+    "distance": 9.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:50:00.978Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6909942626953,
+    "distance": 7.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T03:55:00.425Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.67999267578125,
+    "distance": 8.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:10:01.293Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3887100219726562,
+    "distance": 8.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:10:01.454Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.68600463867188,
+    "distance": 8.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:15:00.909Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3885999917984009,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:15:01.178Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.66900634765625,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:20:00.586Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3887900114059448,
+    "distance": 8.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:20:00.764Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3886699676513672,
+    "distance": 9.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:25:01.319Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3887100219726562,
+    "distance": 8.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:30:00.907Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 148.7689971923828,
+    "currentPrice": 148.6699981689453,
+    "distance": 9.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:35:00.380Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3888100385665894,
+    "distance": 7.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:35:00.605Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.388800024986267,
+    "distance": 8,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:40:01.112Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3887799978256226,
+    "distance": 8.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:45:00.686Z"
+  },
+  {
+    "pair": "USDCAD",
+    "yesterdayHigh": 1.3896000385284424,
+    "currentPrice": 1.3888399600982666,
+    "distance": 7.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-25T04:50:01.258Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.79299926757812,
+    "distance": 3,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T00:30:01.100Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.81399536132812,
+    "distance": 0.9,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T00:35:00.796Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1669973134994507,
+    "distance": 2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T00:45:00.889Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.77000427246094,
+    "distance": 5.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T00:45:01.048Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1668611764907837,
+    "distance": 0.7,
+    "type": "LOW",
+    "timestamp": "2025-09-26T00:50:00.525Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7760009765625,
+    "distance": 4.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T00:50:00.748Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1668611764907837,
+    "distance": 0.7,
+    "type": "LOW",
+    "timestamp": "2025-09-26T00:55:01.147Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.73500061035156,
+    "distance": 8.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T00:55:01.297Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1674060821533203,
+    "distance": 6.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:00:00.734Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3345611095428467,
+    "distance": 3.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:00:00.807Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1676785945892334,
+    "distance": 8.9,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:05:00.432Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3347926139831543,
+    "distance": 5.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:05:00.508Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1674060821533203,
+    "distance": 6.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:10:01.086Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3346501588821411,
+    "distance": 4.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:10:01.164Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1675423383712769,
+    "distance": 7.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:15:00.786Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3345433473587036,
+    "distance": 3,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:15:00.861Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7259979248047,
+    "distance": 9.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:15:00.938Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1675423383712769,
+    "distance": 7.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:20:00.429Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3345789909362793,
+    "distance": 3.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:20:00.515Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1675423383712769,
+    "distance": 7.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:25:01.040Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3345789909362793,
+    "distance": 3.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:25:01.128Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.72900390625,
+    "distance": 9.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:25:01.254Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1675423383712769,
+    "distance": 7.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:30:00.733Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.334614634513855,
+    "distance": 3.7,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:30:00.840Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7530059814453,
+    "distance": 7,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:30:00.917Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1676785945892334,
+    "distance": 8.9,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:35:00.411Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3347392082214355,
+    "distance": 5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:35:00.494Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7550048828125,
+    "distance": 6.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:35:00.570Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1674060821533203,
+    "distance": 6.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:40:01.037Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3343831300735474,
+    "distance": 1.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:40:01.109Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.8090057373047,
+    "distance": 1.4,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:40:01.194Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1672697067260742,
+    "distance": 4.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:45:00.708Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3343474864959717,
+    "distance": 1.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:45:00.786Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7949981689453,
+    "distance": 2.8,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:45:00.864Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1669973134994507,
+    "distance": 2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:50:00.341Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.82000732421875,
+    "distance": 0.3,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T01:50:00.523Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1669973134994507,
+    "distance": 2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T01:55:00.987Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1671334505081177,
+    "distance": 3.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:00:00.573Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.82200622558594,
+    "distance": 0.1,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T02:00:00.738Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1674060821533203,
+    "distance": 6.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:05:00.315Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3345611095428467,
+    "distance": 3.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:05:00.392Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.80099487304688,
+    "distance": 2.2,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T02:05:00.469Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1675423383712769,
+    "distance": 7.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:10:00.971Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3347214460372925,
+    "distance": 4.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:10:01.058Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.7830047607422,
+    "distance": 4,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T02:10:01.130Z"
+  },
+  {
+    "pair": "EURUSD",
+    "yesterdayLow": 1.1667931079864502,
+    "currentPrice": 1.1674060821533203,
+    "distance": 6.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:15:00.637Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3346680402755737,
+    "distance": 4.3,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:15:00.712Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.8159942626953,
+    "distance": 0.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T02:15:00.789Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.335024356842041,
+    "distance": 7.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:25:00.875Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.73599243164062,
+    "distance": 8.7,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T02:25:00.956Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351491689682007,
+    "distance": 9.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:30:00.512Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6545788049697876,
+    "distance": 2.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:35:01.572Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6546216011047363,
+    "distance": 2.5,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:40:00.967Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544074416160583,
+    "distance": 0.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:45:00.655Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544074416160583,
+    "distance": 0.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T02:50:01.328Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3350600004196167,
+    "distance": 8.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:00:00.436Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351670503616333,
+    "distance": 9.3,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:05:01.118Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.72300720214844,
+    "distance": 10,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T03:05:01.207Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351848125457764,
+    "distance": 9.4,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:15:00.406Z"
+  },
+  {
+    "pair": "USDJPY",
+    "yesterdayHigh": 149.822998046875,
+    "currentPrice": 149.73699951171875,
+    "distance": 8.6,
+    "type": "HIGH",
+    "timestamp": "2025-09-26T03:15:00.499Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.335220456123352,
+    "distance": 9.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:20:01.037Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351491689682007,
+    "distance": 9.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:25:00.704Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544502377510071,
+    "distance": 0.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:35:01.232Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544502377510071,
+    "distance": 0.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:40:00.854Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544930934906006,
+    "distance": 1.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:45:00.708Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544502377510071,
+    "distance": 0.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:50:01.121Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544502377510071,
+    "distance": 0.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T03:55:00.830Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544930934906006,
+    "distance": 1.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:00:01.466Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.335131287574768,
+    "distance": 8.9,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:05:01.055Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351491689682007,
+    "distance": 9.1,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:10:00.582Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544930934906006,
+    "distance": 1.2,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:20:00.960Z"
+  },
+  {
+    "pair": "NZDUSD",
+    "yesterdayLow": 0.5771406292915344,
+    "currentPrice": 0.5772339105606079,
+    "distance": 0.9,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:20:01.113Z"
+  },
+  {
+    "pair": "GBPUSD",
+    "yesterdayLow": 1.3342405557632446,
+    "currentPrice": 1.3351134061813354,
+    "distance": 8.7,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:30:01.086Z"
+  },
+  {
+    "pair": "AUDUSD",
+    "yesterdayLow": 0.6543701887130737,
+    "currentPrice": 0.6544502377510071,
+    "distance": 0.8,
+    "type": "LOW",
+    "timestamp": "2025-09-26T04:40:00.634Z"
   }
 ]

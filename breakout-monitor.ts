@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import axios from 'axios';
+import { YesterdayLowMonitor } from './yesterday-low-monitor';
 
 interface Fractal {
   pair: string;
@@ -45,6 +46,8 @@ const MULTI_FRACTALS_FILE = 'multi-fractals.json';
 const BROKEN_FRACTALS_FILE = 'broken-fractals.json';
 const EVENTS_FILE = 'breakout-events.json';
 const REACTIONS_FILE = 'breakout-reactions.json';
+
+let yesterdayLowMonitor: YesterdayLowMonitor | null = null;
 
 function recordBreakoutEvent(pair: string, type: 'HIGH' | 'LOW', fractalPrice: number, breakPrice: number): boolean {
   try {
@@ -171,6 +174,11 @@ async function checkBreakouts() {
   const brokenFractals = loadBrokenFractals();
   let hasNewBreakouts = false;
 
+  // Initialize yesterday low monitor if not exists
+  if (!yesterdayLowMonitor) {
+    yesterdayLowMonitor = new YesterdayLowMonitor();
+  }
+
   // Check legacy fractals
   for (const fractal of fractals) {
     const currentPrice = await getCurrentPrice(fractal.pair);
@@ -198,6 +206,18 @@ async function checkBreakouts() {
           console.log(`🚨 ${fractal.pair}: LOW BROKEN! ${currentPrice.toFixed(5)} < ${fractal.low.toFixed(5)}`);
         }
       }
+    }
+  }
+
+  // Check yesterday low breakouts
+  const pairs = ['EURUSD', 'GBPUSD', 'USDJPY', 'AUDUSD', 'USDCAD', 'NZDUSD', 'XAUUSD', 'DX-Y.NYB'];
+  for (const pair of pairs) {
+    const currentPrice = await getCurrentPrice(pair);
+    if (!currentPrice) continue;
+    
+    const yesterdayEvent = yesterdayLowMonitor!.checkPrice(pair, currentPrice);
+    if (yesterdayEvent) {
+      console.log(`🔥 ${pair}: Yesterday low trigger event! ${yesterdayEvent.pointsBelow} points below`);
     }
   }
 

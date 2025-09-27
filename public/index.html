@@ -249,50 +249,22 @@
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
         
-        .results {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
+
+        
+        .reaction-item.yesterday-low {
+            background: rgba(255, 165, 0, 0.1);
+            border-left-color: #ffa500;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
         }
         
-        .stats-panel,
-        .reactions-list {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 24px;
-            border-radius: 16px;
-        }
-        
-        .stats-panel h3,
-        .reactions-list h3 {
-            margin-bottom: 20px;
-            color: #3b82f6;
-            font-size: 1.125rem;
-        }
-        
-        .stat-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-        }
-        
-        .stat-value {
+        .yesterday-low-badge {
+            background: #ffa500;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #10b981;
-        }
-        
-        .reaction-item {
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 12px;
-            padding: 16px;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
+            margin-left: 8px;
         }
         
         .alert-container {
@@ -515,62 +487,7 @@
             margin-left: 8px;
         }
         
-        .similar-context {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 24px;
-            border-radius: 16px;
-            margin-top: 32px;
-        }
-        
-        .context-info {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .reaction-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .reaction-pair {
-            font-weight: 700;
-            color: #3b82f6;
-        }
-        
-        .reaction-type {
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .type-high { background: #10b981; }
-        .type-low { background: #ef4444; }
-        
-        .reaction-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            font-size: 0.875rem;
-        }
-        
-        .metric {
-            text-align: center;
-        }
-        
-        .metric-label {
-            color: #a1a1aa;
-            font-size: 0.75rem;
-        }
-        
-        .metric-value {
-            font-weight: 700;
-        }
+
         
         .pair-stats-grid {
             display: grid;
@@ -650,6 +567,35 @@
             display: block;
         }
         
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
         @keyframes newsGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
             50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
@@ -672,6 +618,249 @@
             animation: highImpactGlow 1.5s infinite;
         }
         
+        /* Trade Journal Styles */
+        .journal-container {
+            display: none;
+        }
+        
+        .journal-container.active {
+            display: block;
+        }
+        
+        .reactions-list {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .reactions-list h3 {
+            margin-bottom: 20px;
+            color: #3b82f6;
+            font-size: 1.125rem;
+        }
+        
+        .reaction-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 21px;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .reaction-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .reaction-pair {
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .reaction-type {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .type-high { background: #10b981; }
+        .type-low { background: #ef4444; }
+        
+        .reaction-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            font-size: 0.875rem;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-label {
+            color: #a1a1aa;
+            font-size: 0.75rem;
+        }
+        
+        .metric-value {
+            font-weight: 700;
+        }
+        
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .journal-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .stat-label {
+            color: #a1a1aa;
+            font-size: 0.875rem;
+        }
+        
+        .journal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .journal-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #a1a1aa;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .journal-tab.active {
+            border-bottom-color: #3b82f6;
+            color: #3b82f6;
+        }
+        
+        .trade-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #f4f4f5;
+            font-size: 0.875rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #f4f4f5;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+        
+        .trades-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .trades-table th,
+        .trades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .trades-table th {
+            background: rgba(255, 255, 255, 0.1);
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .trade-direction {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .direction-long {
+            background: #10b981;
+            color: white;
+        }
+        
+        .direction-short {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .pnl-positive {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .pnl-negative {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        
+        .trade-outcome {
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .outcome-tp {
+            background: #10b981;
+            color: white;
+        }
+        
+        .outcome-sl {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .outcome-manual {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .journal-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 16px;
@@ -681,13 +870,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .results {
-                grid-template-columns: 1fr;
-            }
-            
-            .filters {
-                grid-template-columns: 1fr;
-            }
+
             
             .calendar-grid {
                 grid-template-columns: 1fr;
@@ -695,6 +878,14 @@
             
             .header h1 {
                 font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .journal-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -712,109 +903,110 @@
                 <button class="timeframe-tab active" onclick="switchTimeframe('daily')">Daily</button>
                 <button class="timeframe-tab" onclick="switchTimeframe('weekly')">Weekly</button>
                 <button class="timeframe-tab" onclick="switchTimeframe('monthly')">Monthly</button>
+                <button class="timeframe-tab" onclick="switchTimeframe('journal')">Trade Journal</button>
                 <span id="momentumIndicator" style="font-size: 0.875rem; color: #f59e0b; margin-left: auto;">Loading...</span>
             </div>
             <div id="fractalGrid" class="fractal-grid">
                 <p class="loading">Loading current fractals...</p>
             </div>
-        </div>
-
-        <div class="filters">
-            <div class="filter-group">
-                <label>Currency Pair</label>
-                <select id="pairFilter">
-                    <option value="">All Pairs</option>
-                    <option value="EURUSD">EURUSD</option>
-                    <option value="GBPUSD">GBPUSD</option>
-                    <option value="USDJPY">USDJPY</option>
-                    <option value="AUDUSD">AUDUSD</option>
-                    <option value="USDCAD">USDCAD</option>
-                    <option value="NZDUSD">NZDUSD</option>
-                    <option value="XAUUSD">XAUUSD</option>
-                    <option value="DX-Y.NYB">DXY</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Day of Week</label>
-                <select id="dayFilter">
-                    <option value="">All Days</option>
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Session</label>
-                <select id="sessionFilter">
-                    <option value="">All Sessions</option>
-                    <option value="ASIA">Asia</option>
-                    <option value="LONDON">London</option>
-                    <option value="NY">New York</option>
-                    <option value="OVERLAP">Overlap</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Time Bucket</label>
-                <select id="timeBucketFilter">
-                    <option value="">All Times</option>
-                    <option value="0-4">0-4 UTC</option>
-                    <option value="4-8">4-8 UTC</option>
-                    <option value="8-12">8-12 UTC</option>
-                    <option value="12-16">12-16 UTC</option>
-                    <option value="16-20">16-20 UTC</option>
-                    <option value="20-24">20-24 UTC</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Start Date</label>
-                <input type="date" id="startDate">
-            </div>
-            <div class="filter-group">
-                <label>End Date</label>
-                <input type="date" id="endDate">
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 32px;">
-            <button class="btn" onclick="analyzeReactions()">Analyze Reactions</button>
-            <button class="btn" onclick="findSimilarContext()" style="margin-left: 12px;">Find Similar Context</button>
-        </div>
-
-        <div class="results">
-            <div class="stats-panel">
-                <h3>📊 Reaction Statistics</h3>
-                <div id="statsContent">
-                    <p style="color: #a1a1aa;">Select filters and click "Analyze Reactions" to see statistics</p>
+            
+            <!-- Trade Journal Container -->
+            <div id="journalContainer" class="journal-container">
+                <div class="journal-header">
+                    <h3>📊 Trade Journal</h3>
+                    <button class="btn" onclick="openTradeForm()">+ New Trade</button>
+                </div>
+                
+                <div class="journal-stats" id="journalStats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTrades">0</div>
+                        <div class="stat-label">Total Trades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="winRate">0%</div>
+                        <div class="stat-label">Win Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avgR">0.0</div>
+                        <div class="stat-label">Avg R</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="expectancy">0.0</div>
+                        <div class="stat-label">Expectancy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="profitFactor">0.0</div>
+                        <div class="stat-label">Profit Factor</div>
+                    </div>
+                </div>
+                
+                <div class="journal-tabs">
+                    <div class="journal-tab active" onclick="switchJournalTab('open')">Open Trades</div>
+                    <div class="journal-tab" onclick="switchJournalTab('closed')">Journal</div>
+                    <div class="journal-tab" onclick="switchJournalTab('stats')">Statistics</div>
+                </div>
+                
+                <div id="openTradesTab" class="tab-content active">
+                    <div id="openTradesContent">
+                        <p class="loading">Loading open trades...</p>
+                    </div>
+                </div>
+                
+                <div id="closedTradesTab" class="tab-content">
+                    <div class="journal-filters">
+                        <select id="ideaFilter">
+                            <option value="">All Ideas</option>
+                        </select>
+                        <select id="directionFilter">
+                            <option value="">All Directions</option>
+                            <option value="LONG">Long</option>
+                            <option value="SHORT">Short</option>
+                        </select>
+                        <select id="outcomeFilter">
+                            <option value="">All Outcomes</option>
+                            <option value="TP">Take Profit</option>
+                            <option value="SL">Stop Loss</option>
+                            <option value="MANUAL">Manual</option>
+                        </select>
+                        <input type="date" id="dateFromFilter" placeholder="From Date">
+                        <input type="date" id="dateToFilter" placeholder="To Date">
+                        <button class="btn" onclick="filterJournal()">Filter</button>
+                    </div>
+                    <div id="journalContent">
+                        <p class="loading">Loading journal entries...</p>
+                    </div>
+                </div>
+                
+                <div id="statsTab" class="tab-content">
+                    <div id="statsContent">
+                        <p class="loading">Loading statistics...</p>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div id="infoBlock" style="display: grid; grid-template-columns: 0.4fr 1fr; gap: 20px;">
             <div class="reactions-list">
                 <h3>📈 Recent Reactions</h3>
                 <div id="reactionsContent">
                     <p style="color: #a1a1aa;">No reactions to display</p>
                 </div>
             </div>
-        </div>
 
-        <div class="similar-context" id="similarContext" style="display: none;">
-            <h3>🎯 Similar Historical Context</h3>
-            <div id="contextContent"></div>
-        </div>
-
-        <div class="forex-calendar">
-            <h3>📅 Forex Calendar & Event Impact</h3>
-            <div class="calendar-grid">
-                <div class="todays-events">
-                    <h4>Today's Events</h4>
-                    <div id="todaysEvents">
-                        <p class="loading">Loading today's events...</p>
+            <div class="forex-calendar">
+                <h3>📅 Forex Calendar & Event Impact</h3>
+                <div class="calendar-grid">
+                    <div class="todays-events">
+                        <h4>Today's Events</h4>
+                        <div id="todaysEvents">
+                            <p class="loading">Loading today's events...</p>
+                        </div>
                     </div>
-                </div>
-                <div class="upcoming-events">
-                    <h4>High Impact Events (Next 24h)</h4>
-                    <div id="upcomingEvents">
-                        <p class="loading">Loading upcoming events...</p>
+                    <div class="upcoming-events">
+                        <h4>High Impact Events (Next 24h)</h4>
+                        <div id="upcomingEvents">
+                            <p class="loading">Loading upcoming events...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -833,176 +1025,225 @@
                 <div class="modal-tab" onclick="switchTab('calendar')">Calendar</div>
                 <div class="modal-tab" onclick="switchTab('reactions')">Reactions</div>
             </div>
-            <div id="statsTab" class="tab-content active">
+            <div id="pairStatsTab" class="tab-content active">
                 <div id="pairStatsContent"></div>
             </div>
-            <div id="calendarTab" class="tab-content">
+            <div id="pairCalendarTab" class="tab-content">
                 <div id="pairCalendarContent"></div>
             </div>
-            <div id="reactionsTab" class="tab-content">
+            <div id="pairReactionsTab" class="tab-content">
                 <div id="pairReactionsContent"></div>
             </div>
         </div>
     </div>
+    
+    <!-- Trade Form Modal -->
+    <div id="tradeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create New Trade</h2>
+                <span class="close-btn" onclick="closeTradeModal()">&times;</span>
+            </div>
+            <form id="tradeForm" class="trade-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Symbol</label>
+                        <select id="tradeSymbol" required>
+                            <option value="EURUSD">EURUSD</option>
+                            <option value="GBPUSD">GBPUSD</option>
+                            <option value="USDJPY">USDJPY</option>
+                            <option value="AUDUSD">AUDUSD</option>
+                            <option value="USDCAD">USDCAD</option>
+                            <option value="NZDUSD">NZDUSD</option>
+                            <option value="XAUUSD">XAUUSD</option>
+                            <option value="DX-Y.NYB">DXY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Trading Idea</label>
+                        <select id="tradeIdea" required>
+                            <option value="">Select or create new...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Direction</label>
+                        <select id="tradeDirection" required>
+                            <option value="LONG">Long</option>
+                            <option value="SHORT">Short</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Entry Price (leave empty for current)</label>
+                        <input type="number" id="tradeEntry" step="0.00001" placeholder="Current price">
+                    </div>
+                    <div class="form-group">
+                        <label>Take Profit</label>
+                        <input type="number" id="tradeTakeProfit" step="0.00001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stop Loss</label>
+                        <input type="number" id="tradeStopLoss" step="0.00001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Position Size</label>
+                        <input type="number" id="tradeSize" step="0.01" value="1" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notes (optional)</label>
+                    <textarea id="tradeNotes" rows="3" placeholder="Trade rationale, setup details..."></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                    <button type="button" class="btn" onclick="closeTradeModal()" style="background: #6b7280;">Cancel</button>
+                    <button type="submit" class="btn">Create Trade</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script>
-        async function analyzeReactions() {
-            const params = new URLSearchParams();
-            
-            const pair = document.getElementById('pairFilter').value;
-            const day = document.getElementById('dayFilter').value;
-            const session = document.getElementById('sessionFilter').value;
-            const timeBucket = document.getElementById('timeBucketFilter').value;
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            
-            if (pair) params.append('pair', pair);
-            if (day) params.append('dayOfWeek', day);
-            if (session) params.append('session', session);
-            if (timeBucket) params.append('timeBucket', timeBucket);
-            if (startDate) params.append('startDate', startDate);
-            if (endDate) params.append('endDate', endDate);
 
+
+
+
+
+        
+        async function loadYesterdayLowEvents() {
             try {
-                const response = await fetch(`/api/reactions?${params}`);
-                const data = await response.json();
-                
-                displayStats(data.stats);
-                displayReactions(data.reactions);
+                const response = await fetch('/api/yesterday-low-events');
+                const events = await response.json();
+                displayYesterdayLowEvents(events);
             } catch (error) {
-                console.error('Error fetching reactions:', error);
+                console.error('Error loading yesterday low events:', error);
             }
         }
-
-        async function findSimilarContext() {
-            const params = new URLSearchParams();
+        
+        let yesterdayLowEvents = [];
+        
+        function displayYesterdayLowEvents(events) {
+            if (!events || events.length === 0) return;
             
-            const pair = document.getElementById('pairFilter').value;
-            const day = document.getElementById('dayFilter').value;
-            const session = document.getElementById('sessionFilter').value;
-            const timeBucket = document.getElementById('timeBucketFilter').value;
+            // Clear existing yesterday low events to prevent duplicates
+            yesterdayLowEvents = [];
             
-            if (pair) params.append('pair', pair);
-            if (day) params.append('dayOfWeek', day);
-            if (session) params.append('session', session);
-            if (timeBucket) params.append('timeBucket', timeBucket);
-
-            try {
-                const response = await fetch(`/api/similar-context?${params}`);
-                const data = await response.json();
-                
-                displaySimilarContext(data);
-            } catch (error) {
-                console.error('Error fetching similar context:', error);
-            }
+            // Store yesterday low events for later sorting with deduplication
+            const seenEvents = new Set();
+            events.forEach(event => {
+                const key = `${event.pair}_${event.breakTime}`;
+                if (!seenEvents.has(key)) {
+                    seenEvents.add(key);
+                    yesterdayLowEvents.push({
+                        ...event,
+                        type: 'YESTERDAY_LOW',
+                        timestamp: event.breakTime,
+                        pair: event.pair,
+                        fractalPrice: event.yesterdayLow,
+                        breakPrice: event.triggerPrice
+                    });
+                }
+            });
+            
+            // Trigger a re-display of all reactions with proper sorting
+            displayAllReactions();
         }
-
-        function displayStats(stats) {
-            const statsContent = document.getElementById('statsContent');
-            
-            if (!stats) {
-                statsContent.innerHTML = '<p style="color: #a1a1aa;">No data available for selected filters</p>';
-                return;
-            }
-
-            statsContent.innerHTML = `
-                <div class="stat-item">
-                    <span>Total Reactions:</span>
-                    <span class="stat-value">${stats.count}</span>
-                </div>
-                <div class="stat-item">
-                    <span>Follow-through Rate:</span>
-                    <span class="stat-value">${stats.followThroughRate}%</span>
-                </div>
-                <div class="stat-item">
-                    <span>Avg 15m Impulse:</span>
-                    <span class="stat-value">${stats.avgImpulse15m}%</span>
-                </div>
-                <div class="stat-item">
-                    <span>Avg 1h Impulse:</span>
-                    <span class="stat-value">${stats.avgImpulse1h}%</span>
-                </div>
-                <div class="stat-item">
-                    <span>Avg 4h Impulse:</span>
-                    <span class="stat-value">${stats.avgImpulse4h}%</span>
-                </div>
-                <div class="stat-item">
-                    <span>Avg Max Drawdown:</span>
-                    <span class="stat-value">${stats.avgMaxDrawdown}%</span>
-                </div>
-                <div class="stat-item">
-                    <span>Avg Time to Reverse:</span>
-                    <span class="stat-value">${stats.avgTimeToReverse} min</span>
-                </div>
-            `;
-        }
-
-        function displayReactions(reactions) {
+        
+        function displayAllReactions() {
             const reactionsContent = document.getElementById('reactionsContent');
             
-            if (!reactions || reactions.length === 0) {
-                reactionsContent.innerHTML = '<p style="color: #a1a1aa;">No reactions found for selected filters</p>';
+            // Combine regular reactions and yesterday low events
+            const allReactions = [];
+            const seenKeys = new Set();
+            
+            // Add regular reactions if they exist
+            if (window.currentReactions) {
+                window.currentReactions.forEach(reaction => {
+                    const key = `${reaction.pair}_${reaction.type}_${reaction.timestamp}`;
+                    if (!seenKeys.has(key)) {
+                        seenKeys.add(key);
+                        allReactions.push(reaction);
+                    }
+                });
+            }
+            
+            // Add yesterday low events with proper deduplication
+            yesterdayLowEvents.forEach(event => {
+                const key = `${event.pair}_YESTERDAY_LOW_${event.timestamp}`;
+                if (!seenKeys.has(key)) {
+                    seenKeys.add(key);
+                    allReactions.push(event);
+                }
+            });
+            
+            if (allReactions.length === 0) {
+                reactionsContent.innerHTML = '<p style="color: #a1a1aa;">No reactions to display</p>';
                 return;
             }
-
-            reactionsContent.innerHTML = reactions.slice(0, 10).map(reaction => `
-                <div class="reaction-item">
-                    <div class="reaction-header">
-                        <span class="reaction-pair">${reaction.pair}</span>
-                        <span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span>
-                    </div>
-                    <div style="font-size: 12px; color: #a1a1aa; margin-bottom: 10px;">
-                        ${new Date(reaction.timestamp).toLocaleString()} | 
-                        ${reaction.timeframe || 'Intraday'} | 
-                        ID: ${reaction.id}
-                    </div>
-                    <div class="reaction-metrics">
-                        <div class="metric">
-                            <div class="metric-label">Fractal Price</div>
-                            <div class="metric-value">${reaction.fractalPrice.toFixed(5)}</div>
+            
+            // Sort all reactions by timestamp (newest first)
+            allReactions.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+            
+            reactionsContent.innerHTML = allReactions.slice(0, 15).map(reaction => {
+                if (reaction.type === 'YESTERDAY_LOW') {
+                    return `
+                        <div class="reaction-item yesterday-low">
+                            <div class="reaction-header">
+                                <span class="reaction-pair">${reaction.pair}</span>
+                                <span class="yesterday-low-badge">YESTERDAY LOW</span>
+                            </div>
+                            <div style="font-size: 12px; color: #a1a1aa; margin-bottom: 10px;">
+                                Break: ${new Date(reaction.breakTime).toLocaleString()} | 
+                                Trigger: ${new Date(reaction.triggerTime).toLocaleString()} | 
+                                Duration: ${reaction.duration}min
+                            </div>
+                            <div class="reaction-metrics">
+                                <div class="metric">
+                                    <div class="metric-label">Yesterday Low</div>
+                                    <div class="metric-value">${reaction.yesterdayLow.toFixed(5)}</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Trigger Price</div>
+                                    <div class="metric-value">${reaction.triggerPrice.toFixed(5)}</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Points Below</div>
+                                    <div class="metric-value">${reaction.pointsBelow.toFixed(1)}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <div class="metric-label">Break Price</div>
-                            <div class="metric-value">${reaction.breakPrice.toFixed(5)}</div>
+                    `;
+                } else {
+                    return `
+                        <div class="reaction-item">
+                            <div class="reaction-header">
+                                <span class="reaction-pair">${reaction.pair}</span>
+                                <span class="reaction-type type-${reaction.type.toLowerCase()}">${reaction.type}</span>
+                            </div>
+                            <div style="font-size: 12px; color: #a1a1aa; margin-bottom: 10px;">
+                                ${new Date(reaction.timestamp).toLocaleString()} | 
+                                ${reaction.timeframe || 'Intraday'} | 
+                                ID: ${reaction.id}
+                            </div>
+                            <div class="reaction-metrics">
+                                <div class="metric">
+                                    <div class="metric-label">Fractal Price</div>
+                                    <div class="metric-value">${reaction.fractalPrice.toFixed(5)}</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Break Price</div>
+                                    <div class="metric-value">${reaction.breakPrice.toFixed(5)}</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Price Diff</div>
+                                    <div class="metric-value">${Math.abs(reaction.fractalPrice - reaction.breakPrice).toFixed(5)}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <div class="metric-label">Price Diff</div>
-                            <div class="metric-value">${Math.abs(reaction.fractalPrice - reaction.breakPrice).toFixed(5)}</div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+                    `;
+                }
+            }).join('');
         }
 
-        function displaySimilarContext(data) {
-            const similarContext = document.getElementById('similarContext');
-            const contextContent = document.getElementById('contextContent');
-            
-            similarContext.style.display = 'block';
-            
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            
-            let contextHtml = '<div class="context-info">';
-            contextHtml += '<h4>Context: ' + (data.context.pair || 'All Pairs') + ' | ';
-            contextHtml += (data.context.dayOfWeek ? dayNames[data.context.dayOfWeek] : 'All Days') + ' | ';
-            contextHtml += (data.context.session || 'All Sessions') + ' | ';
-            contextHtml += (data.context.timeBucket || 'All Times') + '</h4>';
-            contextHtml += '<p>Historical reactions found: <strong>' + data.historicalReactions + '</strong></p>';
-            contextHtml += '</div>';
-            
-            if (data.stats) {
-                contextHtml += '<div class="stats-panel">';
-                contextHtml += '<h4>Historical Performance in Similar Context</h4>';
-                contextHtml += '<div class="stat-item"><span>Follow-through Rate:</span><span class="stat-value">' + data.stats.followThroughRate + '%</span></div>';
-                contextHtml += '<div class="stat-item"><span>Average 1h Impulse:</span><span class="stat-value">' + data.stats.avgImpulse1h + '%</span></div>';
-                contextHtml += '<div class="stat-item"><span>Average Max Drawdown:</span><span class="stat-value">' + data.stats.avgMaxDrawdown + '%</span></div>';
-                contextHtml += '</div>';
-            } else {
-                contextHtml += '<p style="color: #a1a1aa;">No historical data available for this context</p>';
-            }
-            
-            contextContent.innerHTML = contextHtml;
-        }
+
 
         let currentPrices = {};
         let currentFractals = [];
@@ -1590,8 +1831,362 @@
             activeTimeframe = timeframe;
             document.querySelectorAll('.timeframe-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
-            displayCurrentFractals();
+            
+            // Show/hide appropriate content
+            if (timeframe === 'journal') {
+                document.getElementById('fractalGrid').style.display = 'none';
+                document.getElementById('journalContainer').classList.add('active');
+                loadJournalData();
+            } else {
+                document.getElementById('fractalGrid').style.display = 'grid';
+                document.getElementById('journalContainer').classList.remove('active');
+                displayCurrentFractals();
+            }
         }
+        
+        // Trade Journal Functions
+        let tradingIdeas = [];
+        let openTrades = [];
+        let journalEntries = [];
+        let journalStats = {};
+        
+        async function loadJournalData() {
+            await Promise.all([
+                loadTradingIdeas(),
+                loadOpenTrades(),
+                loadJournalEntries(),
+                loadJournalStats()
+            ]);
+            displayJournalStats();
+            displayOpenTrades();
+            displayJournalEntries();
+        }
+        
+        async function loadTradingIdeas() {
+            try {
+                const response = await fetch('/api/trading-ideas');
+                tradingIdeas = await response.json();
+                updateIdeaSelects();
+            } catch (error) {
+                console.error('Error loading trading ideas:', error);
+            }
+        }
+        
+        async function loadOpenTrades() {
+            try {
+                const response = await fetch('/api/trades/open');
+                openTrades = await response.json();
+            } catch (error) {
+                console.error('Error loading open trades:', error);
+            }
+        }
+        
+        async function loadJournalEntries() {
+            try {
+                const response = await fetch('/api/journal');
+                journalEntries = await response.json();
+            } catch (error) {
+                console.error('Error loading journal entries:', error);
+            }
+        }
+        
+        async function loadJournalStats() {
+            try {
+                const response = await fetch('/api/stats');
+                journalStats = await response.json();
+            } catch (error) {
+                console.error('Error loading journal stats:', error);
+            }
+        }
+        
+        function updateIdeaSelects() {
+            const tradeIdeaSelect = document.getElementById('tradeIdea');
+            const ideaFilterSelect = document.getElementById('ideaFilter');
+            
+            if (tradeIdeaSelect) {
+                const currentValue = tradeIdeaSelect.value;
+                tradeIdeaSelect.innerHTML = '<option value="">Select or create new...</option>';
+                tradingIdeas.forEach(idea => {
+                    tradeIdeaSelect.innerHTML += `<option value="${idea.id}">${idea.name}</option>`;
+                });
+                tradeIdeaSelect.innerHTML += '<option value="__new__">+ Create New Idea</option>';
+                tradeIdeaSelect.value = currentValue;
+            }
+            
+            if (ideaFilterSelect) {
+                const currentValue = ideaFilterSelect.value;
+                ideaFilterSelect.innerHTML = '<option value="">All Ideas</option>';
+                tradingIdeas.forEach(idea => {
+                    ideaFilterSelect.innerHTML += `<option value="${idea.id}">${idea.name}</option>`;
+                });
+                ideaFilterSelect.value = currentValue;
+            }
+        }
+        
+        function displayJournalStats() {
+            document.getElementById('totalTrades').textContent = journalStats.totalTrades || 0;
+            document.getElementById('winRate').textContent = (journalStats.winRate || 0).toFixed(1) + '%';
+            document.getElementById('avgR').textContent = (journalStats.avgR || 0).toFixed(2);
+            document.getElementById('expectancy').textContent = (journalStats.expectancy || 0).toFixed(2);
+            document.getElementById('profitFactor').textContent = (journalStats.profitFactor || 0).toFixed(2);
+        }
+        
+        function displayOpenTrades() {
+            const container = document.getElementById('openTradesContent');
+            
+            if (openTrades.length === 0) {
+                container.innerHTML = '<p style="color: #a1a1aa; text-align: center; padding: 40px;">No open trades</p>';
+                return;
+            }
+            
+            let html = `
+                <table class="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Idea</th>
+                            <th>Direction</th>
+                            <th>Entry</th>
+                            <th>Current</th>
+                            <th>TP</th>
+                            <th>SL</th>
+                            <th>Size</th>
+                            <th>Unrealized PnL</th>
+                            <th>R Multiple</th>
+                            <th>Opened</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            openTrades.forEach(trade => {
+                const idea = tradingIdeas.find(i => i.id === trade.ideaId);
+                const pnlClass = (trade.unrealizedPnL || 0) >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const rClass = (trade.rMultiple || 0) >= 0 ? 'pnl-positive' : 'pnl-negative';
+                
+                html += `
+                    <tr>
+                        <td>${trade.symbol}</td>
+                        <td>${idea ? idea.name : 'Unknown'}</td>
+                        <td><span class="trade-direction direction-${trade.direction.toLowerCase()}">${trade.direction}</span></td>
+                        <td>${trade.entryPrice.toFixed(5)}</td>
+                        <td>${trade.currentPrice ? trade.currentPrice.toFixed(5) : 'Loading...'}</td>
+                        <td>${trade.takeProfit.toFixed(5)}</td>
+                        <td>${trade.stopLoss.toFixed(5)}</td>
+                        <td>${trade.positionSize}</td>
+                        <td class="${pnlClass}">${trade.unrealizedPnL ? trade.unrealizedPnL.toFixed(2) : '0.00'}</td>
+                        <td class="${rClass}">${trade.rMultiple ? trade.rMultiple.toFixed(2) + 'R' : '0.00R'}</td>
+                        <td>${new Date(trade.openedAt).toLocaleDateString()}</td>
+                        <td>
+                            <button class="btn" onclick="closeTrade('${trade.id}')" style="padding: 4px 8px; font-size: 0.75rem;">Close</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+        
+        function displayJournalEntries() {
+            const container = document.getElementById('journalContent');
+            
+            if (journalEntries.length === 0) {
+                container.innerHTML = '<p style="color: #a1a1aa; text-align: center; padding: 40px;">No journal entries</p>';
+                return;
+            }
+            
+            let html = `
+                <table class="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Idea</th>
+                            <th>Direction</th>
+                            <th>Entry</th>
+                            <th>Exit</th>
+                            <th>Outcome</th>
+                            <th>R Multiple</th>
+                            <th>PnL</th>
+                            <th>Hold Time</th>
+                            <th>Closed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            journalEntries.forEach(entry => {
+                const idea = tradingIdeas.find(i => i.id === entry.ideaId);
+                const pnlClass = entry.pnl >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const rClass = entry.rMultiple >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const holdTimeHours = Math.floor(entry.holdTime / 60);
+                const holdTimeMinutes = entry.holdTime % 60;
+                
+                html += `
+                    <tr>
+                        <td>${entry.symbol}</td>
+                        <td>${idea ? idea.name : 'Unknown'}</td>
+                        <td><span class="trade-direction direction-${entry.direction.toLowerCase()}">${entry.direction}</span></td>
+                        <td>${entry.entryPrice.toFixed(5)}</td>
+                        <td>${entry.exitPrice.toFixed(5)}</td>
+                        <td><span class="trade-outcome outcome-${entry.outcome.toLowerCase()}">${entry.outcome}</span></td>
+                        <td class="${rClass}">${entry.rMultiple.toFixed(2)}R</td>
+                        <td class="${pnlClass}">${entry.pnl.toFixed(2)}</td>
+                        <td>${holdTimeHours}h ${holdTimeMinutes}m</td>
+                        <td>${new Date(entry.closedAt).toLocaleDateString()}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+        
+        function switchJournalTab(tab) {
+            document.querySelectorAll('.journal-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('#journalContainer .tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            
+            if (tab === 'open') {
+                document.getElementById('openTradesTab').classList.add('active');
+            } else if (tab === 'closed') {
+                document.getElementById('closedTradesTab').classList.add('active');
+            } else if (tab === 'stats') {
+                document.getElementById('statsTab').classList.add('active');
+                displayDetailedStats();
+            }
+        }
+        
+        function displayDetailedStats() {
+            const container = document.getElementById('statsContent');
+            // Implementation for detailed statistics by idea, time periods, etc.
+            container.innerHTML = '<p>Detailed statistics coming soon...</p>';
+        }
+        
+        async function openTradeForm() {
+            document.getElementById('tradeModal').style.display = 'block';
+            await loadTradingIdeas(); // Refresh ideas and update dropdown
+        }
+        
+        function closeTradeModal() {
+            document.getElementById('tradeModal').style.display = 'none';
+            document.getElementById('tradeForm').reset();
+        }
+        
+        async function filterJournal() {
+            const params = new URLSearchParams();
+            
+            const ideaId = document.getElementById('ideaFilter').value;
+            const direction = document.getElementById('directionFilter').value;
+            const outcome = document.getElementById('outcomeFilter').value;
+            const dateFrom = document.getElementById('dateFromFilter').value;
+            const dateTo = document.getElementById('dateToFilter').value;
+            
+            if (ideaId) params.append('ideaId', ideaId);
+            if (direction) params.append('direction', direction);
+            if (outcome) params.append('outcome', outcome);
+            if (dateFrom) params.append('dateFrom', dateFrom);
+            if (dateTo) params.append('dateTo', dateTo);
+            
+            try {
+                const response = await fetch(`/api/journal?${params}`);
+                journalEntries = await response.json();
+                displayJournalEntries();
+            } catch (error) {
+                console.error('Error filtering journal:', error);
+            }
+        }
+        
+        async function closeTrade(tradeId) {
+            const currentPrice = prompt('Enter exit price (leave empty for current market price):');
+            const outcome = prompt('Enter outcome (TP/SL/MANUAL):', 'MANUAL');
+            
+            if (!outcome) return;
+            
+            try {
+                const response = await fetch(`/api/trades/${tradeId}/close`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        exitPrice: currentPrice ? parseFloat(currentPrice) : null,
+                        outcome: outcome.toUpperCase()
+                    })
+                });
+                
+                if (response.ok) {
+                    await loadJournalData(); // Refresh all data
+                } else {
+                    alert('Error closing trade');
+                }
+            } catch (error) {
+                console.error('Error closing trade:', error);
+                alert('Error closing trade');
+            }
+        }
+        
+        // Trade form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const tradeForm = document.getElementById('tradeForm');
+            if (tradeForm) {
+                tradeForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    let ideaId = document.getElementById('tradeIdea').value;
+                    
+                    // Handle new idea creation
+                    if (ideaId === '__new__') {
+                        const ideaName = prompt('Enter new trading idea name:');
+                        if (!ideaName) return;
+                        
+                        try {
+                            const response = await fetch('/api/trading-ideas', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name: ideaName })
+                            });
+                            const newIdea = await response.json();
+                            ideaId = newIdea.id;
+                            await loadTradingIdeas();
+                        } catch (error) {
+                            alert('Error creating trading idea');
+                            return;
+                        }
+                    }
+                    
+                    const tradeData = {
+                        symbol: document.getElementById('tradeSymbol').value,
+                        ideaId: ideaId,
+                        direction: document.getElementById('tradeDirection').value,
+                        entryPrice: document.getElementById('tradeEntry').value ? parseFloat(document.getElementById('tradeEntry').value) : null,
+                        takeProfit: parseFloat(document.getElementById('tradeTakeProfit').value),
+                        stopLoss: parseFloat(document.getElementById('tradeStopLoss').value),
+                        positionSize: parseFloat(document.getElementById('tradeSize').value),
+                        notes: document.getElementById('tradeNotes').value
+                    };
+                    
+                    try {
+                        const response = await fetch('/api/trades', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(tradeData)
+                        });
+                        
+                        if (response.ok) {
+                            closeTradeModal();
+                            await loadJournalData(); // Refresh data
+                        } else {
+                            const error = await response.json();
+                            alert('Error creating trade: ' + error.error);
+                        }
+                    } catch (error) {
+                        console.error('Error creating trade:', error);
+                        alert('Error creating trade');
+                    }
+                });
+            }
+        });
         
         // Reset broken fractals at midnight
         function resetBrokenFractalsAtMidnight() {
@@ -1625,7 +2220,36 @@
         function updateMomentumIndicator(status) {
             const indicator = document.getElementById('momentumIndicator');
             if (indicator) {
-                indicator.textContent = status;
+                const now = new Date();
+                const currentTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                
+                // Check if waiting for session times
+                const londonTime = '12:30';
+                const nyTime = '15:30';
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                const currentTotalMinutes = currentHour * 60 + currentMinute;
+                const londonMinutes = 12 * 60 + 30;
+                const nyMinutes = 15 * 60 + 30;
+                
+                let displayText = status;
+                
+                if (currentTotalMinutes < londonMinutes) {
+                    const minutesUntilLondon = londonMinutes - currentTotalMinutes;
+                    const hoursUntil = Math.floor(minutesUntilLondon / 60);
+                    const minsUntil = minutesUntilLondon % 60;
+                    displayText = `Waiting 12:30 London (${hoursUntil}h ${minsUntil}m) | ${currentTime}`;
+                } else if (currentTotalMinutes < nyMinutes) {
+                    const minutesUntilNY = nyMinutes - currentTotalMinutes;
+                    const hoursUntil = Math.floor(minutesUntilNY / 60);
+                    const minsUntil = minutesUntilNY % 60;
+                    displayText = `Waiting 15:30 New York (${hoursUntil}h ${minsUntil}m) | ${currentTime}`;
+                } else {
+                    displayText = `${status} | ${currentTime}`;
+                }
+                
+                indicator.textContent = displayText;
+                
                 if (status.includes('Active') || status.includes('high volatility')) {
                     indicator.style.color = '#10b981';
                     indicator.style.fontWeight = '700';
@@ -1648,10 +2272,16 @@
         }
         
         function switchTab(tabName) {
+            // Only affect modal tabs, not journal tabs
             document.querySelectorAll('.modal-tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('#pairModal .tab-content').forEach(content => content.classList.remove('active'));
             event.target.classList.add('active');
-            document.getElementById(tabName + 'Tab').classList.add('active');
+            
+            // Show the selected tab content with unique pair prefix
+            const targetTab = document.getElementById('pair' + tabName.charAt(0).toUpperCase() + tabName.slice(1) + 'Tab');
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
         }
         
         async function loadPairData(pair) {
@@ -1675,9 +2305,51 @@
             }
         }
         
-        function displayPairStats(pair, reactionStats, tradingStats) {
+        async function displayPairStats(pair, reactionStats, tradingStats) {
             const statsContent = document.getElementById('pairStatsContent');
-            let statsHtml = '<div class="pair-stats-grid">';
+            let statsHtml = '';
+            
+            // Load morning brief for major currencies
+            const currencyMap = {
+                'EURUSD': 'EUR', 'GBPUSD': 'GBP', 'USDJPY': 'JPY', 
+                'AUDUSD': 'AUD', 'USDCAD': 'CAD', 'NZDUSD': 'NZD'
+            };
+            
+            const currency = currencyMap[pair];
+            if (currency) {
+                try {
+                    const briefResponse = await fetch(`/api/morning-brief/${currency}`);
+                    const brief = await briefResponse.json();
+                    if (brief && brief.note) {
+                        const biasColor = brief.bias?.score > 0 ? '#10b981' : brief.bias?.score < 0 ? '#ef4444' : '#f59e0b';
+                        const riskLevel = brief.calendar?.redLeft > 2 ? 'HIGH' : brief.calendar?.redLeft > 0 ? 'MEDIUM' : 'LOW';
+                        const riskColor = riskLevel === 'HIGH' ? '#ef4444' : riskLevel === 'MEDIUM' ? '#f59e0b' : '#10b981';
+                        const atrPips = brief.price?.atr14 ? (brief.price.atr14 * 10000).toFixed(1) : '0';
+                        const range = brief.price?.yesterday ? ((brief.price.yesterday.high - brief.price.yesterday.low) * 10000).toFixed(1) : '0';
+                        
+                        statsHtml += `
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #3b82f6;">
+                                <h4 style="color: #3b82f6; margin-bottom: 12px;">🌅 Morning Brief - ${brief.pair} (${brief.date})</h4>
+                                <div style="font-size: 14px; line-height: 1.5; margin-bottom: 12px;">${brief.note}</div>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; font-size: 12px;">
+                                    <div class="tooltip"><strong>Bias:</strong> <span style="color: ${biasColor}">${brief.bias?.label || 'neutral'}</span><span class="tooltiptext">Overall directional sentiment: bullish (+), bearish (-), or neutral (0)</span></div>
+                                    <div class="tooltip"><strong>Risk Level:</strong> <span style="color: ${riskColor}">${riskLevel}</span><span class="tooltiptext">Calendar risk based on high-impact events: HIGH (3+ events), MEDIUM (1-2 events), LOW (0 events)</span></div>
+                                    <div class="tooltip"><strong>ATR14:</strong> ${atrPips}p<span class="tooltiptext">14-day Average True Range in pips - measures recent volatility</span></div>
+                                    <div class="tooltip"><strong>Range:</strong> ${range}p<span class="tooltiptext">Yesterday's trading range (High - Low) in pips</span></div>
+                                    <div class="tooltip"><strong>High:</strong> ${brief.price?.yesterday?.high?.toFixed(5) || 'N/A'}<span class="tooltiptext">Yesterday's session high price</span></div>
+                                    <div class="tooltip"><strong>Low:</strong> ${brief.price?.yesterday?.low?.toFixed(5) || 'N/A'}<span class="tooltiptext">Yesterday's session low price</span></div>
+                                    <div class="tooltip"><strong>Red Events:</strong> ${brief.calendar?.redLeft || 0}<span class="tooltiptext">Number of high-impact economic events scheduled today</span></div>
+                                    <div class="tooltip"><strong>Asia Break:</strong> ${brief.price?.asiaBreak || 'none'}<span class="tooltiptext">Asia session breakout: 'high' (broke resistance), 'low' (broke support), 'none' (no break)</span></div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    console.log(`No morning brief available for ${currency}`);
+                }
+            }
+            
+            statsHtml += '<div class="pair-stats-grid">';
             
             if (reactionStats) {
                 statsHtml += `
@@ -1722,8 +2394,8 @@
             }
             
             statsHtml += '</div>';
-            if (!reactionStats && !tradingStats) {
-                statsHtml = '<p style="color: #a1a1aa;">No statistics available for ' + pair + '</p>';
+            if (!reactionStats && !tradingStats && pair !== 'EURUSD') {
+                statsHtml += '<p style="color: #a1a1aa;">No statistics available for ' + pair + '</p>';
             }
             statsContent.innerHTML = statsHtml;
         }
@@ -1819,18 +2491,27 @@
             loadMultiFractals();
             loadDailyMovements();
             loadMomentumSessions();
+            loadYesterdayLowEvents();
             startPriceUpdates();
-            analyzeReactions();
+
             resetBrokenFractalsAtMidnight();
             
             // Update momentum sessions every minute
             setInterval(loadMomentumSessions, 60000);
+            // Update time display every 30 seconds
+            setInterval(() => updateMomentumIndicator(document.getElementById('momentumIndicator').textContent.split(' | ')[0] || 'Loading...'), 30000);
+            // Update yesterday low events every 30 seconds
+            setInterval(loadYesterdayLowEvents, 30000);
         };
         
         window.onclick = function(event) {
-            const modal = document.getElementById('pairModal');
-            if (event.target === modal) {
+            const pairModal = document.getElementById('pairModal');
+            const tradeModal = document.getElementById('tradeModal');
+            if (event.target === pairModal) {
                 closePairModal();
+            }
+            if (event.target === tradeModal) {
+                closeTradeModal();
             }
         }
         

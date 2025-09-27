@@ -241,5 +241,536 @@
     "fractalPrice": 1.3495277166366577,
     "breakPrice": 1.3493820428848267,
     "timestamp": "2025-09-19T07:05:01.544Z"
+  },
+  {
+    "id": "GBPUSD_LOW_daily_1.34910",
+    "pair": "GBPUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.3491,
+    "breakPrice": 1.3490906953811646,
+    "timestamp": "2025-09-19T14:30:31.966Z"
+  },
+  {
+    "id": "GBPUSD_LOW_daily_1.34886",
+    "pair": "GBPUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.34886,
+    "breakPrice": 1.3483266830444336,
+    "timestamp": "2025-09-19T15:58:32.247Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3686.39990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3686.39990234375,
+    "breakPrice": 3703.199951171875,
+    "timestamp": "2025-09-19T16:59:01.374Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3670.39990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3670.39990234375,
+    "breakPrice": 3703.199951171875,
+    "timestamp": "2025-09-19T16:59:01.376Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3485.60010",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3485.60009765625,
+    "breakPrice": 3703.199951171875,
+    "timestamp": "2025-09-19T16:59:01.378Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3716.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3716.300048828125,
+    "breakPrice": 3716.5,
+    "timestamp": "2025-09-19T18:29:02.082Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3716.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3716.300048828125,
+    "breakPrice": 3716.5,
+    "timestamp": "2025-09-19T18:29:02.085Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3716.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3716.300048828125,
+    "breakPrice": 3716.5,
+    "timestamp": "2025-09-19T18:29:02.085Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17543",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.17543,
+    "breakPrice": 1.1755025386810303,
+    "timestamp": "2025-09-22T07:27:01.895Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17600",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.176,
+    "breakPrice": 1.1766090393066406,
+    "timestamp": "2025-09-22T08:22:01.648Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17700",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.177,
+    "breakPrice": 1.177024483680725,
+    "timestamp": "2025-09-22T08:26:02.247Z"
+  },
+  {
+    "id": "EURUSD_HIGH_daily_1.17889",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.17889,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T12:46:02.012Z"
+  },
+  {
+    "id": "EURUSD_HIGH_daily_1.17900",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.179,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T12:46:02.015Z"
+  },
+  {
+    "id": "EURUSD_HIGH_daily_1.17910",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 1.1791,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T12:46:02.016Z"
+  },
+  {
+    "id": "EURUSD_HIGH_monthly_1.17910",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 1.1791,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T12:46:02.018Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17901",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.17901,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T17:01:02.913Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17889",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.17889,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T17:01:02.916Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17900",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.179,
+    "breakPrice": 1.1791062355041504,
+    "timestamp": "2025-09-22T17:01:02.917Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3773.69995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3773.699951171875,
+    "breakPrice": 3774.199951171875,
+    "timestamp": "2025-09-22T17:19:32.209Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3773.69995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3773.699951171875,
+    "breakPrice": 3774.199951171875,
+    "timestamp": "2025-09-22T17:19:32.211Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3773.69995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3773.699951171875,
+    "breakPrice": 3774.199951171875,
+    "timestamp": "2025-09-22T17:19:32.212Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.18040",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.1804,
+    "breakPrice": 1.1807769536972046,
+    "timestamp": "2025-09-22T21:01:01.283Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3783.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3783.300048828125,
+    "breakPrice": 3783.699951171875,
+    "timestamp": "2025-09-22T23:32:32.026Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3783.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3783.300048828125,
+    "breakPrice": 3783.699951171875,
+    "timestamp": "2025-09-22T23:32:32.027Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3783.30005",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3783.300048828125,
+    "breakPrice": 3783.699951171875,
+    "timestamp": "2025-09-22T23:32:32.028Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.18072",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.18072,
+    "breakPrice": 1.1810559034347534,
+    "timestamp": "2025-09-23T01:01:01.903Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3785.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3785.199951171875,
+    "breakPrice": 3786.89990234375,
+    "timestamp": "2025-09-23T01:15:31.285Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3785.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3785.199951171875,
+    "breakPrice": 3786.89990234375,
+    "timestamp": "2025-09-23T01:15:31.287Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3785.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3785.199951171875,
+    "breakPrice": 3786.89990234375,
+    "timestamp": "2025-09-23T01:15:31.287Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3795.10010",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3795.10009765625,
+    "breakPrice": 3796.60009765625,
+    "timestamp": "2025-09-23T08:42:01.723Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3795.10010",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3795.10009765625,
+    "breakPrice": 3796.60009765625,
+    "timestamp": "2025-09-23T08:42:01.725Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3795.10010",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3795.10009765625,
+    "breakPrice": 3796.60009765625,
+    "timestamp": "2025-09-23T08:42:01.726Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3809.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3809.199951171875,
+    "breakPrice": 3809.5,
+    "timestamp": "2025-09-23T09:02:02.050Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3809.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3809.199951171875,
+    "breakPrice": 3809.5,
+    "timestamp": "2025-09-23T09:02:02.051Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3809.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3809.199951171875,
+    "breakPrice": 3809.5,
+    "timestamp": "2025-09-23T09:02:02.052Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.18198",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.18198,
+    "breakPrice": 1.1820330619812012,
+    "timestamp": "2025-09-23T18:45:02.587Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.17426",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.17426,
+    "breakPrice": 1.1742602586746216,
+    "timestamp": "2025-09-24T21:04:02.133Z"
+  },
+  {
+    "id": "EURUSD_HIGH_monthly_1.17426",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 1.17426,
+    "breakPrice": 1.1742602586746216,
+    "timestamp": "2025-09-24T21:04:02.134Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3782.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3782.199951171875,
+    "breakPrice": 3782.300048828125,
+    "timestamp": "2025-09-25T07:50:02.035Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3782.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3782.199951171875,
+    "breakPrice": 3782.300048828125,
+    "timestamp": "2025-09-25T07:50:02.036Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3782.19995",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3782.199951171875,
+    "breakPrice": 3782.300048828125,
+    "timestamp": "2025-09-25T07:50:02.037Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3786.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3786,
+    "breakPrice": 3786.5,
+    "timestamp": "2025-09-25T08:13:02.266Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3786.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3786,
+    "breakPrice": 3786.5,
+    "timestamp": "2025-09-25T08:13:02.267Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3786.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3786,
+    "breakPrice": 3786.5,
+    "timestamp": "2025-09-25T08:13:02.268Z"
+  },
+  {
+    "id": "EURUSD_LOW_daily_1.17250",
+    "pair": "EURUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.1725,
+    "breakPrice": 1.172333002090454,
+    "timestamp": "2025-09-25T12:31:01.550Z"
+  },
+  {
+    "id": "DX-Y.NYB_HIGH_daily_98.09000",
+    "pair": "DX-Y.NYB",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 98.08999633789062,
+    "breakPrice": 98.09200286865234,
+    "timestamp": "2025-09-25T12:42:31.574Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.16988",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.16988,
+    "breakPrice": 1.1701380014419556,
+    "timestamp": "2025-09-25T13:01:02.432Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3772.50000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3772.5,
+    "breakPrice": 3772.60009765625,
+    "timestamp": "2025-09-25T13:30:02.229Z"
+  },
+  {
+    "id": "EURUSD_LOW_daily_1.16572",
+    "pair": "EURUSD",
+    "type": "LOW",
+    "timeframe": "daily",
+    "fractalPrice": 1.16572,
+    "breakPrice": 1.1656370162963867,
+    "timestamp": "2025-09-25T17:30:01.677Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3782.39990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3782.39990234375,
+    "breakPrice": 3782.5,
+    "timestamp": "2025-09-26T01:16:32.159Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3782.39990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3782.39990234375,
+    "breakPrice": 3782.5,
+    "timestamp": "2025-09-26T01:16:32.160Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3783.50000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3783.5,
+    "breakPrice": 3783.800048828125,
+    "timestamp": "2025-09-26T08:51:01.921Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3783.50000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3783.5,
+    "breakPrice": 3783.800048828125,
+    "timestamp": "2025-09-26T08:51:01.922Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3784.89990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3784.89990234375,
+    "breakPrice": 3785.300048828125,
+    "timestamp": "2025-09-26T12:41:32.694Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3784.89990",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3784.89990234375,
+    "breakPrice": 3785.300048828125,
+    "timestamp": "2025-09-26T12:41:32.695Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_daily_3788.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "daily",
+    "fractalPrice": 3788,
+    "breakPrice": 3788.300048828125,
+    "timestamp": "2025-09-26T13:17:32.451Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_weekly_3788.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 3788,
+    "breakPrice": 3788.300048828125,
+    "timestamp": "2025-09-26T13:17:32.452Z"
+  },
+  {
+    "id": "XAUUSD_HIGH_monthly_3788.00000",
+    "pair": "XAUUSD",
+    "type": "HIGH",
+    "timeframe": "monthly",
+    "fractalPrice": 3788,
+    "breakPrice": 3788.300048828125,
+    "timestamp": "2025-09-26T13:17:32.453Z"
+  },
+  {
+    "id": "EURUSD_HIGH_weekly_1.16988",
+    "pair": "EURUSD",
+    "type": "HIGH",
+    "timeframe": "weekly",
+    "fractalPrice": 1.16988,
+    "breakPrice": 1.170823097229004,
+    "timestamp": "2025-09-26T21:01:02.411Z"
   }
 ]

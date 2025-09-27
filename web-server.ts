@@ -4,9 +4,13 @@ import { filterReactions, getStatistics, FilterCriteria } from './breakout-engin
 import path from 'path';
 import * as fs from 'fs';
 import { recordBreakoutEvent } from './breakout-events';
+import { TradeJournal, getCurrentPrice } from './trade-journal';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000');
+
+// Initialize trade journal
+const tradeJournal = new TradeJournal();
 
 app.use(cors());
 app.use(express.json());
@@ -107,6 +111,9 @@ app.get('/api/forex-calendar', (req: Request, res: Response) => {
 app.get('/api/todays-events', (req: Request, res: Response) => {
   try {
     const calendar = JSON.parse(fs.readFileSync('forex-calendar.json', 'utf8'));
+
+    console.log(calendar);
+
     const today = new Date().toISOString().split('T')[0];
     const events = calendar.filter((event: any) => event.date === today);
     res.json(events);
@@ -227,6 +234,15 @@ app.get('/api/momentum-sessions', (req: Request, res: Response) => {
   }
 });
 
+app.get('/api/yesterday-low-events', (req: Request, res: Response) => {
+  try {
+    const events = JSON.parse(fs.readFileSync('yesterday-low-events.json', 'utf8'));
+    res.json(events);
+  } catch (error) {
+    res.json([]);
+  }
+});
+
 app.post('/api/record-reaction', (req: Request, res: Response) => {
   const { pair, type, timeframe, fractalPrice, breakPrice } = req.body;
   
@@ -272,10 +288,88 @@ app.post('/api/record-reaction', (req: Request, res: Response) => {
   }
 });
 
+// Trade Journal API Endpoints
+app.get('/api/trading-ideas', (req: Request, res: Response) => {
+  res.json(tradeJournal.getTradingIdeas());
+});
+
+app.post('/api/trading-ideas', (req: Request, res: Response) => {
+  const { name, description } = req.body;
+  const idea = tradeJournal.createTradingIdea(name, description);
+  res.json(idea);
+});
+
+app.get('/api/trades/open', (req: Request, res: Response) => {
+  res.json(tradeJournal.getOpenTrades());
+});
+
+app.post('/api/trades', async (req: Request, res: Response) => {
+  try {
+    const { symbol, ideaId, direction, entryPrice, takeProfit, stopLoss, positionSize, notes } = req.body;
+    
+    // Get current price if entry price not provided
+    const finalEntryPrice = entryPrice || await getCurrentPrice(symbol);
+    if (!finalEntryPrice) {
+      return res.status(400).json({ error: 'Could not get current price for symbol' });
+    }
+    
+    const trade = tradeJournal.createTrade({
+      symbol,
+      ideaId,
+      direction,
+      entryPrice: finalEntryPrice,
+      takeProfit,
+      stopLoss,
+      positionSize,
+      notes
+    });
+    
+    res.json(trade);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.post('/api/trades/:id/close', (req: Request, res: Response) => {
+  try {
+    const { exitPrice, outcome } = req.body;
+    const journalEntry = tradeJournal.closeTrade(req.params.id, exitPrice, outcome);
+    res.json(journalEntry);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.get('/api/journal', (req: Request, res: Response) => {
+  const filters = {
+    ideaId: req.query.ideaId as string,
+    symbol: req.query.symbol as string,
+    direction: req.query.direction as 'LONG' | 'SHORT',
+    outcome: req.query.outcome as 'TP' | 'SL' | 'MANUAL',
+    dateFrom: req.query.dateFrom as string,
+    dateTo: req.query.dateTo as string
+  };
+  
+  const entries = tradeJournal.getJournalEntries(filters);
+  res.json(entries);
+});
+
+app.get('/api/stats', (req: Request, res: Response) => {
+  const ideaId = req.query.ideaId as string;
+  const stats = tradeJournal.getStats(ideaId);
+  res.json(stats);
+});
+
+app.get('/api/stats/by-idea', (req: Request, res: Response) => {
+  const statsByIdea = tradeJournal.getStatsByIdea();
+  res.json(statsByIdea);
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🌐 Fractal Analysis Web UI running on port ${PORT}`);
   console.log('📊 Breakout reactions will be recorded automatically');
   console.log('🔥 Momentum sessions: London 12:30 & New York 15:30');
+  console.log('📈 Trade Journal: Real-time PnL tracking enabled');
 });
 
 const axios = require('axios');

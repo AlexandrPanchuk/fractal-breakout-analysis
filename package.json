@@ -1,12 +1,21 @@
 {
-  "name": "fractal-detector",
-  "version": "1.0.0",
-  "description": "Daily fractal detection for forex pairs",
-  "main": "scheduler.ts",
+  "name": "fractal-breakout-analysis",
+  "version": "2.0.0",
+  "description": "Modular fractal breakout analysis system with clean architecture",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "ts-node scheduler.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
     "scheduler": "ts-node scheduler.ts",
-    "web": "ts-node web-server.ts"
+    "web": "ts-node src/server.ts",
+    "fetch:economic": "ts-node src/services/economic/tasks/fetchEconomicCalendar.ts",
+    "fetch:releases:fred": "ts-node src/services/economic/tasks/fetchReleases.fromFRED.ts",
+    "fetch:rates": "ts-node src/services/economic/tasks/fetchRates.ts",
+    "fetch:news": "ts-node src/services/economic/tasks/fetchNews.ts",
+    "capture:reactions": "ts-node src/services/economic/tasks/captureReactions.ts",
+    "morning:brief": "ts-node src/services/economic/tasks/morningBrief.ts",
+    "morning:brief:all": "ts-node src/services/economic/tasks/generateMorningBrief.ts"
   },
   "dependencies": {
     "@types/node-cron": "^3.0.11",
@@ -19,6 +28,8 @@
     "express": "^4.18.0",
     "node-cron": "^3.0.3",
     "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "date-fns": "^3.6.0",
+    "date-fns-tz": "^3.0.2"
   }
 }
